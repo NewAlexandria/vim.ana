@@ -26,6 +26,7 @@
 .rdebug_hist
 .ssh/
 .subversion/
+.viminfo
 Desktop/
 Documents/
 Downloads/
