@@ -8,25 +8,26 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0/1
+~MSle0~/clean
 
 # Last Substitute Search Pattern:
-~MSle0~&^[^#]
+~MSle0&^#
 
 # Last Substitute String:
-$# 
+$
 
 # Command Line History (newest to oldest):
-:wq
 :q
-:%s/^[^#]/# /g
+:wq
+:%s/^#//g
 :w
-:%s/# //g
-:%s/#//g
-:q!
-:w dump_after_fee_details.sql
 :n
 :rew
+:q!
+:%s/^[^#]/# /g
+:%s/# //g
+:%s/#//g
+:w dump_after_fee_details.sql
 ::q
 :WQ
 ::w sss.dd q
@@ -41,8 +42,33 @@ $#
 :args vimrc | argdo execute "/Searching"
 :args vimrc | argdo execute "dd" | argdo execute ":wq"
 :args vimrc | argdo execute dd | argdo execute :wq
+:qall
 
 # Search String History (newest to oldest):
+?/clean
+? ^#
+?/clav
+?/branch
+?/<<<<
+?/5
+?/0
+?/22
+?/will
+?/:q
+?/i18
+?/i8
+?/i8n
+?/zent
+?/zen
+?/7
+?/6.7
+?/sak
+?/sake
+?/9.2
+?/saku
+?/duz
+?/9.2.2
+?/37
 ? ^[^#]
 ? # 
 ?/#
@@ -61,38 +87,14 @@ $#
 ?/<<<
 ?/spor
 ??,,
-?/0
 ?/look
 ?/"
 ?/-s
 ?/sakur
-?/saku
 ?/.30
 ?/=
 ?/sh
 ?/_
-?/re
-?/show_g
-?/show_ge
-?/unset_ge
-?/unset
-?/gem
-?/`
-?/buc
-?/du
-?/;
-?/:
-?/<<<<
-?/<<<<<<
-?/28
-?/6.1
-?/duz
-?/2
-?/decl
-?/looks
-?/7
-?/dri
-?/tub
 
 # Expression History (newest to oldest):
 
@@ -101,243 +103,185 @@ $#
 # Input Line History (newest to oldest):
 
 # Registers:
-"0	CHAR	0
-	include
+"0	LINE	0
+	Host s00415
+	Hostname 208.39.112.26
+	Port 7005
+	HostKeyAlias tm24-s00415
+	User fynanz
+	
 ""1	LINE	0
-	# [submodule "vim-colors-solarized"]
-	#	path = ~/.vim/bundle/vim-colors-solarized/
-	#	url = git://github.com/altercation/vim-colors-solarized.git 
-	# submodule "vim-fugitive"]
-	# path = ~/.vim/bundle/vim-fugitive/
-	# url = git://github.com/tpope/vim-fugitive.git
-	# submodule "vim-haml"]
-	# path = vim-haml
-	# url = /Users/ZacharyStarkJones/.vim/bundle/vim-haml/
-	# submodule "vim-pathogen"]
-	# path = vim-pathogen
-	# url = /Users/ZacharyStarkJones/.vim/bundle/vim-pathogen/
-	# submodule "vim-rails"]
-	# path = vim-rails
-	# url = /Users/ZacharyStarkJones/.vim/bundle/vim-rails/
-	# submodule "vim-surround"]
-	# path = vim-surround
-	# url = /Users/ZacharyStarkJones/.vim/bundle/vim-surround/
+	
 "2	LINE	0
-	.bash_profile~
+	User fynanz
 "3	LINE	0
-	# .vim/
-	# .viminfo
-	# .vimrc
+	
+	# Are these ours? 
+	Host s00416
+	Hostname 208.39.112.26
+	Port 7006
+	HostKeyAlias tm24-s00416
+	User fynanz
+	
+	Host s00417
+	Hostname 208.39.112.26
+	Port 7007
+	HostKeyAlias tm24-s00417
 "4	LINE	0
-	# .bash_profile
+	Host s00416
+	Hostname 208.39.112.26
+	Port 7006
+	HostKeyAlias tm24-s00416
+	User fynanz
+	
 "5	LINE	0
-	
+	  set :branch do
+	    Capistrano::CLI.ui.ask "Please enter the tag name: "
+	  end
 "6	LINE	0
-	- [FY-13](https://fynanz.atlassian.net/browse/FY-13): EdSucceed: Delete a loan to be consolidated
+	  set :branch, Capistrano::CLI.ui.ask("Please enter the tag name: ") unless exists?(:branch)
 "7	LINE	0
-	`faxes`
-	--
-	
-	DROP TABLE IF EXISTS `faxes`;
-	SET @saved_cs_client     = @@character_set_client;
-	SET character_set_client = utf8;
-	CREATE TABLE `faxes` (
-	  `id` int(11) NOT NULL auto_increment,
-	  `sender_fax_number` varchar(255) default NULL,
-	  `sender_caller_id` varchar(255) default NULL,
-	  `barcodes` varchar(255) default NULL,
-	  `file_name` varchar(255) default NULL,
-	  `processed_at` datetime default NULL,
-	  `received_at` datetime default NULL,
-	  `number_of_pages` int(11) default NULL,
-	  `posted_xml` mediumblob,
-	  `created_at` datetime default NULL,
-	  `updated_at` datetime default NULL,
-	  PRIMARY KEY  (`id`),
-	  KEY `index_faxes_on_id_and_created_at` (`id`,`created_at`)
-	) ENGINE=InnoDB AUTO_INCREMENT=8223 DEFAULT CHARSET=utf8;
-	SET character_set_client = @saved_cs_client;
-	
-	--
-	-- Dumping data for table `faxes`
-	--
-	
+	  set :branch do
+	    Capistrano::CLI.ui.ask "Please enter the tag name: "
+	  end
 "8	LINE	0
-	EOF
+	  set :branch, Capistrano::CLI.ui.ask("Please enter the tag name: ") unless exists?(:branch)
 "9	LINE	0
-	vim -E -s $1 <<-EOF
+	  set :branch do
+	    Capistrano::CLI.ui.ask "Please enter the tag name: "
+	  end
 "-	CHAR	0
-	/ZacharyStarkJones
+	Clavel
 
 # File marks:
-'0  5  69  ~/README
-'1  3  0  ~/.gitmodules
-'2  1  0  ~/.gitmodules
-'3  1  0  ~/.git/config
-'4  1  0  ~/.gitmodules
-'5  1  0  ~/.gitmodules
-'6  1  8  ~/.gitmodules
-'7  1  0  ~/.gits
-'8  7  12  ~/.gitignore
-'9  2  0  ~/.bash_profile
+'0  1  0  ~/Sites/apps/bucare/app/controllers/offers_controller.rb
+'1  1  0  ~/.rbenv/version
+'2  66  0  ~/.bash_profile
+'3  1  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/delayed_job.rb
+'4  1  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+'5  1  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes.rb
+'6  128  2  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+'7  45  0  ~/.ssh/config
+'8  59  10  ~/.ssh/config
+'9  60  0  ~/.ssh/config
 
 # Jumplist (newest first):
--'  5  69  ~/README
--'  1  0  ~/README
--'  3  0  ~/.gitmodules
--'  1  0  ~/.gitmodules
--'  1  0  ~/.git/config
--'  1  0  ~/.gits
--'  7  12  ~/.gitignore
--'  9  0  ~/.gitignore
--'  1  0  ~/.gitignore
--'  2  0  ~/.bash_profile
--'  62  0  ~/.bash_profile
+-'  1  0  ~/Sites/apps/bucare/app/controllers/offers_controller.rb
+-'  1  0  ~/.rbenv/version
+-'  66  0  ~/.bash_profile
 -'  1  0  ~/.bash_profile
--'  39  0  ~/.gitignore
--'  28  0  ~/.gitignore
--'  40  0  ~/.gitignore
--'  37  1  ~/Sites/gems/sakura/README.md
--'  1  0  ~/Sites/gems/sakura/README.md
--'  11  244  ~/Sites/gems/duzica/README.md
--'  16  0  ~/Sites/gems/duzica/README.md
--'  1  0  ~/Sites/gems/duzica/README.md
--'  1  0  ~/Sites/gems/duzica/README
--'  3  216  ~/Sites/gems/sakura/README.md
--'  2  23  ~/Sites/gems/duzica/.git/COMMIT_EDITMSG
--'  1  0  ~/Sites/gems/duzica/.git/COMMIT_EDITMSG
--'  1  0  ~/dump.sql
--'  1  11  ~/no_fax_data.sh
--'  2  11  ~/no_fax_data.sh
--'  5  2  ~/no_fax_data.sh
--'  6  0  ~/no_fax_data.sh
--'  7  2  ~/no_fax_data.sh
--'  19  40  ~/.bash_profile
--'  1  0  ~/.vimrc
--'  1  0  ~/.viminfo
--'  1  0  ~/.vimi
--'  12  0  ~/.bash_profile
--'  7  0  ~/.bash_profile
--'  17  0  ~/.bash_profile
--'  24  0  ~/.bash_profile
--'  32  0  ~/.bash_profile
--'  38  0  ~/.bash_profile
--'  41  0  ~/.bash_profile
--'  47  0  ~/.bash_profile
--'  53  0  ~/.bash_profile
--'  57  0  ~/.bash_profile
--'  1  0  /private/etc/hosts
--'  33  0  ~/.bash_profile
--'  1  0  ~/Sites/gems/duzica/config/routes.rb
--'  5  34  ~/Sites/scripts/env/dev_refresh.rb
--'  1  0  ~/Sites/scripts/env/dev_refresh.rb
--'  70  0  ~/Sites/scripts/env/dev_refresh.rb
--'  42  6  ~/Sites/scripts/env/dev_refresh.rb
--'  12  0  ~/Sites/scripts/env/dev_refresh.rb
--'  41  34  ~/Sites/scripts/env/dev_refresh.rb
--'  63  1  ~/Sites/scripts/env/dev_refresh.rb
--'  43  4  ~/Sites/scripts/env/dev_refresh.rb
--'  44  2  ~/Sites/scripts/env/dev_refresh.rb
--'  45  0  ~/Sites/scripts/env/dev_refresh.rb
--'  38  0  ~/Sites/scripts/env/dev_refresh.rb
--'  21  0  ~/Sites/scripts/env/dev_refresh.rb
--'  19  0  ~/Sites/scripts/env/dev_refresh.rb
--'  9  0  ~/Sites/scripts/env/dev_refresh.rb
--'  3  3  ~/Sites/scripts/env/dev_refresh.rb
--'  2  0  ~/Sites/scripts/env/dev_refresh.rb
--'  37  0  ~/Sites/scripts/env/dev_refresh.rb
--'  51  4  ~/Sites/scripts/env/dev_refresh.rb
--'  31  4  ~/Sites/scripts/env/dev_refresh.rb
--'  1  0  ~/Sites/scripts/env/app_prep.rb
--'  1  0  ~/Sites/scripts/env/app_deploy.rb
--'  1  0  ~/Sites/scripts/env/gem_release.rb
--'  23  1  ~/Sites/scripts/env/dev_refresh.rb
--'  22  84  ~/Sites/scripts/env/dev_refresh.rb
--'  25  2  ~/Sites/scripts/env/dev_refresh.rb
--'  64  3  ~/Sites/scripts/env/dev_refresh.rb
--'  32  2  ~/Sites/scripts/env/dev_refresh.rb
--'  128  4  ~/Sites/gems/sakura/Gemfile.lock
--'  1  0  ~/Sites/gems/sakura/Gemfile.lock
--'  1  0  ~/Sites/gems/duzica/Gemfile
--'  1  0  ../gems/duzica/Gemfile
--'  1  0  ../gems/*/Gemfile
--'  50  0  ~/Sites/gems/sakura/sakura.gemspec
--'  3  0  ~/Sites/gems/sakura/sakura.gemspec
--'  1  0  ~/Sites/gems/sakura/sakura.gemspec
--'  43  0  ~/Sites/gems/sakura/Gemfile
--'  1  11  ~/no_fax_data.sh
--'  2  11  ~/no_fax_data.sh
--'  5  2  ~/no_fax_data.sh
--'  6  0  ~/no_fax_data.sh
--'  7  2  ~/no_fax_data.sh
--'  3  0  ~/dump.sql
--'  1  11  ~/no_fax_data.sh
--'  2  11  ~/no_fax_data.sh
--'  5  2  ~/no_fax_data.sh
--'  6  0  ~/no_fax_data.sh
--'  7  2  ~/no_fax_data.sh
--'  4028  0  ~/dump.sql
--'  3  0  ~/.gitmodules
--'  1  0  ~/.gitmodules
--'  1  0  ~/.git/config
--'  1  0  ~/.gits
+-'  1  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/delayed_job.rb
+-'  1  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  1  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes.rb
+-'  128  2  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  127  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  121  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  118  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  115  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  107  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  103  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  99  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  82  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  77  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  72  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  21  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  12  0  ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
+-'  45  0  ~/.ssh/config
+-'  60  0  ~/.ssh/config
+-'  14  0  ~/.ssh/config
+-'  6  0  ~/.ssh/config
+-'  1  0  ~/.ssh/config
+-'  2  0  ~/.ssh/config
+-'  59  10  ~/.ssh/config
+-'  43  0  ~/.ssh/config
+-'  52  0  ~/.ssh/config
+-'  38  0  ~/.ssh/config
+-'  32  0  ~/.ssh/config
+-'  26  0  ~/.ssh/config
+-'  20  0  ~/.ssh/config
+-'  10  0  ~/.ssh/config
+-'  7  0  ~/Sites/apps/bucare/.gitignore
+-'  1  0  ~/Sites/apps/bucare/.gitignore
+-'  18  0  ~/Sites/apps/daphne/.gitignore
+-'  1  0  ~/Sites/apps/daphne/.gitignore
+-'  1  0  ~/Sites/scripts/.gitignore
+-'  50  0  ~/Sites/apps/patuju/config/deploy.rb
+-'  49  0  ~/Sites/apps/patuju/config/deploy.rb
+-'  81  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  52  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  49  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  34  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  31  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  25  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  22  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  19  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  16  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  4  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  1  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  50  2  ~/Sites/apps/clavel/config/deploy.rb
+-'  52  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  50  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  51  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  81  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  96  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  49  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  51  2  ~/Sites/apps/patuju/config/deploy.rb
+-'  34  0  ~/Sites/apps/patuju/config/deploy.rb
+-'  31  0  ~/Sites/apps/patuju/config/deploy.rb
+-'  25  0  ~/Sites/apps/patuju/config/deploy.rb
+-'  22  0  ~/Sites/apps/patuju/config/deploy.rb
+-'  19  0  ~/Sites/apps/patuju/config/deploy.rb
+-'  16  0  ~/Sites/apps/patuju/config/deploy.rb
+-'  4  0  ~/Sites/apps/patuju/config/deploy.rb
+-'  1  0  ~/Sites/apps/patuju/config/deploy.rb
+-'  7  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  51  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  51  2  ~/Sites/apps/clavel/config/deploy.rb
+-'  49  0  ~/Sites/apps/clavel/config/deploy.rb
+-'  34  0  ~/Sites/apps/clavel/config/deploy.rb
+-'  31  0  ~/Sites/apps/clavel/config/deploy.rb
+-'  25  0  ~/Sites/apps/clavel/config/deploy.rb
+-'  22  0  ~/Sites/apps/clavel/config/deploy.rb
+-'  19  0  ~/Sites/apps/clavel/config/deploy.rb
+-'  16  0  ~/Sites/apps/clavel/config/deploy.rb
+-'  4  0  ~/Sites/apps/clavel/config/deploy.rb
+-'  1  0  ~/Sites/apps/clavel/config/deploy.rb
+-'  34  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  31  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  25  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  22  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  19  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  16  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  4  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  1  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  7  46  ~/Sites/apps/clavel/config/deploy.rb
+-'  6  21  ~/Sites/apps/clavel/config/deploy.rb
+-'  1  0  ~/Sites/apps/bucare/config/deploy_st.rb
+-'  2  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  53  0  ~/Sites/apps/bucare/config/deploy.rb
+-'  50  0  ~/Sites/apps/patuju/config/deploy.rb
+-'  49  0  ~/Sites/apps/patuju/config/deploy.rb
+-'  81  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  52  0  ~/Sites/apps/daphne/config/deploy.rb
+-'  49  0  ~/Sites/apps/daphne/config/deploy.rb
 
 # History of marks within files (newest to oldest):
 
-> ~/README
-	"	5	69
-	^	5	70
-	.	5	69
-	+	5	69
-
-> ~/.gitmodules
-	"	3	0
-	.	1	0
-	+	1	48
-	+	1	57
-	+	1	45
-	+	1	60
-	+	1	8
-	+	1	8
-	+	1	1
-	+	1	0
-	+	1	0
-	+	1	0
-
-> ~/.git/config
+> ~/Sites/apps/bucare/app/controllers/offers_controller.rb
 	"	1	0
 
-> ~/.gits
+> ~/.rbenv/version
 	"	1	0
-
-> ~/.gitignore
-	"	7	12
-	^	40	0
-	.	7	12
-	+	39	9
-	+	9	0
-	+	29	0
-	+	1	0
-	+	7	0
-	+	8	0
-	+	7	12
 
 > ~/.bash_profile
-	"	2	0
-	^	19	41
-	.	19	40
-	+	4	1
-	+	4	47
-	+	4	38
-	+	4	44
-	+	4	34
-	+	4	47
-	+	4	53
+	"	66	0
+	^	33	0
+	.	32	22
 	+	4	43
 	+	4	0
 	+	2	40
 	+	4	0
-	+	33	0
+	+	34	0
 	+	1	101
 	+	1	0
 	+	3	0
@@ -347,7 +291,7 @@ $#
 	+	1	1
 	+	1	0
 	+	4	0
-	+	63	0
+	+	67	0
 	+	4	0
 	+	6	1
 	+	4	35
@@ -362,215 +306,181 @@ $#
 	+	30	19
 	+	23	35
 	+	31	20
-	+	63	0
-	+	49	0
+	+	67	0
 	+	50	0
 	+	51	0
 	+	52	0
-	+	63	0
-	+	50	34
+	+	53	0
+	+	67	0
 	+	51	34
 	+	52	34
-	+	63	0
-	+	53	0
-	+	63	34
-	+	50	10
+	+	53	34
+	+	67	0
+	+	54	0
+	+	67	34
 	+	51	10
 	+	52	10
 	+	53	10
-	+	63	10
-	+	48	30
-	+	51	10
-	+	63	0
-	+	55	0
-	+	56	32
-	+	53	0
+	+	54	10
+	+	67	10
+	+	49	30
+	+	52	10
+	+	67	0
+	+	56	0
+	+	59	32
+	+	54	0
 	+	32	0
-	+	33	111
-	+	33	0
-	+	57	0
-	+	58	17
-	+	63	81
-	+	1	0
-	+	63	47
-	+	63	31
-	+	63	0
-	+	63	0
+	+	34	111
+	+	34	0
 	+	59	0
-	+	60	0
+	+	60	17
+	+	67	81
+	+	1	0
+	+	67	47
+	+	67	31
+	+	67	0
+	+	67	0
 	+	61	0
 	+	62	0
-	+	60	15
-	+	61	16
-	+	62	21
 	+	63	0
-	+	60	47
-	+	61	49
-	+	62	57
-	+	59	6
-	+	61	9
-	+	60	10
-	+	59	0
-	+	59	0
-	+	62	9
-	+	63	0
-	+	62	41
-	+	60	50
-	+	61	52
-	+	62	52
-	+	59	20
-	+	60	22
-	+	61	23
-	+	62	23
+	+	67	0
+	+	62	15
+	+	63	16
+	+	67	21
+	+	67	0
+	+	62	47
+	+	63	49
+	+	67	57
+	+	61	6
+	+	63	9
+	+	62	10
+	+	61	0
+	+	61	0
+	+	67	9
+	+	67	0
+	+	67	41
+	+	62	50
+	+	63	52
+	+	67	52
+	+	61	20
+	+	62	22
+	+	63	23
+	+	67	23
 	+	18	9
 	+	19	28
 	+	21	0
 	+	19	40
+	+	57	0
+	+	58	30
+	+	64	0
+	+	67	0
+	+	65	0
+	+	66	62
+	+	32	22
 
-> ~/Sites/gems/sakura/README.md
-	"	37	1
-	^	3	217
-	.	3	214
-	+	3	214
-
-> ~/Sites/gems/duzica/README.md
-	"	11	244
-	^	11	245
-	.	11	244
-	+	6	55
-	+	9	0
-	+	6	1
-	+	7	0
-	+	5	0
-	+	6	0
-	+	7	0
-	+	3	1
-	+	10	0
-	+	15	0
-	+	11	0
-	+	12	0
-	+	11	244
-
-> ~/Sites/gems/duzica/README
+> ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/delayed_job.rb
 	"	1	0
 
-> ~/Sites/gems/duzica/.git/COMMIT_EDITMSG
-	"	2	23
-	^	2	24
-	.	2	23
-	+	7	9
-	+	1	51
-	+	2	23
-
-> ~/dump.sql
+> ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes/deploy.rb
 	"	1	0
+
+> ~/.rbenv/versions/1.8.7-p352/lib/ruby/gems/1.8/gems/eycap-0.5.20/lib/eycap/recipes.rb
+	"	1	0
+
+> ~/.ssh/config
+	"	45	0
+	.	45	0
+	+	59	12
+	+	7	0
+	+	45	0
+	+	43	0
+	+	44	0
+	+	45	0
+	+	45	17
+	+	45	0
+	+	45	0
+	+	45	0
+	+	45	0
+	+	45	10
+	+	45	8
+	+	45	23
+	+	45	10
+	+	45	8
+	+	45	23
+	+	45	10
+	+	45	8
+	+	45	23
+	+	45	0
+	+	45	0
+	+	45	0
+
+> ~/Sites/apps/bucare/.gitignore
+	"	7	0
+
+> ~/Sites/apps/daphne/.gitignore
+	"	18	0
+	^	9	0
 	.	1	0
-	+	1	39
+	+	1	2
 	+	1	0
+	+	9	3
+	+	22	7
 	+	1	0
+	+	4	6
 	+	1	0
-
-> ~/no_fax_data.sh
-	"	1	11
-	^	1	12
-	.	1	11
-	+	5	25
-	+	7	1
-	+	5	0
-	+	7	2
-	+	7	2
-	+	7	1
-	+	7	0
-	+	5	7
-	+	7	0
-	+	5	16
-	+	7	0
-	+	7	0
-	+	5	0
-	+	5	2
-	+	5	11
-	+	5	0
-	+	1	11
-
-> ~/vimrc
-	"	31	0
-	.	1	0
-	+	27	0
-	+	27	0
-	+	1	0
-
-> ~/.vimrc
-	"	1	0
-	^	14	1
-	.	17	17
-	+	1	22
-	+	3	9
-	+	3	12
-	+	4	14
-	+	8	17
-	+	7	7
-	+	10	13
-	+	37	58
-	+	20	15
-	+	4	0
-	+	5	11
-	+	1	17
-	+	37	0
-	+	20	0
-	+	11	0
-	+	19	4
-	+	22	13
-	+	22	13
-	+	28	33
-	+	35	5
-	+	34	0
-	+	33	0
-	+	32	0
-	+	31	0
-	+	30	0
-	+	29	0
-	+	28	0
-	+	27	0
-	+	32	0
-	+	23	10
-	+	3	0
-	+	24	0
-	+	17	85
-	+	14	17
-	+	15	17
-	+	16	17
-	+	17	17
-
-> ~/.viminfo
-	"	1	0
-
-> ~/.vimi
-	"	1	0
-
-> /private/etc/hosts
-	"	1	0
-	^	13	0
-	.	12	0
-	+	9	23
-	+	18	9
-	+	10	0
-	+	11	0
-	+	12	0
 	+	14	0
-	+	16	0
-	+	17	0
-	+	18	0
-	+	9	0
-	+	19	0
-	+	19	0
-	+	14	49
-	+	12	0
+	+	10	2
+	+	11	3
+	+	1	0
 
-> ~/Sites/gems/duzica/config/routes.rb
+> ~/Sites/scripts/.gitignore
+	"	1	0
+	^	1	9
+	.	1	8
+	+	1	8
+
+> ~/Sites/apps/bucare/config/deploy.rb
+	"	52	0
+	.	50	0
+	+	51	0
+	+	51	0
+	+	81	0
+	+	81	0
+	+	50	0
+
+> ~/Sites/apps/clavel/config/deploy.rb
+	"	50	2
+	.	51	0
+	+	51	0
+	+	51	0
+	+	50	0
+	+	51	0
+
+> ~/Sites/apps/daphne/config/deploy.rb
+	"	81	0
+	.	51	0
+	+	51	40
+	+	50	0
+	+	51	0
+
+> ~/Sites/apps/patuju/config/deploy.rb
+	"	50	0
+	.	51	0
+	+	51	0
+	+	50	0
+	+	51	0
+
+> ~/Sites/apps/bucare/config/deploy_st.rb
+	"	1	0
+
+> ~/Sites/apps/daphne/.bundle/config
+	"	1	0
+
+> ~/Sites/apps/patuju/config/baycities.yml
 	"	1	0
 
 > ~/Sites/scripts/env/dev_refresh.rb
-	"	5	34
+	"	1	0
 	^	5	35
 	.	5	34
 	+	11	24
@@ -650,21 +560,159 @@ $#
 	+	4	14
 	+	5	34
 
-> ~/Sites/scripts/env/app_deploy.rb
-	"	1	0
-	^	11	27
-	.	11	52
-	+	10	3
-	+	11	52
+> ~/.gitconfig
+	"	7	0
 
-> ~/Sites/scripts/env/app_prep.rb
+> ~/.vimrc
+	"	1	0
+	^	14	1
+	.	17	17
+	+	1	22
+	+	3	9
+	+	3	12
+	+	4	14
+	+	8	17
+	+	7	7
+	+	10	13
+	+	37	58
+	+	20	15
+	+	4	0
+	+	5	11
+	+	1	17
+	+	37	0
+	+	20	0
+	+	11	0
+	+	19	4
+	+	22	13
+	+	22	13
+	+	28	33
+	+	35	5
+	+	34	0
+	+	33	0
+	+	32	0
+	+	31	0
+	+	30	0
+	+	29	0
+	+	28	0
+	+	27	0
+	+	32	0
+	+	23	10
+	+	3	0
+	+	24	0
+	+	17	85
+	+	14	17
+	+	15	17
+	+	16	17
+	+	17	17
+
+> ~/.viminfo
+	"	361	0
+
+> ~/Sites/gems/duzica/.bundle/config
+	"	2	0
+	.	3	0
+	+	3	0
+
+> ~/Sites/apps/bucare/deploy.r
 	"	1	0
 
-> ~/Sites/scripts/env/gem_release.rb
+> ~/Sites/gems/sakura/README.md
 	"	1	0
+	.	10	0
+	+	3	214
+	+	3	0
+	+	10	0
+
+> ~/Sites/gems/duzica/README.md
+	"	16	0
+	^	19	166
+	.	16	0
+	+	6	55
+	+	9	0
+	+	6	1
+	+	7	0
+	+	5	0
+	+	6	0
+	+	7	0
+	+	3	1
+	+	10	0
+	+	15	0
+	+	11	0
+	+	12	0
+	+	11	244
+	+	16	0
+	+	13	0
+	+	13	2
+	+	13	52
+	+	13	0
+	+	13	91
+	+	13	0
+	+	13	107
+	+	19	164
+	+	13	0
+	+	16	0
+
+> ~/Sites/apps/patuju/README.md
+	"	1	7
+	^	1	8
+	.	1	7
+	+	3	12
+	+	5	14
+	+	1	7
+
+> ~/Sites/apps/patuju/README
+	"	1	0
+	.	1	0
+	+	1	1
+	+	1	0
+
+> ~/Sites/apps/bucare/README.md
+	"	5	121
+	^	5	122
+	.	5	121
+	+	8	0
+	+	11	0
+	+	2	0
+	+	3	13
+	+	4	0
+	+	10	0
+	+	5	121
+
+> ~/Sites/apps/clavel/README.md
+	"	1	0
+
+> ~/Sites/apps/daphne/README.md
+	"	5	8
+	^	5	9
+	.	5	8
+	+	3	13
+	+	7	13
+	+	4	0
+	+	5	8
+
+> ~/.bash_[
+	"	1	0
+
+> ~/Sites/scripts/.git/COMMIT_EDITMSG
+	"	1	0
+
+> ~/Sites/apps/daphne/Gemfile
+	"	1	0
+	^	21	65
+	.	28	34
+	+	20	0
+	+	21	0
+	+	20	0
+	+	21	64
+	+	28	33
+	+	29	34
+	+	28	33
+	+	29	34
+	+	27	33
+	+	28	34
 
 > ~/Sites/gems/sakura/Gemfile.lock
-	"	128	4
+	"	52	6
 	.	128	0
 	+	169	17
 	+	4	17
@@ -696,23 +744,19 @@ $#
 	+	125	0
 	+	128	0
 
-> ~/Sites/gems/duzica/Gemfile
-	"	1	0
-	^	19	35
-	.	19	34
-	+	19	34
-
-> ../gems/duzica/Gemfile
+> ~/Sites/gems/duzica/Gemfile.lock
 	"	1	0
 
-> ../gems/*/Gemfile
-	"	1	0
+> ~/Sites/apps/daphne/Gemfile.lock
+	"	11	4
+	.	11	15
+	+	11	15
 
-> ~/Sites/gems/sakura/sakura.gemspec
-	"	50	0
+> ~/Sites/apps/daphne/.ProductionGemfile.lock
+	"	343	2
 
 > ~/Sites/gems/sakura/Gemfile
-	"	43	0
+	"	1	0
 	^	41	2
 	.	22	0
 	+	47	3
@@ -728,6 +772,195 @@ $#
 	+	20	0
 	+	21	0
 	+	22	0
+
+> ~/Sites/gems/duzica/Gemfile
+	"	1	0
+	^	19	35
+	.	19	34
+	+	19	34
+
+> ~/Sites/gems/duzica/lib/duzica/version.rb
+	"	1	0
+	.	4	0
+	+	3	0
+	+	3	0
+	+	3	0
+	+	4	0
+
+> ~/Sites/gems/sakura/lib/sakura/version.rb
+	"	4	0
+	.	4	0
+	+	3	18
+	+	3	0
+	+	4	0
+
+> ~/Sites/apps/bucare/.git/COMMIT_EDITMSG
+	"	1	0
+	^	2	0
+	.	1	36
+	+	1	36
+
+> ~/Sites/gems/duzica/.git/COMMIT_EDITMSG
+	"	1	0
+	^	2	24
+	.	2	23
+	+	7	9
+	+	1	51
+	+	2	23
+
+> ~/Sites/gems/sakura/.git/COMMIT_EDITMSG
+	"	2	17
+	^	2	18
+	.	2	17
+	+	21	0
+	+	21	0
+	+	17	45
+	+	18	40
+	+	19	46
+	+	19	0
+	+	18	41
+	+	20	0
+	+	14	0
+	+	1	18
+	+	1	23
+	+	1	0
+	+	1	0
+	+	14	0
+	+	1	40
+	+	12	0
+	+	11	0
+	+	1	70
+	+	8	14
+	+	6	24
+	+	1	55
+	+	4	0
+	+	1	65
+	+	2	17
+
+> ~/README
+	"	5	69
+	^	5	70
+	.	5	69
+	+	5	69
+
+> ~/.gitmodules
+	"	3	0
+	.	1	0
+	+	1	48
+	+	1	57
+	+	1	45
+	+	1	60
+	+	1	8
+	+	1	8
+	+	1	1
+	+	1	0
+	+	1	0
+	+	1	0
+
+> ~/.git/config
+	"	1	0
+
+> ~/.gits
+	"	1	0
+
+> ~/.gitignore
+	"	7	12
+	^	40	0
+	.	7	12
+	+	39	9
+	+	9	0
+	+	29	0
+	+	1	0
+	+	7	0
+	+	8	0
+	+	7	12
+
+> ~/Sites/gems/duzica/README
+	"	1	0
+
+> ~/dump.sql
+	"	1	0
+	.	1	0
+	+	1	39
+	+	1	0
+	+	1	0
+	+	1	0
+
+> ~/no_fax_data.sh
+	"	1	11
+	^	1	12
+	.	1	11
+	+	5	25
+	+	7	1
+	+	5	0
+	+	7	2
+	+	7	2
+	+	7	1
+	+	7	0
+	+	5	7
+	+	7	0
+	+	5	16
+	+	7	0
+	+	7	0
+	+	5	0
+	+	5	2
+	+	5	11
+	+	5	0
+	+	1	11
+
+> ~/vimrc
+	"	31	0
+	.	1	0
+	+	27	0
+	+	27	0
+	+	1	0
+
+> ~/.vimi
+	"	1	0
+
+> /private/etc/hosts
+	"	1	0
+	^	13	0
+	.	12	0
+	+	9	23
+	+	18	9
+	+	10	0
+	+	11	0
+	+	12	0
+	+	14	0
+	+	16	0
+	+	17	0
+	+	18	0
+	+	9	0
+	+	19	0
+	+	19	0
+	+	14	49
+	+	12	0
+
+> ~/Sites/gems/duzica/config/routes.rb
+	"	1	0
+
+> ~/Sites/scripts/env/app_deploy.rb
+	"	1	0
+	^	11	27
+	.	11	52
+	+	10	3
+	+	11	52
+
+> ~/Sites/scripts/env/app_prep.rb
+	"	1	0
+
+> ~/Sites/scripts/env/gem_release.rb
+	"	1	0
+
+> ../gems/duzica/Gemfile
+	"	1	0
+
+> ../gems/*/Gemfile
+	"	1	0
+
+> ~/Sites/gems/sakura/sakura.gemspec
+	"	50	0
 
 > ~/Sites/gems/sakura/db/schema.rb
 	"	14	0
@@ -755,32 +988,6 @@ $#
 
 > ~/Sites/gems/sakura/spec/dummy/Gemfile
 	"	1	0
-
-> ~/Sites/gems/sakura/.git/COMMIT_EDITMSG
-	"	1	0
-	^	2	0
-	.	1	50
-	+	19	0
-	+	19	0
-	+	15	45
-	+	16	40
-	+	17	46
-	+	17	0
-	+	16	41
-	+	18	0
-	+	12	0
-	+	1	18
-	+	1	23
-	+	1	0
-	+	1	0
-	+	12	0
-	+	1	40
-	+	10	0
-	+	9	0
-	+	1	70
-	+	6	14
-	+	4	24
-	+	1	50
 
 > ~/Sites/apps/daphne/lib/tasks/capistrano.rake
 	"	5	99
@@ -818,22 +1025,6 @@ $#
 
 > ~/Sites/apps/daphne/Rakefile
 	"	7	0
-
-> ~/Sites/apps/daphne/Gemfile.lock
-	"	100	6
-
-> ~/Sites/apps/daphne/Gemfile
-	"	1	0
-	^	21	65
-	.	29	34
-	+	20	0
-	+	21	0
-	+	20	0
-	+	21	64
-	+	28	33
-	+	29	34
-	+	28	33
-	+	29	34
 
 > ~/Sites/apps/daphne/Capfile
 	"	1	0
@@ -1035,12 +1226,6 @@ $#
 	+	2	0
 	+	1	5
 
-> ~/Sites/gems/sakura/lib/sakura/version.rb
-	"	4	0
-	.	4	0
-	+	3	18
-	+	4	0
-
 > lib/sakura/version.rb
 	"	1	0
 
@@ -1072,12 +1257,6 @@ $#
 	+	1	14
 	+	4	19
 	+	1	16
-
-> ~/Sites/apps/bucare/.git/COMMIT_EDITMSG
-	"	1	0
-	^	2	0
-	.	1	36
-	+	1	36
 
 > ~/Sites/gems/sakura/.git/TAG_EDITMSG
 	"	2	0
@@ -1158,22 +1337,6 @@ $#
 > ~/Dropbox/personal/sale/I Ching stamp set.JPG
 	"	1	0
 
-> ~/Sites/apps/daphne/.gitignore
-	"	10	0
-	^	9	0
-	.	1	0
-	+	1	2
-	+	1	0
-	+	9	3
-	+	22	7
-	+	1	0
-	+	4	6
-	+	1	0
-	+	14	0
-	+	10	2
-	+	11	3
-	+	1	0
-
 > ~/Sites/gems/sakura/.gitignore
 	"	1	0
 	.	1	0
@@ -1211,13 +1374,6 @@ $#
 > ~/Sites/gems/duzica/spec/dummy/Gemfile
 	"	1	0
 
-> ~/Sites/gems/duzica/lib/duzica/version.rb
-	"	3	17
-	.	3	17
-	+	3	0
-	+	4	0
-	+	3	17
-
 > ~/Sites/apps/daphne/config/routes.rb
 	"	50	4
 
@@ -1232,294 +1388,3 @@ $#
 
 > ~/Sites/apps/daphne/app/controllers/petitions_controller.rb
 	"	11	4
-
-> ~/Dropbox/personal/sale/hollow eggs/hollow eggs.txt
-	"	1	0
-
-> ~/Dropbox/personal/sale/record player/record player.txt
-	"	14	0
-	^	14	0
-	.	13	36
-	+	7	58
-	+	9	84
-	+	13	36
-
-> ~/Dropbox/personal/sale/tools/tools.txt
-	"	24	0
-	^	24	0
-	.	24	0
-	+	1	97
-	+	1	2
-	+	13	0
-	+	10	2
-	+	7	2
-	+	4	2
-	+	3	2
-	+	13	1
-	+	10	0
-	+	7	0
-	+	4	0
-	+	3	0
-	+	23	0
-	+	3	0
-	+	4	0
-	+	7	0
-	+	10	0
-	+	13	0
-	+	16	0
-	+	19	0
-	+	4	3
-	+	7	2
-	+	10	2
-	+	13	3
-	+	16	3
-	+	19	3
-	+	21	11
-	+	24	0
-
-> ~/Dropbox/personal/sale/motors & drivers/motors & drivers.txt
-	"	23	0
-	^	23	0
-	.	22	36
-	+	1	40
-	+	2	0
-	+	3	38
-	+	5	0
-	+	4	1
-	+	8	1
-	+	5	15
-	+	12	25
-	+	14	46
-	+	16	463
-	+	18	155
-	+	19	0
-	+	22	36
-
-> ~/Dropbox/personal/sale/photomultiplier tubes/photomultiplier tubes.txt
-	"	22	0
-	^	22	0
-	.	21	36
-	+	3	18
-	+	4	7
-	+	7	12
-	+	14	0
-	+	13	12
-	+	5	107
-	+	11	0
-	+	15	90
-	+	15	330
-	+	18	2
-	+	23	0
-	+	21	36
-
-> ~/Dropbox/personal/sale/variable 1000W supply/variable 1000W supply.txt
-	"	1	0
-
-> ~/Dropbox/personal/sale/tesla coil kit/tesla coil kit.txt
-	"	1	0
-	^	25	36
-	.	25	0
-	+	5	30
-	+	6	10
-	+	5	9
-	+	4	21
-	+	6	11
-	+	11	3
-	+	5	25
-	+	19	16
-	+	18	22
-	+	23	0
-	+	20	0
-	+	25	0
-
-> ~/Dropbox/personal/sale/variable 1000W supply.txt
-	"	1	0
-	^	21	36
-	.	21	0
-	+	2	14
-	+	2	28
-	+	4	86
-	+	4	2
-	+	5	73
-	+	9	1
-	+	14	0
-	+	12	68
-	+	13	214
-	+	17	56
-	+	19	0
-	+	21	0
-
-> ~/Dropbox/personal/sale/kirlian photography kit/kirlian photography kit.txt
-	"	24	35
-	^	24	36
-	.	24	0
-	+	4	1
-	+	6	64
-	+	12	151
-	+	12	9
-	+	12	151
-	+	10	122
-	+	10	304
-	+	10	0
-	+	10	378
-	+	12	709
-	+	12	0
-	+	25	0
-	+	14	222
-	+	19	538
-	+	20	0
-	+	14	222
-	+	16	651
-	+	24	0
-
-> ~/Dropbox/personal/sale/cymatics kit/cymatics kit.txt
-	"	1	0
-	^	18	1
-	.	18	1
-	+	23	40
-	+	25	2
-	+	23	0
-	+	25	0
-	+	1	104
-	+	2	42
-	+	3	0
-	+	6	262
-	+	9	9
-	+	8	28
-	+	10	14
-	+	12	47
-	+	15	0
-	+	14	399
-	+	16	0
-	+	14	301
-	+	18	1
-
-> ~/Dropbox/personal/sale/breadboard circuit parts/breadboard circuit parts.txt
-	"	29	56
-	^	29	57
-	.	29	56
-	+	33	0
-	+	33	0
-	+	33	0
-	+	33	0
-	+	33	0
-	+	32	0
-	+	33	0
-	+	1	21
-	+	6	153
-	+	7	18
-	+	8	139
-	+	19	12
-	+	20	11
-	+	24	0
-	+	23	41
-	+	26	419
-	+	24	12
-	+	27	237
-	+	29	56
-
-> ~/Dropbox/personal/sale/web cam.txt
-	"	6	35
-	.	6	0
-	+	8	0
-	+	6	0
-
-> ~/Dropbox/personal/sale/eggbeater drill.txt
-	"	14	0
-	^	14	0
-	.	13	0
-	+	3	209
-	+	10	0
-	+	12	2
-	+	11	91
-	+	11	4
-	+	13	0
-
-> ~/Dropbox/personal/sale/diaphram pump.txt
-	"	5	0
-	^	5	0
-	.	4	39
-	+	2	42
-	+	4	0
-	+	17	0
-	+	3	16
-	+	9	0
-	+	9	303
-	+	16	5
-	+	13	136
-	+	14	0
-	+	4	39
-
-> ~/Dropbox/personal/sale/chinese fan.txt
-	"	5	0
-	^	5	0
-	.	4	0
-	+	1	21
-	+	4	0
-
-> ~/Dropbox/personal/sale/chemistry lab clamps.txt
-	"	10	0
-	^	10	0
-	.	9	87
-	+	9	87
-
-> ~/Sites/apps/daphne/vendor/cache/duzica-1.6.1.gem
-	"	6	0
-
-> ~/Sites/apps/daphne/.G
-	"	1	0
-
-> ~/Downloads/keys/README
-	"	25	23
-	^	25	24
-	.	25	23
-	+	25	23
-
-> ~/~?.bap
-	"	1	0
-
-> ~/Desktop/sale/Sony casette recorder/Sony casette recorder.txt
-	"	7	132
-	^	7	133
-	.	7	132
-	+	1	412
-	+	1	0
-	+	1	280
-	+	3	618
-	+	3	525
-	+	5	453
-	+	1	14
-	+	5	100
-	+	5	0
-	+	7	132
-
-> ~/Desktop/sale/FLW style lamp/FLW style lamp.txt
-	"	3	363
-	^	3	364
-	.	3	363
-	+	1	204
-	+	3	363
-
-> ~/Desktop/sale/HV Capacitors.txt
-	"	1	251
-	^	1	252
-	.	1	251
-	+	1	251
-
-> ~/Desktop/sale/HV Capacitors.JPG
-	"	1	0
-
-> ~/Sites/apps/patuju/.git/TAG_EDITMSG
-	"	1	0
-	^	1	19
-	.	1	0
-	+	1	0
-
-> ~/Desktop/sale/bike lock.txt
-	"	1	356
-	^	1	357
-	.	1	356
-	+	1	356
-
-> ~/Sites/gems/sakura/config/initializers/encryption.rb
-	"	1	0
