@@ -21,5 +21,9 @@ then link files into your home
 
 ```.vim-configs-repo/install.sh```
 
+That's it for now.
+
+
 # Спасибо #
+
 Feedback welcome; particularly if you use the repo in you environment.
