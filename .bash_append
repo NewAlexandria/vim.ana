@@ -1,0 +1,21 @@
+# Console
+source ~/.git-completion.bash
+export PS1='\[\033[01;34m\]\u@\h\[\033[00m\]\] \w\033[32m\]$(__git_ps1) \[\033[00m\]\$ '" 
+#   prompt   color  bold   u@host color  stop  path color green git-repo  color stop  $" 
+#                            ^^--replace this if you're working locally" 
+
+# Aliases
+## FileSystem
+alias ll='ls -al'
+alias be='bundle exec'
+
+## Git
+alias  gc='git commit'
+alias gco='git co'
+alias gci='git ci'
+alias grb='git rb'
+alias  ga='git add'
+alias  gd='git diff'
+alias  gs='git status'
+alias  gl='git log'
+
