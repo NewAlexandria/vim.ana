@@ -19,7 +19,7 @@ Download and unpack to a ```.```directory in your home.
 
 then link files into your home
 
-```.vim-configs-repo/install.sh```
+``` .vim-configs-repo/install.sh ```
 
 That's it for now.
 
