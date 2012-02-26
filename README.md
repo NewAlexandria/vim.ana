@@ -15,11 +15,11 @@ Vim Configs aims to make a 2-command install of a full vim harnass and CLI conve
 ## Install ##
 Download and unpack to a ```.```directory in your home.
 
-```cd ~; git clone git://github.com/NewAlexandria/vim.ana.git .vim.ana-repo```
+``` cd ~; git clone git://github.com/NewAlexandria/vim.ana.git .vim.ana-repo ```
 
 then link files into your home
 
-```.vim.ana-repo/install.sh```
+``` .vim.ana-repo/install.sh ```
 
 That's it for now.
 
