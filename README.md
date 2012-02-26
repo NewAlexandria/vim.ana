@@ -4,11 +4,11 @@ Vim Configs aims to make a 2-command install of a full vim harnass and CLI conve
 
 ## Features ##
 *  Pathogen project and a set of related repos.
-**  fugitive
-**  haml
-**  pathogen
-**  rails
-**  surround
+  *  fugitive
+  *  haml
+  *  pathogen
+  *  rails
+  *  surround
 *  The Solarized color scheme is also used for vim coding.
 *  Colorizes and formats the prompt to ``` user@host /path (git branch) $ ``` 
 
