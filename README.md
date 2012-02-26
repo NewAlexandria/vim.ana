@@ -4,12 +4,12 @@ Vim Configs aims to make a 2-command install of a full vim harnass and CLI conve
 
 ## Features ##
 *  Pathogen project and a set of related repos.
-  *  fugitive
-  *  haml
-  *  pathogen
-  *  rails
-  *  surround
-*  The Solarized color scheme is also used for vim coding.
+  *  [https://github.com/tpope/vim-pathogen](pathogen)
+  *  [https://github.com/tpope/vim-fugitive](fugitive)
+  *  [https://github.com/tpope/vim-haml](haml)
+  *  [https://github.com/tpope/vim-rails](rails)
+  *  [https://github.com/tpope/vim-surround](surround)
+*  The [git://github.com/altercation/vim-colors-solarized.git](Solarized color scheme) is also used for vim coding.
 *  Colorizes and formats the prompt to ``` user@host /path (git branch) $ ``` 
 
 
@@ -25,6 +25,12 @@ then link files into your home
 The installer responsibily makes backups of your original .vim files to ~/.vim.ana/backups/  I thought this was better than to ```cp -R``` the lot of files into your existing .vim   
 
 That's it for now.
+
+## Mañana ##
+
+The following Vim plugins are under review
+
+* [https://github.com/Lokaltog/vim-powerline](PowerLine)
 
 
 # Спасибо #
