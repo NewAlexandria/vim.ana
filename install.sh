@@ -1,29 +1,29 @@
 # Backup any existing files
-mkdir backups
+mkdir ~/.vim.ana-repo/backups
 
 ## Link vim files
 if [ -d ~/.vim ] 
 then 
-  mv ~/.vim backups/.vim
+  mv ~/.vim ~/.vim.ana-repo/backups/.vim
 fi
 ln -s ~/.vim.ana-repo/.vim ~/.vim
 
 if [ -f ~/.vimrc ]
 then
-  mv ~/.vimrc backups/.vim
+  mv ~/.vimrc ~/.vim.ana-repo/backups/.vim
 fi
 ln -s ~/.vim.ana-repo/.vimrc ~/.vimrc
 
 if [ -f ~/.viminfo ]
 then
-  mv ~/.viminfo backups/.viminfo
+  mv ~/.viminfo ~/.vim.ana-repo/backups/.viminfo
 fi
 ln -s ~/.vim.ana-repo/.viminfo ~/.viminfo
 
 ## link the git funcs for the prompt
 if [ -f ~/.git-completion.bash ]
 then
-  mv  ~/.git-completion.bash backups/.git-completion.bash
+  mv  ~/.git-completion.bash ~/.vim.ana-repo/backups/.git-completion.bash
 fi
 ln -s ~/.vim.ana-repo/.git-completion.bash  ~/.git-completion.bash
 
