@@ -10,7 +10,8 @@ Vim Configs aims to make a 2-command install of a full vim harnass and CLI conve
 **  rails
 **  surround
 *  The Solarized color scheme is also used for vim coding.
-*  The current branch is color-coded into the prompt.
+*  Colorizes and formats the prompt to ``` user@host /path (git branch) $ ``` 
+
 
 ## Install ##
 Download and unpack to a ```.```directory in your home.
@@ -21,9 +22,11 @@ then link files into your home
 
 ``` .vim.ana-repo/install.sh ```
 
+The installer responsibily makes backups of your original .vim files to ~/.vim.ana-repo/backups/  I thought this was better than to ```cp -R``` the lot of files into your existing .vim   
+
 That's it for now.
 
 
 # Спасибо #
 
-Feedback welcome; particularly if you use the repo in you environment.
+**Architecural** suggestions welcomed. I'm particularly interested in how this can more-safely integrate with your existing environment practices.
