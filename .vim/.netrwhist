@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/ZacharyStarkJones/.bundler'
-let g:netrw_dirhist_2='/Users/ZacharyStarkJones/.bundler/cache'
-let g:netrw_dirhist_3='/Users/ZacharyStarkJones/Sites/apps/daphne/.bundle/ruby'
-let g:netrw_dirhist_4='/Users/ZacharyStarkJones/Sites/gems/sakura/.git'
-let g:netrw_dirhist_5='/Users/ZacharyStarkJones/Dropbox/personal/sale/kirlian photography kit'
-let g:netrw_dirhist_6='/Users/ZacharyStarkJones/Sites/utils/vim.ana'

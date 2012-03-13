@@ -45,5 +45,8 @@ else
   echo "$SOURCE_LINE" >> "$PROFILE"
 fi
 
+git submodule init
+git submodule update
+
 echo 
 echo "Done!"
