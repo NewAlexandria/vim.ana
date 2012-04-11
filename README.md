@@ -1,6 +1,6 @@
 # Vim Configs #
 
-Vim Configs aims to make a 2-command install of a full vim harnass and CLI conveniences.
+Vim Configs aims to make a 2-command install of a full vim harnass and CLI conveniences.  The focus of this repo is to deliver a Vim & related environment that can be dropped into any *nix-flavor box, and without disruption to existing production configs.
 
 ## Features ##
 *  Pathogen project and a set of related repos.
@@ -37,4 +37,4 @@ The following Vim plugins are under review
 
 # Спасибо #
 
-**Architecural** suggestions welcomed. I'm particularly interested in how this can more-safely integrate with your existing environment practices.
+Thanks for experimenting with this repo. **Architectural** suggestions welcomed. I'm particularly interested in how this can more-safely integrate with your existing environment practices.
