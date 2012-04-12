@@ -45,8 +45,11 @@ else
   echo "$SOURCE_LINE" >> "$PROFILE"
 fi
 
+## Setup Submodules
+cd ~/.vim.ana
 git submodule init
 git submodule update
+
 
 echo 
 echo "Done!"
