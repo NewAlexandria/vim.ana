@@ -5,10 +5,15 @@ filetype plugin indent on
 " text stuff
 set tabstop=4 
 set ts=2 
-set shiftwidth=4 
+set shiftwidth=2 
 set autoindent
 set expandtab
 " retab  " this will cause all existing tabs to be expanded
+
+"" Modes
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
 
 "" Searching
 set hlsearch      " highlight matches
