@@ -10,7 +10,7 @@ Vim Configs aims to make a 2-command install of a full vim harnass and CLI conve
   
   IDE
   *  [surround](https://github.com/tpope/vim-surround)
-  *  [align](https://github.com/jezcope/vim-align)
+  *  [align](https://github.com/jezcope/vim-align) ([docs here](http://www.drchip.org/astronaut/vim/doc/Align.txt.html))
   *  [Solarized color scheme](git://github.com/altercation/vim-colors-solarized.git)
   *  [NerdCommenter](https://github.com/scrooloose/nerdcommenter) 
   
@@ -43,7 +43,7 @@ That's it for now.
 The following Vim plugins are under review
 
 * [PowerLine](https://github.com/Lokaltog/vim-powerline)
-
+* [AlignMaps](http://www.drchip.org/astronaut/vim/align.html)
 
 # Спасибо #
 

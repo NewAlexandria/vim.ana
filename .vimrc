@@ -39,3 +39,4 @@ if has("gui")
   set guifont=Courier
 endif
 
+let g:Powerline_symbols = 'fancy'
