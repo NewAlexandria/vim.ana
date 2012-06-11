@@ -28,6 +28,8 @@ set showmatch
 set number
 syntax enable
 
+au BufRead,BufNewFile *.thor set filetype=ruby
+
 if has("gui")
   " set the gui options to:
   "		g: grey inactive menu items
