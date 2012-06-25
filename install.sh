@@ -50,6 +50,6 @@ cd ~/.vim.ana
 git submodule init
 git submodule update
 
-
+echo "Remember to install CTAGS from http://ctags.sourceforge.net/ or `brew install ctags` on OS X"
 echo 
 echo "Done!"

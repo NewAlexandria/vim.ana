@@ -10,11 +10,16 @@ Vim Configs aims to make a 2-command install of a full vim harnass and CLI conve
   
   IDE
   *  [surround](https://github.com/tpope/vim-surround)
+	*  [bundler](https://github.com/tpope/vim-bundler)
+	*  [gem-ctags](https://github.com/tpope/gem-ctags)
+	*  [taglist](https://github.com/thisivan/vim-taglist)
+  
+  Formatting
   *  [align](https://github.com/jezcope/vim-align) ([docs here](http://www.drchip.org/astronaut/vim/doc/Align.txt.html))
-  *  [Solarized color scheme](git://github.com/altercation/vim-colors-solarized.git)
   *  [NerdCommenter](https://github.com/scrooloose/nerdcommenter) 
   
-  Syntax
+  Syntax Colors
+  *  [Solarized color scheme](git://github.com/altercation/vim-colors-solarized.git)
   *  [haml](https://github.com/tpope/vim-haml)
   *  [rails](https://github.com/tpope/vim-rails)
   *  [markdown](https://github.com/tpope/vim-markdown)
@@ -35,6 +40,8 @@ then link files into your home
 The installer responsibily makes backups of your original .vim files to ~/.vim.ana/backups/  I thought this was better than to `cp -R` the lot of files into your existing .vim   
 
 After installing links, the submodule bundles are pulled down.
+
+You'll want to remember to install [the *ctags* library](http://ctags.sourceforge.net/).  Installation strategies differ per-platform, and I wante dthe `install.sh` to be robust.  If you're on OS X, you can ``brew isntall ctags``
 
 That's it for now.
 
