@@ -26,7 +26,10 @@ set cmdheight=2
 set history=50
 set showmatch
 set number
+
 syntax enable
+set background=dark
+colorscheme solarized
 
 au BufRead,BufNewFile *.thor set filetype=ruby
 
