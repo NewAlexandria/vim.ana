@@ -9,10 +9,16 @@ Vim Configs aims to make a 2-command install of a full vim harnass and CLI conve
   *  [fugitive](https://github.com/tpope/vim-fugitive)
   
   IDE
+  *  [rails](https://github.com/tpope/vim-rails)
   *  [surround](https://github.com/tpope/vim-surround)
 	*  [bundler](https://github.com/tpope/vim-bundler)
 	*  [gem-ctags](https://github.com/tpope/gem-ctags)
 	*  [taglist](https://github.com/thisivan/vim-taglist)
+
+  'Windowing'
+  * [NERDTree](https://github.com/scrooloose/nerdtree)
+  * [buffergator](https://github.com/jeetsukumaran/vim-buffergator/)
+  * (and some custom config to make these work together)
   
   Formatting
   *  [align](https://github.com/jezcope/vim-align) ([docs here](http://www.drchip.org/astronaut/vim/doc/Align.txt.html))
@@ -21,12 +27,13 @@ Vim Configs aims to make a 2-command install of a full vim harnass and CLI conve
   Syntax Colors
   *  [Solarized color scheme](git://github.com/altercation/vim-colors-solarized.git)
   *  [haml](https://github.com/tpope/vim-haml)
-  *  [rails](https://github.com/tpope/vim-rails)
   *  [markdown](https://github.com/tpope/vim-markdown)
+  *  [javascript](https://github.com/jelera/vim-javascript-syntax)
+  *  [scss](https://github.com/cakebaker/scss-syntax.vim)
   *  [nginx](https://github.com/vim-scripts/nginx.vim)
 
 *  Colorizes and formats the prompt to ` user@host /path (git branch) $ ` 
-*  Sets up some common git aliases
+*  Sets up some (perhaps) git aliases
 
 ## Install ##
 Download and unpack to a `.`directory in your home, e.g.:
@@ -41,9 +48,16 @@ The installer responsibily makes backups of your original .vim files to ~/.vim.a
 
 After installing links, the submodule bundles are pulled down.
 
-You'll want to remember to install [the *ctags* library](http://ctags.sourceforge.net/).  Installation strategies differ per-platform, and I wante dthe `install.sh` to be robust.  If you're on OS X, you can ``brew isntall ctags``
+You'll want to remember to install [the *ctags* library](http://ctags.sourceforge.net/).  Installation strategies differ per-platform, and I wanted the `install.sh` to be robust.  If you're on OS X, you can ``brew isntall ctags``
 
 That's it for now.
+
+## Customization ##
+
+If you want to add your own plugins, note that this repo uses git submodules:
+
+Additions: `cd ~/.vim.ana; git submodule add git-repo-address .vim/bundles/name-of-repo`
+Removals:  [Follow these instructions](http://stackoverflow.com/questions/1260748/how-do-i-remove-a-git-submodule)
 
 ## Mañana ##
 

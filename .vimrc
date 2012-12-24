@@ -27,10 +27,13 @@ set cmdheight=2
 set history=50
 set showmatch
 set number
-map :q :qa  "enjoy an immediate quit without reviewing unread buffers
+"enjoy an immediate quit without reviewing unread buffers
+map :q :qa
+map :wq :xa
 " set list  "show whitespace and invisible characters
 
 " NERDtree settings
+let NERDTreeShowHidden=1 
 let g:nerdtree_tabs_open_on_console_startup = 1
 let g:nerdtree_tabs_open_on_gui_startup = 1
 let g:nerdtree_tabs_no_startup_for_diff = 1
@@ -69,7 +72,6 @@ map <Leader>] :bnext<cr>
 map <Leader>[ :bprevious<cr>
 map <Leader>} :blast<cr>
 map <Leader>{ :bfirst<cr>
-
 
 "" Syntax Coloring
 syntax enable
