@@ -53,3 +53,9 @@
 [submodule ".vim/bundle/vim-buffergator"]
 	path = .vim/bundle/vim-buffergator
 	url = git://github.com/jeetsukumaran/vim-buffergator.git
+[submodule ".vim/bundle/vim-rails"]
+	path = .vim/bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule ".vim/bundle/vim-javascript-syntax"]
+	path = .vim/bundle/vim-javascript-syntax
+	url = git://github.com/jelera/vim-javascript-syntax.git
