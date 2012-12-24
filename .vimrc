@@ -13,6 +13,7 @@ set expandtab
 "" Modes
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
+call togglebg#map("<F5>")
 set showmode
 
 "" Searching
@@ -26,9 +27,14 @@ set cmdheight=2
 set history=50
 set showmatch
 set number
+" set list  "show whitespace and invisible characters
 
 syntax enable
 set background=dark
+let g:solarized_italic     = 1
+let g:solarized_termcolors = 256
+let g:solarized_termtrans  = 1
+let g:solarized_visibility = 'low'
 colorscheme solarized
 
 au BufRead,BufNewFile *.thor set filetype=ruby
