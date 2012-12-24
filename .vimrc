@@ -8,7 +8,7 @@ set ts=2
 set shiftwidth=2 
 set autoindent
 set expandtab
-" retab  " this will cause all existing tabs to be expanded
+retab  " this will cause all existing tabs to be expanded
 
 "" Modes
 nnoremap <F2> :set invpaste paste?<CR>
@@ -27,8 +27,51 @@ set cmdheight=2
 set history=50
 set showmatch
 set number
+map :q :qa  "enjoy an immediate quit without reviewing unread buffers
 " set list  "show whitespace and invisible characters
 
+" NERDtree settings
+let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_open_on_gui_startup = 1
+let g:nerdtree_tabs_no_startup_for_diff = 1
+let g:nerdtree_tabs_smart_startup_focus = 1
+let g:nerdtree_tabs_autoclose = 1
+
+" Split VIEWPORT horizontally, with new split on the top
+let g:buffergator_viewport_split_policy = "b"
+let g:buffergator_suppress_keymaps="1"
+let g:buffergator_autodismiss_on_select=0
+let g:buffergator_split_size=12
+let g:buffergator_autoupdate=1
+
+
+" Setup the buffers
+autocmd VimEnter * NERDTree
+autocmd VimEnter * BuffergatorToggle
+autocmd VimEnter * wincmd b
+
+"" Buffer Navigation
+" Toggle left sidebar: NERDTree and BufferGator
+" test per http://justmao.name/life/integrate-nerdtree-and-buffergator/
+fu! LSidebarToggle()
+  let b = bufnr("%")
+  execute "NERDTreeToggle | BuffergatorToggle"
+  execute ( bufwinnr(b) . "wincmd w" )
+endf
+map  <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
+map! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
+
+map <Leader>n :NERDTreeCWD<cr>
+map <Leader>b :BuffergatorOpen<cr>
+map <Leader>v :wincmd b<cr>
+
+map <Leader>] :bnext<cr>
+map <Leader>[ :bprevious<cr>
+map <Leader>} :blast<cr>
+map <Leader>{ :bfirst<cr>
+
+
+"" Syntax Coloring
 syntax enable
 set background=dark
 let g:solarized_italic     = 1
@@ -38,16 +81,5 @@ let g:solarized_visibility = 'low'
 colorscheme solarized
 
 au BufRead,BufNewFile *.thor set filetype=ruby
-
-if has("gui")
-  " set the gui options to:
-  "		g: grey inactive menu items
-  "		m: display menu bar
-  "		r: display scrollbar on right side of window
-  "		b: display scrollbar at bottom of window
- 
-  set go=gmr
-  set guifont=Courier
-endif
 
 let g:Powerline_symbols = 'fancy'
