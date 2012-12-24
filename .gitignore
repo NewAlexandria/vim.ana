@@ -2,3 +2,4 @@
 # User Files
 backups
 .vim/.netrwhist
+.vim/bundle/

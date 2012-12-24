@@ -27,9 +27,12 @@ set cmdheight=2
 set history=50
 set showmatch
 set number
+set cursorline
 "enjoy an immediate quit without reviewing unread buffers
 map :q :qa
 map :wq :xa
+map j 5gj
+map k 5gk
 " set list  "show whitespace and invisible characters
 
 " NERDtree settings
@@ -75,12 +78,17 @@ map <Leader>{ :bfirst<cr>
 
 "" Syntax Coloring
 syntax enable
+colorscheme solarized
+
 set background=dark
+let &colorcolumn=join(range(81,999),",")
+highlight ColorColumn ctermbg=234 guibg=#2c2d27
+let &colorcolumn="80,".join(range(120,999),",")
+
 let g:solarized_italic     = 1
 let g:solarized_termcolors = 256
 let g:solarized_termtrans  = 1
 let g:solarized_visibility = 'low'
-colorscheme solarized
 
 au BufRead,BufNewFile *.thor set filetype=ruby
 
