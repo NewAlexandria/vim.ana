@@ -69,3 +69,7 @@ The following Vim plugins are under review
 # Спасибо #
 
 Thanks for experimenting with this repo. **Architectural** suggestions welcomed. I'm particularly interested in how this can more-safely integrate with your existing environment practices.
+
+## Sauce ##
+
+![The awesomeness you'll get with this repo](http://i.imgur.com/p262L.png)
