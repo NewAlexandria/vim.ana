@@ -48,7 +48,7 @@ The installer responsibily makes backups of your original .vim files to ~/.vim.a
 
 After installing links, the submodule bundles are pulled down.
 
-You'll want to remember to install [the *ctags* library](http://ctags.sourceforge.net/).  Installation strategies differ per-platform, and I wanted the `install.sh` to be robust.  If you're on OS X, you can ``brew isntall ctags``
+You'll want to remember to install [the *ctags* library](http://ctags.sourceforge.net/).  Installation strategies differ per-platform, and I wanted the `install.sh` to be robust.  If you're on OS X, you can ``brew install ctags``
 
 That's it for now.
 
