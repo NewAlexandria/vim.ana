@@ -35,6 +35,12 @@ map j 5gj
 map k 5gk
 " set list  "show whitespace and invisible characters
 
+" Split VIEWPORT horizontally, with new split on the top
+let g:buffergator_viewport_split_policy = "b"
+let g:buffergator_suppress_keymaps="1"
+let g:buffergator_autodismiss_on_select=0
+let g:buffergator_split_size=18
+
 " NERDtree settings
 let NERDTreeShowHidden=1 
 let g:nerdtree_tabs_open_on_console_startup = 1
@@ -43,17 +49,12 @@ let g:nerdtree_tabs_no_startup_for_diff = 1
 let g:nerdtree_tabs_smart_startup_focus = 1
 let g:nerdtree_tabs_autoclose = 1
 
-" Split VIEWPORT horizontally, with new split on the top
-let g:buffergator_viewport_split_policy = "b"
-let g:buffergator_suppress_keymaps="1"
-let g:buffergator_autodismiss_on_select=0
-let g:buffergator_split_size=12
-let g:buffergator_autoupdate=1
-
-
 " Setup the buffers
+" we set buffergator_autoupdate serially after toggling buffergator to avoid
+" creating a buffer listing NERD_tree_1 due to focus issues
 autocmd VimEnter * NERDTree
 autocmd VimEnter * BuffergatorToggle
+autocmd VimEnter * let g:buffergator_autoupdate=1
 autocmd VimEnter * wincmd b
 
 "" Buffer Navigation
@@ -67,7 +68,7 @@ endf
 map  <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
 map! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
 
-map <Leader>n :NERDTreeCWD<cr>
+map <Leader>n :NERDTree<cr>
 map <Leader>b :BuffergatorOpen<cr>
 map <Leader>v :wincmd b<cr>
 
