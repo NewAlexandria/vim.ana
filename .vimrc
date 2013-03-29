@@ -63,12 +63,14 @@ autocmd VimEnter * wincmd b
 fu! LSidebarToggle()
   let b = bufnr("%")
   execute "NERDTreeToggle | BuffergatorToggle"
+  execute "set nonumber!"
   execute ( bufwinnr(b) . "wincmd w" )
 endf
 map  <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
 map! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
 
-map <Leader>n :NERDTree<cr>
+map <Leader>n :NERDTreeFocus<cr>
+map <Leader>nf :NERDTreeFind<cr>
 map <Leader>b :BuffergatorOpen<cr>
 map <Leader>v :wincmd b<cr>
 
