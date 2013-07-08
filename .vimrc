@@ -34,6 +34,12 @@ map :wq :xa
 map j 5gj
 map k 5gk
 " set list  "show whitespace and invisible characters
+nnoremap <C-p> :Unite file_rec/async<cr>
+nnoremap <space>/ :Unite grep:.<cr>
+let g:unite_source_history_yank_enable = 1
+nnoremap <space>y :Unite history/yank<cr>
+nnoremap <space>s :Unite -quick-match buffer<cr>
+
 
 " NERDtree settings
 let NERDTreeShowHidden=1 
@@ -48,13 +54,13 @@ let g:buffergator_viewport_split_policy = "b"
 let g:buffergator_suppress_keymaps="1"
 let g:buffergator_autodismiss_on_select=0
 let g:buffergator_split_size=12
-let g:buffergator_autoupdate=1
-
 
 " Setup the buffers
 autocmd VimEnter * NERDTree
 autocmd VimEnter * BuffergatorToggle
+autocmd VimEnter * let g:buffergator_autoupdate=1
 autocmd VimEnter * wincmd b
+
 
 "" Buffer Navigation
 " Toggle left sidebar: NERDTree and BufferGator
@@ -81,9 +87,9 @@ syntax enable
 colorscheme solarized
 
 set background=dark
-let &colorcolumn=join(range(81,999),",")
-highlight ColorColumn ctermbg=234 guibg=#2c2d27
-let &colorcolumn="80,".join(range(120,999),",")
+" let &colorcolumn=join(range(81,999),",")
+" highlight ColorColumn ctermbg=234 guibg=#2c2d27
+" let &colorcolumn="80,".join(range(120,999),",")
 
 let g:solarized_italic     = 1
 let g:solarized_termcolors = 256
@@ -92,4 +98,5 @@ let g:solarized_visibility = 'low'
 
 au BufRead,BufNewFile *.thor set filetype=ruby
 
-let g:Powerline_symbols = 'fancy'
+" let g:Powerline_symbols = 'fancy'
+

@@ -14,6 +14,7 @@ Vim Configs aims to make a 2-command install of a full vim harnass and CLI conve
 	*  [bundler](https://github.com/tpope/vim-bundler)
 	*  [gem-ctags](https://github.com/tpope/gem-ctags)
 	*  [taglist](https://github.com/thisivan/vim-taglist)
+	*  [unite](https://github.com/Shougo/unite.vim)
 
   'Windowing'
   * [NERDTree](https://github.com/scrooloose/nerdtree)
@@ -36,6 +37,8 @@ Vim Configs aims to make a 2-command install of a full vim harnass and CLI conve
 *  Sets up some (perhaps) git aliases
 
 ## Install ##
+**Vim 7.2 is recommended.  Some version greater than 7.0.23 is required for buffergator, and possibly others.**
+
 Download and unpack to a `.`directory in your home, e.g.:
 
 ` cd ~; git clone git://github.com/NewAlexandria/vim.ana.git .vim.ana `
@@ -59,6 +62,8 @@ If you want to add your own plugins, note that this repo uses git submodules:
 Additions: `cd ~/.vim.ana; git submodule add git-repo-address .vim/bundles/name-of-repo`
 Removals:  [Follow these instructions](http://stackoverflow.com/questions/1260748/how-do-i-remove-a-git-submodule)
 
+There is one other step: youu will need o comment out the `.vim/bundle/` line in the `.gitignore` *prior to adding the submodule*.  Then, *uncomment it* after it is added.  This is done because many of the plugins will modify their own files, and create commit noise.
+
 ## Mañana ##
 
 The following Vim plugins are under review
@@ -68,7 +73,11 @@ The following Vim plugins are under review
 
 # Спасибо #
 
-Thanks for experimenting with this repo. **Architectural** suggestions welcomed. I'm particularly interested in how this can more-safely integrate with your existing environment practices.
+Thanks for experimenting with this repo. **Architectural** suggestions highly welcome. I'm particularly interested in 
+
+* How this can more-safely integrate with your existing environment practices
+* How to lower the version dependecy with Vim
+* How to integrate with windowing apps on all platforms
 
 ## Sauce ##
 
