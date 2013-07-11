@@ -41,6 +41,12 @@ nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
 
 
+" Split VIEWPORT horizontally, with new split on the top
+let g:buffergator_viewport_split_policy = "b"
+let g:buffergator_suppress_keymaps="1"
+let g:buffergator_autodismiss_on_select=0
+let g:buffergator_split_size=18
+
 " NERDtree settings
 let NERDTreeShowHidden=1 
 let g:nerdtree_tabs_open_on_console_startup = 1
@@ -56,6 +62,8 @@ let g:buffergator_autodismiss_on_select=0
 let g:buffergator_split_size=12
 
 " Setup the buffers
+" we set buffergator_autoupdate serially after toggling buffergator to avoid
+" creating a buffer listing NERD_tree_1 due to focus issues
 autocmd VimEnter * NERDTree
 autocmd VimEnter * BuffergatorToggle
 autocmd VimEnter * let g:buffergator_autoupdate=1
@@ -68,12 +76,14 @@ autocmd VimEnter * wincmd b
 fu! LSidebarToggle()
   let b = bufnr("%")
   execute "NERDTreeToggle | BuffergatorToggle"
+  execute "set nonumber!"
   execute ( bufwinnr(b) . "wincmd w" )
 endf
 map  <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
 map! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
 
-map <Leader>n :NERDTreeCWD<cr>
+map <Leader>n :NERDTreeFocus<cr>
+map <Leader>nf :NERDTreeFind<cr>
 map <Leader>b :BuffergatorOpen<cr>
 map <Leader>v :wincmd b<cr>
 
