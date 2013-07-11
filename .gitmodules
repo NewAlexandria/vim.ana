@@ -22,6 +22,9 @@
 [submodule ".vim/bundle/vim-taglist"]
 	path = .vim/bundle/vim-taglist
 	url = git://github.com/thisivan/vim-taglist.git
+[submodule ".vim/bundle/unite.vim"]
+	path = .vim/bundle/unite.vim
+	url = git@github.com:Shougo/unite.vim
 
 # Formatting
 [submodule ".vim/bundle/nerdcommenter"]
@@ -62,6 +65,3 @@
 [submodule ".vim/bundle/scss-syntax"]
 	path = .vim/bundle/scss-syntax
 	url = git://github.com/cakebaker/scss-syntax.vim.git
-[submodule ".vim/bundle/unite.vim"]
-	path = .vim/bundle/unite.vim
-	url = git@github.com:Shougo/unite.vim
