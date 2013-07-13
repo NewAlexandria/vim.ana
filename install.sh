@@ -38,7 +38,7 @@ PROFILE="$HOME/.bash_profile"
 if [[ -f "$PROFILE" ]] && grep -q "$SOURCE_LINE" "$PROFILE"; then
   echo "Already added to bash profile."
 else
-  echo "Adding .vim.ana to your bash profile..."
+  echo "Adding .vim.ana to your ~/.bash_profile..."
   ln -s ~/.vim.ana/.bash_vim_append ~/.bash_vim_append
 
   echo "# .vim.ana configurations #" >> "$PROFILE"
@@ -50,6 +50,15 @@ cd ~/.vim.ana
 git submodule init
 git submodule update
 
-echo "Remember to install CTAGS from http://ctags.sourceforge.net/ or `brew install ctags` on OS X"
+## Compile Submodule Components
+### vimproc
+echo 'Compiling vimproc binary into ~/.vim.ana/.vim/bundle/vimproc.vim/'
+cd ~/.vim.ana/.vim/bundle/vimproc.vim/
+make
+### Ctags
+echo "Remember to install CTAGS from http://ctags.sourceforge.net/"
+echo "or `brew install ctags` on OS X"
+
+
 echo 
 echo "Done!"
