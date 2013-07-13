@@ -1,30 +1,38 @@
 # Loaders
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
-	url  = git://github.com/tpope/vim-fugitive.git
 [submodule ".vim/bundle/vim-pathogen"]
 	path = .vim/bundle/vim-pathogen
 	url  = git://github.com/tpope/vim-pathogen.git
 
 # IDE
-[submodule ".vim/bundle/vim-surround"]
-	path = .vim/bundle/vim-surround
-	url  = git://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/vim-powerline"]
-	path = .vim/bundle/vim-powerline
-	url  = git://github.com/Lokaltog/vim-powerline.git
-[submodule ".vim/bundle/vim-bundler"]
-	path = .vim/bundle/vim-bundler
-	url  = git://github.com/tpope/vim-bundler.git
-[submodule ".vim/bundle/vim-rake"]
-	path = .vim/bundle/vim-rake
-	url  = git://github.com/tpope/gem-ctags.git
-[submodule ".vim/bundle/vim-taglist"]
-	path = .vim/bundle/vim-taglist
-	url = git://github.com/thisivan/vim-taglist.git
 [submodule ".vim/bundle/unite.vim"]
 	path = .vim/bundle/unite.vim
 	url = git@github.com:Shougo/unite.vim
+[submodule ".vim/bundle/vimproc.vim"]
+	path = .vim/bundle/vimproc.vim
+	url = git://github.com/Shougo/vimproc.vim
+[submodule ".vim/bundle/vim-taglist"]
+	path = .vim/bundle/vim-taglist
+	url = git://github.com/thisivan/vim-taglist.git
+[submodule ".vim/bundle/vim-rake"]
+	path = .vim/bundle/vim-rake
+	url  = git://github.com/tpope/gem-ctags.git
+## Layout
+[submodule ".vim/bundle/vim-nerdtree-tabs"]
+	path = .vim/bundle/vim-nerdtree-tabs
+	url  = git://github.com/jistr/vim-nerdtree-tabs.git
+[submodule ".vim/bundle/vim-buffergator"]
+	path = .vim/bundle/vim-buffergator
+	url  = git://github.com/jeetsukumaran/vim-buffergator.git
+[submodule ".vim/bundle/vim-powerline"]
+	path = .vim/bundle/vim-powerline
+	url  = git://github.com/Lokaltog/vim-powerline.git
+## VCS
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url  = git://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/vim-bundler"]
+	path = .vim/bundle/vim-bundler
+	url  = git://github.com/tpope/vim-bundler.git
 
 # Formatting
 [submodule ".vim/bundle/nerdcommenter"]
@@ -33,6 +41,9 @@
 [submodule ".vim/bundle/vim-align"]
 	path = .vim/bundle/vim-align
 	url  = git://github.com/jezcope/vim-align.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url  = git://github.com/tpope/vim-surround.git
 
 # Syntax Colors
 [submodule ".vim/bundle/vim-colors-solarized"]
@@ -50,12 +61,6 @@
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url  = git://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/vim-nerdtree-tabs"]
-	path = .vim/bundle/vim-nerdtree-tabs
-	url  = git://github.com/jistr/vim-nerdtree-tabs.git
-[submodule ".vim/bundle/vim-buffergator"]
-	path = .vim/bundle/vim-buffergator
-	url  = git://github.com/jeetsukumaran/vim-buffergator.git
 [submodule ".vim/bundle/vim-rails"]
 	path = .vim/bundle/vim-rails
 	url  = git://github.com/tpope/vim-rails.git
