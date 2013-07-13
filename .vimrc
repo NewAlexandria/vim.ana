@@ -29,16 +29,25 @@ set showmatch
 set number
 set cursorline
 "enjoy an immediate quit without reviewing unread buffers
-map :q :qa
+map :Q :qa
 map :wq :xa
 map j 5gj
 map k 5gk
 " set list  "show whitespace and invisible characters
+
+" Unite navigations
 nnoremap <C-p> :Unite file_rec/async<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 let g:unite_source_history_yank_enable = 1
 nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
+
+" Use ack search
+if executable('ack')
+  let g:unite_source_grep_command = 'ack'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+ "let g:unite_source_grep_recursive_opt = ''
+endif
 
 
 " Split VIEWPORT horizontally, with new split on the top
@@ -55,11 +64,6 @@ let g:nerdtree_tabs_no_startup_for_diff = 1
 let g:nerdtree_tabs_smart_startup_focus = 1
 let g:nerdtree_tabs_autoclose = 1
 
-" Split VIEWPORT horizontally, with new split on the top
-let g:buffergator_viewport_split_policy = "b"
-let g:buffergator_suppress_keymaps="1"
-let g:buffergator_autodismiss_on_select=0
-let g:buffergator_split_size=12
 
 " Setup the buffers
 " we set buffergator_autoupdate serially after toggling buffergator to avoid
