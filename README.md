@@ -15,6 +15,14 @@ See the commented sections of [`.gitmodules`](https://github.com/NewAlexandria/v
 
    Loader, IDE, 'Windowing', Formatting, Syntax Colors
 
+#### Under Review ####
+
+- [syntastic](https://github.com/scrooloose/syntastic)
+- [supertab](https://github.com/ervandew/supertab)
+- [ruby.vim](https://github.com/vim-ruby/vim-ruby)
+- a proper tag parses for ruby namespaces, since 'ctags' fails at this, perhaps [tagfinder](http://andrewradev.com/2011/10/15/vim-and-ctags-finding-tag-definitions/), or [rdoc-tags](https://github.com/rdoc/rdoc-tags)
+- [tagbar](https://github.com/majutsushi/tagbar) (probably to swivel-out in the same wa that <leader-w> hides everything right now.
+
 
 ## Install ##
 **Vim 7.2 is recommended.  Some version greater than 7.0.23 is required for buffergator, unite, and possibly others.**
