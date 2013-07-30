@@ -29,7 +29,11 @@ See the commented sections of [`.gitmodules`](https://github.com/NewAlexandria/v
 
 Download and unpack to `~/.vim.ana` (the installer will look for it here. You can move it later)
 
-` cd ~; git clone git://github.com/NewAlexandria/vim.ana.git .vim.ana `
+` cd ~; git clone git@github.com:NewAlexandria/vim.ana.git .vim.ana `
+
+> If your corporate enterprise firewalls `ssh` to GitHub, then you can use this link
+> 
+> ` cd ~; git clone https://github.com/NewAlexandria/vim.ana.git .vim.ana `
 
 then link files and [do some other business](https://github.com/NewAlexandria/vim.ana/blob/master/install.sh)
 
