@@ -21,7 +21,7 @@ See the commented sections of [`.gitmodules`](https://github.com/NewAlexandria/v
 - [supertab](https://github.com/ervandew/supertab)
 - [ruby.vim](https://github.com/vim-ruby/vim-ruby)
 - a proper tag parses for ruby namespaces, since 'ctags' fails at this, perhaps [tagfinder](http://andrewradev.com/2011/10/15/vim-and-ctags-finding-tag-definitions/), or [rdoc-tags](https://github.com/rdoc/rdoc-tags)
-- [tagbar](https://github.com/majutsushi/tagbar) (probably to swivel-out in the same wa that <leader-w> hides everything right now.
+- [tagbar](https://github.com/majutsushi/tagbar) (probably to swivel-out in the same way that <leader-w> hides everything right now.)
 
 
 ## Install ##
