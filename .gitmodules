@@ -72,3 +72,6 @@
 [submodule ".vim/bundle/scss-syntax"]
   path = .vim/bundle/scss-syntax
   url  = https://github.com/cakebaker/scss-syntax.vim.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
