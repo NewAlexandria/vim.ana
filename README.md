@@ -15,6 +15,9 @@ See the commented sections of [`.gitmodules`](https://github.com/NewAlexandria/v
 
    Loader, IDE, 'Windowing', Formatting, Syntax Colors
 
+To see a list of all the mappings from plugings, vimrc, etc. then type: `:nor`
+
+
 #### Under Review ####
 
 - [syntastic](https://github.com/scrooloose/syntastic)

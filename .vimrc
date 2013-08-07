@@ -16,6 +16,12 @@ set pastetoggle=<F2>
 call togglebg#map("<F5>")
 set showmode
 
+map <Leader>\ :noh<cr>
+"make < > shifts keep selection
+vnoremap < <gv
+vnoremap > >gv
+
+
 "" Searching
 set hlsearch      " highlight matches
 set incsearch     " incremental searching
