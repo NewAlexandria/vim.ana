@@ -12,6 +12,7 @@
 ## Components ##
 
 See the commented sections of [`.gitmodules`](https://github.com/NewAlexandria/vim.ana/blob/master/.gitmodules)
+The submodules file is structured and commented, and wil provide a nice guide as to what's in the box.
 
    Loader, IDE, 'Windowing', Formatting, Syntax Colors
 
@@ -47,6 +48,10 @@ The installer responsibily makes backups of your original .vim files to ~/.vim.a
 The submodule bundles are automatically pulled down.
 
 You'll want to remember to install [the *ctags* library](http://ctags.sourceforge.net/).  Installation strategies differ per-platform, and I wanted the `install.sh` to be robust.  If you're on OS X, you can ``brew install ctags``
+
+### OSX Users ###
+
+The pre-insintalled `Vim` does not come compiled with `lua`.  See [Chris' awesome instructions](http://bit.ly/16x7AUt) for compiling Vim and MacVim with homebrew.
 
 That's it for now.
 
