@@ -42,7 +42,8 @@ map k 5gk
 " set list  "show whitespace and invisible characters
 
 " Unite navigations
-nnoremap <C-p> :Unite file_rec/async<cr>
+nnoremap <C-P> :Unite -start-insert file_rec/async<cr>
+nnoremap <C-p> :Unite -start-insert file_rec<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 let g:unite_source_history_yank_enable = 1
 nnoremap <space>y :Unite history/yank<cr>

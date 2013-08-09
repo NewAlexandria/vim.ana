@@ -17,6 +17,7 @@
 [submodule ".vim/bundle/vimproc.vim"]
 	path = .vim/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
+  ignore = dirty
 [submodule ".vim/bundle/vim-rake"]
 	path = .vim/bundle/vim-rake
 	url  = https://github.com/Lokaltog/powerline.git
