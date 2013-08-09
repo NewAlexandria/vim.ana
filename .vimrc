@@ -46,6 +46,7 @@ nnoremap <C-P> :Unite -start-insert file_rec/async<cr>
 nnoremap <C-p> :Unite -start-insert file_rec<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 let g:unite_source_history_yank_enable = 1
+nnoremap <space>t :Unite -start-insert tag<cr>
 nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
 
