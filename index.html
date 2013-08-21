@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Vim.ana by NewAlexandria</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/NewAlexandria/vim.ana">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Vim.ana</h1>
+            <h2>The portable Vim IDE with all the trimmings, one-click installable on any standard box.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/NewAlexandria/vim.ana/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/NewAlexandria/vim.ana/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a name="vimana" class="anchor" href="#vimana"><span class="octicon octicon-link"></span></a>Vim.ana</h1>
+
+<p><strong>Vim.ana</strong> aims to make a 2-command install of a full vim IDE with CLI conveniences.  The focus of this repo is to deliver a Vim &amp; related environment that can be dropped into any unix-flavor box, and without disruption to existing production configs.</p>
+
+<hr><h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Pathogen for loading</li>
+<li>Familiar windowing setup of File Browser + Open Files + Edit Window</li>
+<li>IDE features via Unite and Fugitive</li>
+<li>Prompt colorization and formatting to <code>user@host /path (git branch) $</code>
+</li>
+<li>Sets up some git aliases</li>
+</ul><hr><h2>
+<a name="components" class="anchor" href="#components"><span class="octicon octicon-link"></span></a>Components</h2>
+
+<p>See the commented sections of <a href="https://github.com/NewAlexandria/vim.ana/blob/master/.gitmodules"><code>.gitmodules</code></a></p>
+
+<p>Loader, IDE, 'Windowing', Formatting, Syntax Colors</p>
+
+<hr><h2>
+<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<ol>
+<li><p><strong>Vim 7.2 is recommended.  Some version greater than 7.0.23 is required for buffergator, unite, and possibly others.</strong></p></li>
+<li><p>Download and unpack to <code>~/.vim.ana</code> (the installer will look for it here. You can move it later)</p></li>
+</ol><p><code>cd ~; git clone git@github.com:NewAlexandria/vim.ana.git .vim.ana</code></p>
+
+<pre><code>&gt; If your corporate enterprise firewalls `ssh` to GitHub, then you can use this link
+&gt; 
+&gt; ` cd ~; git clone https://github.com/NewAlexandria/vim.ana.git .vim.ana `
+</code></pre>
+
+<ol>
+<li>link files and <a href="https://github.com/NewAlexandria/vim.ana/blob/master/install.sh">do some other business</a>
+</li>
+</ol><p><code>.vim.ana/install.sh</code></p>
+
+<p>The installer responsibily makes backups of your original .vim files to ~/.vim.ana/backups/  You can safely uninstall the files if need be (unlike if I'd <code>cp -R</code> the lot into your existing <code>.vim</code>)</p>
+
+<p>The submodule bundles are automatically pulled down.</p>
+
+<ol>
+<li>You'll want to remember to install <a href="http://ctags.sourceforge.net/">the <em>ctags</em> library</a>.  Installation strategies differ per-platform, and I wanted the <code>install.sh</code> to be robust.  If you're on OS X, you can <code>brew install ctags</code>
+</li>
+</ol><p>That's it for now.</p>
+
+<hr><h2>
+<a name="customization" class="anchor" href="#customization"><span class="octicon octicon-link"></span></a>Customization</h2>
+
+<p>If you want to add your own plugins, note that this repo uses git submodules:</p>
+
+<ul>
+<li><p>Additions: <code>cd ~/.vim.ana; git submodule add git-repo-address .vim/bundles/name-of-repo</code></p></li>
+<li><p>Removals:  <a href="http://stackoverflow.com/questions/1260748/how-do-i-remove-a-git-submodule">Follow these instructions</a></p></li>
+</ul><hr><h2>
+<a name="sauce" class="anchor" href="#sauce"><span class="octicon octicon-link"></span></a>Sauce</h2>
+
+<p><img src="http://i.imgur.com/p262L.png" alt="The awesomeness you'll get with this repo"></p>
+
+<hr><h2>
+<a name="ma%C3%B1ana" class="anchor" href="#ma%C3%B1ana"><span class="octicon octicon-link"></span></a>Mañana</h2>
+
+<p>The following Vim plugins are under review</p>
+
+<ul>
+<li><a href="https://github.com/scrooloose/syntastic">syntastic</a></li>
+<li><a href="https://github.com/ervandew/supertab">supertab</a></li>
+<li><a href="https://github.com/vim-ruby/vim-ruby">ruby.vim</a></li>
+<li>a proper tag parses for ruby namespaces, since 'ctags' fails at this, perhaps <a href="http://andrewradev.com/2011/10/15/vim-and-ctags-finding-tag-definitions/">tagfinder</a>, or <a href="https://github.com/rdoc/rdoc-tags">rdoc-tags</a>
+</li>
+<li>
+<a href="https://github.com/majutsushi/tagbar">tagbar</a> (probably to swivel-out in the same way that  hides everything right now.)</li>
+<li><a href="http://www.drchip.org/astronaut/vim/align.html">AlignMaps</a></li>
+<li>VCSCommand</li>
+<li>netrw</li>
+</ul><hr><h1>
+<a name="%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D0%B1%D0%BE" class="anchor" href="#%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D0%B1%D0%BE"><span class="octicon octicon-link"></span></a>Спасибо</h1>
+
+<p>Thanks for experimenting with this repo. <strong>Architectural</strong> suggestions highly welcome. I'm particularly interested in </p>
+
+<ul>
+<li>How this can more-safely integrate with your existing environment practices</li>
+<li>How to lower the version dependecy with Vim</li>
+<li>How to integrate with windowing apps on all platforms</li>
+<li>How to get the lauch time near-instant (takes as much as 1.5 sec on slow slices)</li>
+</ul>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/NewAlexandria">NewAlexandria</a> can be found on <a href="https://github.com/NewAlexandria/vim.ana">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
