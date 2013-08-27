@@ -41,6 +41,9 @@
 [submodule ".vim/bundle/vim-powerline"]
 	path = .vim/bundle/vim-powerline
 	url  = https://github.com/Lokaltog/powerline.git
+[submodule ".vim/bundle/lightline.vim"]
+	path = .vim/bundle/lightline.vim
+	url = https://github.com/itchyny/lightline.vim.git
 	
 ## VCS
 [submodule ".vim/bundle/vim-fugitive"]

@@ -20,6 +20,8 @@ set shiftwidth=2
 set autoindent
 set expandtab
 retab  " this will cause all existing tabs to be expanded
+set wildmenu
+set wildmode=list:longest,full
 " remove trailing whitespaces
 nnoremap <C-r> :%s/\s\+$//e<CR>
 " set list  "show whitespace and invisible characters
@@ -149,5 +151,16 @@ let g:solarized_visibility = 'low'
 
 au BufRead,BufNewFile *.thor set filetype=ruby
 
-let g:Powerline_symbols = 'fancy'
+set laststatus=2 
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"⭤":""}'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+"let g:Powerline_symbols = 'fancy'
+" set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular
+set guifont=Source\ Code\ Pro\ for\ Powerline
 
