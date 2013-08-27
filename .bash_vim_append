@@ -1,5 +1,4 @@
 # Console
-source ~/.git-completion.bash
 export PS1='\[\033[01;34m\]\u@\h\[\033[00m\]\] \w\033[32m\]$(__git_ps1) \[\033[00m\]\$ '
 #   prompt   color  bold   u@host color  stop  path color green git-repo  color stop  $" 
 #                            ^^--replace this if you're working locally" 
