@@ -14,9 +14,9 @@ map k 5gk
 
 
 " text stuff
-set tabstop=4 
-set ts=2 
-set shiftwidth=2 
+set tabstop=4
+set ts=2
+set shiftwidth=2
 set autoindent
 set expandtab
 retab  " this will cause all existing tabs to be expanded
@@ -90,7 +90,7 @@ let g:buffergator_autodismiss_on_select=0
 let g:buffergator_split_size=18
 
 " NERDtree settings
-let NERDTreeShowHidden=1 
+let NERDTreeShowHidden=1
 let g:nerdtree_tabs_open_on_console_startup = 1
 let g:nerdtree_tabs_open_on_gui_startup = 1
 let g:nerdtree_tabs_no_startup_for_diff = 1
@@ -151,16 +151,17 @@ let g:solarized_visibility = 'low'
 
 au BufRead,BufNewFile *.thor set filetype=ruby
 
-set laststatus=2 
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'component': {
-      \   'readonly': '%{&readonly?"⭤":""}'
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
-      \ }
+set guifont=Source\ Code\ Pro\ for\ Powerline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+"let g:lightline = {
+      "\ 'colorscheme': 'solarized',
+      "\ 'component': {
+      "\   'readonly': '%{&readonly?"⭤":""}'
+      "\ },
+      "\ 'separator': { 'left': '', 'right': '' },
+      "\ 'subseparator': { 'left': '', 'right': '' }
+      "\ }
 "let g:Powerline_symbols = 'fancy'
 " set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular
-set guifont=Source\ Code\ Pro\ for\ Powerline
 
