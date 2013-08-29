@@ -13,7 +13,7 @@ map j 5gj
 map k 5gk
 
 
-" text stuff
+" Text stuff
 set tabstop=4
 set ts=2
 set shiftwidth=2
@@ -25,6 +25,11 @@ set wildmode=list:longest,full
 " remove trailing whitespaces
 nnoremap <C-r> :%s/\s\+$//e<CR>
 " set list  "show whitespace and invisible characters
+
+" Diff in gutter
+let g:changes_autocmd=1
+let g:changes_respect_other_signs = 1
+nnoremap <leader>d :CL<cr>
 
 
 "" Modes

@@ -16,6 +16,9 @@
 [submodule ".vim/bundle/signature"]
 	path = .vim/bundle/signature
 	url = https://github.com/kshenoy/vim-signature.git
+[submodule ".vim/bundle/vim-airline.git"]
+	path = .vim/bundle/vim-airline.git
+	url = https://github.com/bling/vim-airline.git
 
 [submodule ".vim/bundle/vimproc.vim"]
 	path = .vim/bundle/vimproc.vim
@@ -38,12 +41,6 @@
 [submodule ".vim/bundle/vim-taglist"]
 	path = .vim/bundle/vim-taglist
 	url = https://github.com/thisivan/vim-taglist.git
-[submodule ".vim/bundle/vim-powerline"]
-	path = .vim/bundle/vim-powerline
-	url  = https://github.com/Lokaltog/powerline.git
-[submodule ".vim/bundle/lightline.vim"]
-	path = .vim/bundle/lightline.vim
-	url = https://github.com/itchyny/lightline.vim.git
 	
 ## VCS
 [submodule ".vim/bundle/vim-fugitive"]
@@ -52,6 +49,9 @@
 [submodule ".vim/bundle/vim-bundler"]
 	path = .vim/bundle/vim-bundler
 	url  = https://github.com/tpope/vim-bundler.git
+[submodule ".vim/bundle/changesPlugin.git"]
+	path = .vim/bundle/changesPlugin.git
+	url = https://github.com/chrisbra/changesPlugin.git
 
 # Formatting
 [submodule ".vim/bundle/nerdcommenter"]
@@ -89,6 +89,3 @@
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
-[submodule ".vim/bundle/vim-airline.git"]
-	path = .vim/bundle/vim-airline.git
-	url = https://github.com/bling/vim-airline.git
