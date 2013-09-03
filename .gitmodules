@@ -27,7 +27,7 @@
 [submodule ".vim/bundle/vim-rake"]
 	path = .vim/bundle/vim-rake
 	url  = https://github.com/Lokaltog/powerline.git
-	
+
 ## Layout
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
@@ -41,7 +41,10 @@
 [submodule ".vim/bundle/vim-taglist"]
 	path = .vim/bundle/vim-taglist
 	url = https://github.com/thisivan/vim-taglist.git
-	
+[submodule ".vim/bundle/tagbar"]
+	path = .vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+
 ## VCS
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
@@ -52,6 +55,9 @@
 [submodule ".vim/bundle/changesPlugin.git"]
 	path = .vim/bundle/changesPlugin.git
 	url = https://github.com/chrisbra/changesPlugin.git
+[submodule ".vim/bundle/svnblame.vim"]
+	path = .vim/bundle/svnblame.vim
+	url = https://github.com/NewAlexandria/svnblame.vim.git
 
 # Formatting
 [submodule ".vim/bundle/nerdcommenter"]
@@ -86,6 +92,3 @@
 [submodule ".vim/bundle/scss-syntax"]
   path = .vim/bundle/scss-syntax
   url  = https://github.com/cakebaker/scss-syntax.vim.git
-[submodule ".vim/bundle/tagbar"]
-	path = .vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git

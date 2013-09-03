@@ -6,12 +6,22 @@ filetype plugin indent on
 au BufWritePost *.rb silent! !ctags -R &
 au BufWritePost *.js silent! !ctags -R &
 
+" file types
+au BufRead,BufNewFile *.thor set filetype=ruby
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+
 "enjoy an immediate quit without reviewing unread buffers
 map :Q :qa
 map :wq :xa
 map j 5gj
 map k 5gk
 
+" Enable basic mouse behavior such as resizing buffers.
+set mouse=a
+if exists('$TMUX')  " Support resizing in tmux
+  set ttymouse=xterm2
+endif
 
 " Text stuff
 set tabstop=4
@@ -19,6 +29,8 @@ set ts=2
 set shiftwidth=2
 set autoindent
 set expandtab
+set nostartofline
+
 retab  " this will cause all existing tabs to be expanded
 set wildmenu
 set wildmode=list:longest,full
@@ -31,6 +43,8 @@ let g:changes_autocmd=1
 let g:changes_respect_other_signs = 1
 nnoremap <leader>d :CL<cr>
 
+" Blame gutter
+map <leader>s :call SvnBlame()<CR>
 
 "" Modes
 nnoremap <C-i> :set invpaste paste?<CR>
@@ -53,6 +67,15 @@ nnoremap <silent><C-Right> :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\
 inoremap <silent><C-Left>  <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
 inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
 
+" Expand and shrink split sizes
+nnoremap <leader>< <C-W><
+nnoremap <leader><< 5<C-W><
+nnoremap <leader>> <C-W>>
+nnoremap <leader>>> 5<C-W>>
+nnoremap <leader>, <C-W>-
+nnoremap <leader>,, 5<C-W>-
+nnoremap <leader>. <C-W>+
+nnoremap <leader>.. 5<C-W>+
 
 
 " Unite navigations
@@ -153,8 +176,6 @@ let g:solarized_italic     = 1
 let g:solarized_termcolors = 256
 let g:solarized_termtrans  = 1
 let g:solarized_visibility = 'low'
-
-au BufRead,BufNewFile *.thor set filetype=ruby
 
 set guifont=Source\ Code\ Pro\ for\ Powerline
 set laststatus=2
