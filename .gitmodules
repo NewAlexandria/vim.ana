@@ -24,9 +24,13 @@
 	path = .vim/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
   ignore = dirty
-[submodule ".vim/bundle/vim-rake"]
-	path = .vim/bundle/vim-rake
-	url  = https://github.com/Lokaltog/powerline.git
+
+[submodule ".vim/bundle/vim-rails"]
+	path = .vim/bundle/vim-rails
+	url  = https://github.com/tpope/vim-rails.git
+[submodule ".vim/bundle/vim-bundler"]
+	path = .vim/bundle/vim-bundler
+	url  = https://github.com/tpope/vim-bundler.git
 
 ## Layout
 [submodule ".vim/bundle/nerdtree"]
@@ -49,9 +53,6 @@
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
 	url  = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-bundler"]
-	path = .vim/bundle/vim-bundler
-	url  = https://github.com/tpope/vim-bundler.git
 [submodule ".vim/bundle/changesPlugin.git"]
 	path = .vim/bundle/changesPlugin.git
 	url = https://github.com/chrisbra/changesPlugin.git
@@ -83,9 +84,6 @@
 [submodule ".vim/bundle/vim-nginx"]
 	path = .vim/bundle/vim-nginx
 	url  = https://github.com/tpope/vim-markdown.git
-[submodule ".vim/bundle/vim-rails"]
-	path = .vim/bundle/vim-rails
-	url  = https://github.com/tpope/vim-rails.git
 [submodule ".vim/bundle/vim-javascript-syntax"]
 	path = .vim/bundle/vim-javascript-syntax
 	url  = https://github.com/pangloss/vim-javascript

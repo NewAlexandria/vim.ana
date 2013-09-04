@@ -50,8 +50,15 @@ The installer responsibily makes backups of your original .vim files to ~/.vim.a
 
 The submodule bundles are automatically pulled down.
 
+### Ctags ###
+
 You'll want to remember to install [the *ctags* library](http://ctags.sourceforge.net/).  Installation strategies differ per-platform, and I wanted the `install.sh` to be robust.  If you're on OS X, you can ``brew install ctags``
-The out-of-the-box ctags installation does nto seem to handle anon functions in `.js` files, and barfs to stdout.  [See my `.dotfiles` solution to this](https://github.com/NewAlexandria/dotfiles/blob/master/ctags)
+
+* The out-of-the-box ctags installation does not seem to handle anon functions in `.js` files, and barfs to stdout.  [See my `.dotfiles` solution to this](https://github.com/NewAlexandria/dotfiles/blob/master/ctags)
+* Ensure ctags reach into the gems installed in your rails app: [use Tim Pope's excellent gem-ctags](https://github.com/tpope/gem-ctags#installation)
+* Also consider [ctag-indexing those Ruby stlibs](https://github.com/tpope/rbenv-ctags#installation), too.
+* Be aware that, with `rspec`, your [describe blocks may not be correctly indexed](https://github.com/fishman/ctags/issues/11), even with [fishman's ctag build](https://github.com/fishman/ctags) for Ruby methods
+
 
 ### OSX Users ###
 
@@ -64,7 +71,10 @@ That's it for now.
 If you want to add your own plugins, note that this repo uses git submodules:
 
 Additions: `cd ~/.vim.ana; git submodule add git-repo-address .vim/bundles/name-of-repo`
-Removals:  [Follow these instructions](http://stackoverflow.com/questions/1260748/how-do-i-remove-a-git-submodule)
+Removals:  `cd ~/.vim.ana; git submodule deinit .vim/bundles/name-of-repo` then edit the `.gitmodules` file to remove the entry.
+
+### Think Submodules are teh stank? ###
+They *used* to be, before `deinit`. [See the talk, here](http://stackoverflow.com/questions/1260748/how-do-i-remove-a-git-submodule)
 
 
 ## Mañana ##
