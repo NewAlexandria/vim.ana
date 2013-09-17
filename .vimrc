@@ -25,13 +25,22 @@ endif
 
 " Text stuff
 set tabstop=4
+retab  " this will cause all existing tabs to be expanded
 set ts=2
 set shiftwidth=2
 set autoindent
 set expandtab
 set nostartofline
 
-retab  " this will cause all existing tabs to be expanded
+" Color formatting guide:
+" http://misc.flogisoft.com/bash/tip_colors_and_formatting
+let g:indentLine_color_term = 0
+let g:indentLine_color_gui = '#00005f'
+let g:indentLine_char = '¦'   " ┆ ¦
+" highlight ColorColumn ctermbg=234 guibg=#2c2d27
+"highlight ColorColumn ctermbg=234 guibg=#1c1d17
+let &colorcolumn="80,".join(range(120,999),",")
+
 set wildmenu
 set wildmode=list:longest,full
 " remove trailing whitespaces
@@ -79,8 +88,8 @@ nnoremap <leader>.. 5<C-W>+
 
 
 " Unite navigations
-nnoremap <C-P> :Unite -start-insert file_rec/async<cr>
-nnoremap <C-p> :Unite -start-insert file_rec<cr>
+nnoremap <C-p> :Unite -start-insert file_rec/async<cr>
+nnoremap <space>p :Unite -start-insert file<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 let g:unite_source_history_yank_enable = 1
 nnoremap <space>t :Unite -start-insert tag<cr>
@@ -88,12 +97,20 @@ nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
 let g:unite_source_file_rec_max_cache_files = 50000
 
-" Use ack search
-if executable('ack')
-  let g:unite_source_grep_command = 'ack'
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" Use ag for search
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
- "let g:unite_source_grep_recursive_opt = ''
+  let g:unite_source_grep_recursive_opt = ''
 endif
+
+" Use ack search
+"if executable('ack')
+  "let g:unite_source_grep_command = 'ack'
+  "let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+ ""let g:unite_source_grep_recursive_opt = ''
+"endif
 
 "" Searching
 set hlsearch      " highlight matches
@@ -169,9 +186,6 @@ syntax enable
 colorscheme solarized
 
 set background=dark
-" let &colorcolumn=join(range(81,999),",")
-" highlight ColorColumn ctermbg=234 guibg=#2c2d27
-" let &colorcolumn="80,".join(range(120,999),",")
 
 let g:solarized_italic     = 1
 let g:solarized_termcolors = 256
@@ -214,7 +228,7 @@ let g:tagbar_type_coffee = {
     \ ]
 \ }
 
-" Posix regular expressions for matching interesting items. Since this will 
+" Posix regular expressions for matching interesting items. Since this will
 " be passed as an environment variable, no whitespace can exist in the options
 " so [:space:] is used instead of normal whitespaces.
 " Adapted from: https://gist.github.com/2901844
