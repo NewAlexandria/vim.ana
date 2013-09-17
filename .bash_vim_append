@@ -1,7 +1,30 @@
 # Console
-export PS1='\[\033[01;34m\]\u@\h\[\033[00m\]\] \w\033[32m\]$(__git_ps1) \[\033[00m\]\$ '
-#   prompt   color  bold   u@host color  stop  path color green git-repo  color stop  $" 
+export PS1='\[\033[01;34m\]\u@\h\[\033[00m\]\] \w\033[32m\]$(__git_ps1) \[\033[1;31m\]| \[\033[00m\]'
+#   prompt   color  bold   u@host color  stop  path color green git-repo  color  stop | norm. color" 
 #                            ^^--replace this if you're working locally" 
 
 GIT_EDITOR="vim -u NONE"; export GIT_EDITOR
 
+function mvi() {
+  srvname=${1-'VIM'}  # like Ruby's ||=
+  vars=$2  # brittle assumption that args 2->∞ can be passed after `--remote`
+  capsonly=`echo $srvname | grep [A-Z] - `
+  if [ "$capsonly" != "$srvname" ]; then
+    srvname='VIM'
+    vars=$1
+  fi
+ 
+  echo "Will use server named: $srvname"
+ 
+  slist=`vim --serverlist | grep "$srvname"`
+  echo ".. [ found server: $slist ]"
+  if [ "$slist" = "$srvname" ]; then
+    echo '... server pre-existing'
+ 
+    vim --servername $srvname --remote $vars
+  else
+    echo '... creating new server with MacVim'
+ 
+    mvim --servername $srvname $vars
+  fi
+}
