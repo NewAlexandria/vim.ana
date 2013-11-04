@@ -31,11 +31,12 @@ set shiftwidth=2
 set autoindent
 set expandtab
 set nostartofline
+let g:matchparen_insert_timeout=5
 
 " Color formatting guide:
 " http://misc.flogisoft.com/bash/tip_colors_and_formatting
 let g:indentLine_color_term = 0
-let g:indentLine_color_gui = '#00005f'
+let g:indentLine_color_gui = '#29393f'
 let g:indentLine_char = '¦'   " ┆ ¦
 " highlight ColorColumn ctermbg=234 guibg=#2c2d27
 "highlight ColorColumn ctermbg=234 guibg=#1c1d17

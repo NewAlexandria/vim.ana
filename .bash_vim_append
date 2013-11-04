@@ -6,7 +6,8 @@ export PS1='\[\033[01;34m\]\u@\h\[\033[00m\]\] \w\033[32m\]$(__git_ps1) \[\033[1
 GIT_EDITOR="vim -u NONE"; export GIT_EDITOR
 
 function mvi() {
-  srvname=${1-'VIM'}  # like Ruby's ||=
+  srvname=$1
+  [ ! -z $1 ] || srvname='VIM'  # like Ruby's ||=
   vars=$2  # brittle assumption that args 2->∞ can be passed after `--remote`
   capsonly=`echo $srvname | grep [A-Z] - `
   if [ "$capsonly" != "$srvname" ]; then
