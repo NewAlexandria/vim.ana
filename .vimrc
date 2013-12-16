@@ -1,14 +1,27 @@
+"let s:vim_home = '~/.vim/'
+ 
+"let config_list = [
+  "\ 'base.vim',
+  "\ 'plugins.vim',
+  "\ 'functions.vim',
+  "\ 'theme.vim',
+  "\ 'settings.vim',
+  "\ 'leader.vim',
+  "\ 'keymappings.vim',
+  "\ 'languages.vim',
+  "\ 'plugin_settings/*.vim'
+"\]
+ 
+"for files in config_list
+  "for f in split(glob(s:vim_home.files), '\n')
+    "exec 'source '.f
+  "endfor
+"endfor
+
+
 " load the bundler
 call pathogen#infect()
 filetype plugin indent on
-
-" Auto-regenerate tags after saving files
-au BufWritePost *.rb silent! !ctags -R &
-au BufWritePost *.js silent! !ctags -R &
-
-" file types
-au BufRead,BufNewFile *.thor set filetype=ruby
-autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 
 "enjoy an immediate quit without reviewing unread buffers
@@ -65,27 +78,16 @@ set showmode
 vnoremap < <gv
 vnoremap > >gv
 
+map <Leader>n :NERDTreeFocus<cr>
+map <Leader>nf :NERDTreeFind<cr>
+map <Leader>b :BuffergatorOpen<cr>
+map <Leader>v :wincmd b<cr>
+nmap <Leader>t :TagbarToggle<CR>
 
-"" Movements
-set foldmethod=marker     " Enable folding by fold markers
-set foldclose=all         " Autoclose folds, when moving out of them
-set scrolljump=5          " Jump 5 lines when running out of the screen
-set scrolloff=3           " Indicate jump out of the screen when 3 lines before end of the screen
-" MovingThroughCamelCaseWords
-nnoremap <silent><C-Left>  :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
-nnoremap <silent><C-Right> :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
-inoremap <silent><C-Left>  <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
-inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
-
-" Expand and shrink split sizes
-nnoremap <leader>< <C-W><
-nnoremap <leader><< 5<C-W><
-nnoremap <leader>> <C-W>>
-nnoremap <leader>>> 5<C-W>>
-nnoremap <leader>, <C-W>-
-nnoremap <leader>,, 5<C-W>-
-nnoremap <leader>. <C-W>+
-nnoremap <leader>.. 5<C-W>+
+map <Leader>] :bnext<cr>
+map <Leader>[ :bprevious<cr>
+map <Leader>} :blast<cr>
+map <Leader>{ :bfirst<cr>
 
 
 " Unite navigations
@@ -127,6 +129,46 @@ set history=50
 set showmatch
 set number
 set cursorline
+
+
+
+""================     Movements     ===================""
+""                                                      ""
+
+set foldmethod=marker     " Enable folding by fold markers
+set foldclose=all         " Autoclose folds, when moving out of them
+set scrolljump=5          " Jump 5 lines when running out of the screen
+set scrolloff=3           " Indicate jump out of the screen when 3 lines before end of the screen
+" MovingThroughCamelCaseWords
+nnoremap <silent><C-Left>  :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
+nnoremap <silent><C-Right> :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
+inoremap <silent><C-Left>  <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
+inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
+
+" function to toggle number mode
+function! g:ToggleNuMode()
+    if(&rnu == 1)
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+" map the above function to F5
+nnoremap <f5> :call g:ToggleNuMode()<cr>
+
+
+""================     Windowing     ===================""
+""                                                      ""
+
+" Expand and shrink split sizes
+nnoremap <leader>< <C-W><
+nnoremap <leader><< 5<C-W><
+nnoremap <leader>> <C-W>>
+nnoremap <leader>>> 5<C-W>>
+nnoremap <leader>, <C-W>-
+nnoremap <leader>,, 5<C-W>-
+nnoremap <leader>. <C-W>+
+nnoremap <leader>.. 5<C-W>+
 
 
 " Split VIEWPORT horizontally, with new split on the top
@@ -171,18 +213,10 @@ endf
 map  <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
 map! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
 
-map <Leader>n :NERDTreeFocus<cr>
-map <Leader>nf :NERDTreeFind<cr>
-map <Leader>b :BuffergatorOpen<cr>
-map <Leader>v :wincmd b<cr>
-nmap <Leader>t :TagbarToggle<CR>
 
-map <Leader>] :bnext<cr>
-map <Leader>[ :bprevious<cr>
-map <Leader>} :blast<cr>
-map <Leader>{ :bfirst<cr>
+""================  Syntax Coloring  ===================""
+""                                                      ""
 
-"" Syntax Coloring
 syntax enable
 colorscheme solarized
 
@@ -206,6 +240,19 @@ let g:airline_powerline_fonts = 1
       "\ }
 "let g:Powerline_symbols = 'fancy'
 " set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular
+
+
+""================     File Types    ===================""
+""                                                      ""
+
+" Auto-regenerate tags after saving files
+au BufWritePost *.rb silent! !ctags -R &
+au BufWritePost *.js silent! !ctags -R &
+
+" file types
+au BufRead,BufNewFile *.thor set filetype=ruby
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
 
 let g:tagbar_type_ruby = {
     \ 'kinds' : [
