@@ -24,12 +24,6 @@ call pathogen#infect()
 filetype plugin indent on
 
 
-"enjoy an immediate quit without reviewing unread buffers
-map :Q :qa
-map :wq :xa
-map j 5gj
-map k 5gk
-
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
 if exists('$TMUX')  " Support resizing in tmux
@@ -46,28 +40,20 @@ set expandtab
 set nostartofline
 let g:matchparen_insert_timeout=5
 
-" Color formatting guide:
-" http://misc.flogisoft.com/bash/tip_colors_and_formatting
-let g:indentLine_color_term = 0
-let g:indentLine_color_gui = '#29393f'
-let g:indentLine_char = '¦'   " ┆ ¦
-" highlight ColorColumn ctermbg=234 guibg=#2c2d27
-"highlight ColorColumn ctermbg=234 guibg=#1c1d17
-let &colorcolumn="80,".join(range(120,999),",")
-
 set wildmenu
 set wildmode=list:longest,full
 " remove trailing whitespaces
 nnoremap <C-r> :%s/\s\+$//e<CR>
 " set list  "show whitespace and invisible characters
 
-" Diff in gutter
-let g:changes_autocmd=1
-let g:changes_respect_other_signs = 1
-nnoremap <leader>d :CL<cr>
+"" Searching
+set hlsearch      " highlight matches
+set incsearch     " incremental searching
+set ignorecase    " searches are case insensitive...
+set smartcase     " ... unless they contain at least one capital letter
+set infercase     " Infer the current case in insert completion
+map <Leader>\ :noh<cr>
 
-" Blame gutter
-map <leader>s :call SvnBlame()<CR>
 
 "" Modes
 nnoremap <C-i> :set invpaste paste?<CR>
@@ -77,6 +63,32 @@ set showmode
 "make < > shifts keep selection
 vnoremap < <gv
 vnoremap > >gv
+
+" IDE
+set cmdheight=2
+set history=50
+set showmatch
+set number
+set cursorline
+
+
+" Diff in gutter
+let g:changes_autocmd=1
+let g:changes_respect_other_signs = 1
+nnoremap <leader>d :CL<cr>
+
+" Blame gutter
+map <leader>s :call SvnBlame()<CR>
+
+
+""================     Movements     ===================""
+""                                                      ""
+
+"enjoy an immediate quit without reviewing unread buffers
+map :Q :qa
+map :wq :xa
+map j 5gj
+map k 5gk
 
 map <Leader>n :NERDTreeFocus<cr>
 map <Leader>nf :NERDTreeFind<cr>
@@ -88,6 +100,31 @@ map <Leader>] :bnext<cr>
 map <Leader>[ :bprevious<cr>
 map <Leader>} :blast<cr>
 map <Leader>{ :bfirst<cr>
+
+
+""================     Navigations     ===================""
+""                                                      ""
+
+set foldmethod=marker     " Enable folding by fold markers
+set foldclose=all         " Autoclose folds, when moving out of them
+set scrolljump=5          " Jump 5 lines when running out of the screen
+set scrolloff=3           " Indicate jump out of the screen when 3 lines before end of the screen
+" MovingThroughCamelCaseWords
+nnoremap <silent><C-Left>  :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
+nnoremap <silent><C-Right> :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
+inoremap <silent><C-Left>  <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
+inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
+
+" function to toggle number mode
+function! g:ToggleNuMode()
+    if(&rnu == 1)
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+" map the above function to F5
+nnoremap <f5> :call g:ToggleNuMode()<cr>
 
 
 " Unite navigations
@@ -115,46 +152,6 @@ endif
  ""let g:unite_source_grep_recursive_opt = ''
 "endif
 
-"" Searching
-set hlsearch      " highlight matches
-set incsearch     " incremental searching
-set ignorecase    " searches are case insensitive...
-set smartcase     " ... unless they contain at least one capital letter
-set infercase     " Infer the current case in insert completion
-map <Leader>\ :noh<cr>
-
-" IDE
-set cmdheight=2
-set history=50
-set showmatch
-set number
-set cursorline
-
-
-
-""================     Movements     ===================""
-""                                                      ""
-
-set foldmethod=marker     " Enable folding by fold markers
-set foldclose=all         " Autoclose folds, when moving out of them
-set scrolljump=5          " Jump 5 lines when running out of the screen
-set scrolloff=3           " Indicate jump out of the screen when 3 lines before end of the screen
-" MovingThroughCamelCaseWords
-nnoremap <silent><C-Left>  :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
-nnoremap <silent><C-Right> :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
-inoremap <silent><C-Left>  <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
-inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
-
-" function to toggle number mode
-function! g:ToggleNuMode()
-    if(&rnu == 1)
-        set number
-    else
-        set relativenumber
-    endif
-endfunc
-" map the above function to F5
-nnoremap <f5> :call g:ToggleNuMode()<cr>
 
 
 ""================     Windowing     ===================""
@@ -217,6 +214,14 @@ map! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
 ""================  Syntax Coloring  ===================""
 ""                                                      ""
 
+" Color formatting guide:
+" http://misc.flogisoft.com/bash/tip_colors_and_formatting
+let g:indentLine_color_term = 0
+let g:indentLine_color_gui = '#29393f'
+let g:indentLine_char = '¦'   " ┆ ¦
+" highlight ColorColumn ctermbg=234 guibg=#2c2d27
+"highlight ColorColumn ctermbg=234 guibg=#1c1d17
+let &colorcolumn="80,".join(range(120,999),",")
 syntax enable
 colorscheme solarized
 
@@ -240,6 +245,36 @@ let g:airline_powerline_fonts = 1
       "\ }
 "let g:Powerline_symbols = 'fancy'
 " set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular
+
+
+" Rainbow Parentheses 
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+
+let g:rbpt_loadcmd_toggle = 0
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 
 ""================     File Types    ===================""
@@ -303,3 +338,5 @@ let s:ctags_opts = '
   \ --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/'
 
 let $CTAGS = substitute(s:ctags_opts, '\v\([nst]\)', '\\', 'g')
+
+

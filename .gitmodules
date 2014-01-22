@@ -93,3 +93,6 @@
 [submodule ".vim/bundle/scss-syntax"]
   path = .vim/bundle/scss-syntax
   url  = https://github.com/cakebaker/scss-syntax.vim.git
+[submodule ".vim/bundle/rainbow_parentheses.vim"]
+	path = .vim/bundle/rainbow_parentheses.vim
+	url = https://github.com/kien/rainbow_parentheses.vim.git
