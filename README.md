@@ -23,13 +23,6 @@ The following plugin is being used experimentally:
 
 - [tagbar](https://github.com/majutsushi/tagbar) (probably to swivel-out in the same way that <leader-w> hides everything right now.)
 
-#### Under Review ####
-
-- [syntastic](https://github.com/scrooloose/syntastic)
-- [supertab](https://github.com/ervandew/supertab)
-- [ruby.vim](https://github.com/vim-ruby/vim-ruby)
-- a proper tag parses for ruby namespaces, since 'ctags' fails at this, perhaps [tagfinder](http://andrewradev.com/2011/10/15/vim-and-ctags-finding-tag-definitions/), or [rdoc-tags](https://github.com/rdoc/rdoc-tags)
-
 
 ## Install ##
 **Vim 7.2 is recommended.  Some version greater than 7.0.23 is required for buffergator, unite, and possibly others.**
@@ -81,9 +74,15 @@ They *used* to be, before `deinit`. [See the talk, here](http://stackoverflow.co
 
 The following Vim plugins are under review
 
-* [AlignMaps](http://www.drchip.org/astronaut/vim/align.html)
-* VCSCommand
-* netrw
+- [AlignMaps](http://www.drchip.org/astronaut/vim/align.html)
+- VCSCommand
+- netrw
+- [syntastic](https://github.com/scrooloose/syntastic)
+- [supertab](https://github.com/ervandew/supertab)
+- [ruby.vim](https://github.com/vim-ruby/vim-ruby)
+- a proper tag parses for ruby namespaces, since 'ctags' fails at this, perhaps [tagfinder](http://andrewradev.com/2011/10/15/vim-and-ctags-finding-tag-definitions/), or [rdoc-tags](https://github.com/rdoc/rdoc-tags)
+- A clear winner for ctag support, whether tpope's, [vim-tags](https://github.com/szw/vim-tags), or another.
+
 
 # Спасибо #
 
