@@ -53,6 +53,7 @@ set ignorecase    " searches are case insensitive...
 set smartcase     " ... unless they contain at least one capital letter
 set infercase     " Infer the current case in insert completion
 map <Leader>\ :noh<cr>
+runtime macros/matchit.vim
 
 
 "" Modes
