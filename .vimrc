@@ -133,6 +133,8 @@ nnoremap <f5> :call g:ToggleNuMode()<cr>
 "nnoremap <C-p> :Unite -start-insert file_rec/async<cr>
 nnoremap <space>p :<C-u>Unite -no-split -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
 nnoremap <space>/ :Unite grep:.<cr>
+nnoremap <space>? :execute 'Unite grep:.::' . expand("<cword>") . ' -auto-preview'<CR>
+nnoremap <space>' :execute 'Unite grep:.::' . expand("<cword>") . ' -default-action=above -auto-preview'<CR>
 let g:unite_source_history_yank_enable = 1
 nnoremap <space>t :Unite -start-insert tag<cr>
 nnoremap <space>o :Unite -start-insert -vertical -winwidth=50 -direction=belowright outline<cr>
@@ -343,6 +345,5 @@ let s:ctags_opts = '
   \ --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/'
 
 let $CTAGS = substitute(s:ctags_opts, '\v\([nst]\)', '\\', 'g')
-
 
 
