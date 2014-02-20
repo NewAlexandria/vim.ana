@@ -82,6 +82,7 @@ nnoremap <leader>d :CL<cr>
 map <leader>s :call SvnBlame()<CR>
 
 
+
 ""================     Movements     ===================""
 ""                                                      ""
 
@@ -95,7 +96,7 @@ map <Leader>n :NERDTreeFocus<cr>
 map <Leader>nf :NERDTreeFind<cr>
 map <Leader>b :BuffergatorOpen<cr>
 map <Leader>v :wincmd b<cr>
-nmap <Leader>t :TagbarToggle<CR>
+"nmap <Leader>t :TagbarToggle<CR>
 
 map <Leader>] :bnext<cr>
 map <Leader>[ :bprevious<cr>
@@ -129,14 +130,17 @@ nnoremap <f5> :call g:ToggleNuMode()<cr>
 
 
 " Unite navigations
-nnoremap <C-p> :Unite -start-insert file_rec/async<cr>
-nnoremap <space>p :Unite -start-insert file<cr>
+"nnoremap <C-p> :Unite -start-insert file_rec/async<cr>
+nnoremap <space>p :<C-u>Unite -no-split -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 let g:unite_source_history_yank_enable = 1
 nnoremap <space>t :Unite -start-insert tag<cr>
+nnoremap <space>o :Unite -start-insert -vertical -winwidth=50 -direction=belowright outline<cr>
 nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
 let g:unite_source_file_rec_max_cache_files = 50000
+
+"nnoremap sG :<C-u>execute 'Unite grep:.:-iR:' . expand('<cword>') . ' -default-action=split'<Cr>
 
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " Use ag for search
@@ -152,7 +156,6 @@ endif
   "let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
  ""let g:unite_source_grep_recursive_opt = ''
 "endif
-
 
 
 ""================     Windowing     ===================""
@@ -184,8 +187,8 @@ let g:nerdtree_tabs_smart_startup_focus = 1
 let g:nerdtree_tabs_autoclose = 1
 
 " Tagbar settings
-let g:tagbar_autofocus = 0
-let g:tabgbar_ctags_bin="ctags"
+"let g:tagbar_autofocus = 0
+"let g:tabgbar_ctags_bin="ctags"
 " let g:tagbar_sort = 0
 
 " Setup the buffers
@@ -194,8 +197,8 @@ let g:tabgbar_ctags_bin="ctags"
 autocmd VimEnter * NERDTree
 autocmd VimEnter * BuffergatorToggle
 autocmd VimEnter * let g:buffergator_autoupdate=1
-autocmd VimEnter * wincmd b
-autocmd VimEnter * TagbarToggle
+"autocmd VimEnter * wincmd b
+"autocmd VimEnter * TagbarToggle
 autocmd VimEnter * wincmd w
 
 
@@ -204,7 +207,8 @@ autocmd VimEnter * wincmd w
 " test per http://justmao.name/life/integrate-nerdtree-and-buffergator/
 fu! LSidebarToggle()
   let b = bufnr("%")
-  execute "NERDTreeToggle | BuffergatorToggle | TagbarToggle"
+  execute "NERDTreeToggle | BuffergatorToggle" 
+  "| TagbarToggle"
   execute "set nonumber!"
   execute ( bufwinnr(b) . "wincmd w" )
 endf
@@ -339,5 +343,6 @@ let s:ctags_opts = '
   \ --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/'
 
 let $CTAGS = substitute(s:ctags_opts, '\v\([nst]\)', '\\', 'g')
+
 
 
