@@ -96,7 +96,6 @@ map <Leader>n :NERDTreeFocus<cr>
 map <Leader>nf :NERDTreeFind<cr>
 map <Leader>b :BuffergatorOpen<cr>
 map <Leader>v :wincmd b<cr>
-"nmap <Leader>t :TagbarToggle<CR>
 
 map <Leader>] :bnext<cr>
 map <Leader>[ :bprevious<cr>
@@ -188,19 +187,12 @@ let g:nerdtree_tabs_no_startup_for_diff = 1
 let g:nerdtree_tabs_smart_startup_focus = 1
 let g:nerdtree_tabs_autoclose = 1
 
-" Tagbar settings
-"let g:tagbar_autofocus = 0
-"let g:tabgbar_ctags_bin="ctags"
-" let g:tagbar_sort = 0
-
 " Setup the buffers
 " we set buffergator_autoupdate serially after toggling buffergator to avoid
 " creating a buffer listing 'NERD_tree_1' due to focus issues
 autocmd VimEnter * NERDTree
 autocmd VimEnter * BuffergatorToggle
 autocmd VimEnter * let g:buffergator_autoupdate=1
-"autocmd VimEnter * wincmd b
-"autocmd VimEnter * TagbarToggle
 autocmd VimEnter * wincmd w
 
 
@@ -210,7 +202,6 @@ autocmd VimEnter * wincmd w
 fu! LSidebarToggle()
   let b = bufnr("%")
   execute "NERDTreeToggle | BuffergatorToggle" 
-  "| TagbarToggle"
   execute "set nonumber!"
   execute ( bufwinnr(b) . "wincmd w" )
 endf
