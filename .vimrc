@@ -130,7 +130,8 @@ nnoremap <f5> :call g:ToggleNuMode()<cr>
 
 " Unite navigations
 "nnoremap <C-p> :Unite -start-insert file_rec/async<cr>
-nnoremap <space>p :<C-u>Unite -no-split -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
+nnoremap <space>p :<C-u>Unite -no-split -buffer-name=files   -start-insert buffer file_rec/async<cr>
+"nnoremap <space>p :<C-u>Unite -no-split -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 nnoremap <space>? :execute 'Unite grep:.::' . expand("<cword>") . ' -auto-preview'<CR>
 nnoremap <space>' :execute 'Unite grep:.::' . expand("<cword>") . ' -default-action=above -auto-preview'<CR>
@@ -219,20 +220,17 @@ let g:indentLine_color_gui = '#29393f'
 let g:indentLine_char = '¦'   " ┆ ¦
 " highlight ColorColumn ctermbg=234 guibg=#2c2d27
 "highlight ColorColumn ctermbg=234 guibg=#1c1d17
-let &colorcolumn="80,".join(range(120,999),",")
+let colorcolumn="80,".join(range(120,999),",")
 syntax enable
+set background=dark
 colorscheme solarized
 
-set background=dark
 
 let g:solarized_italic     = 1
 let g:solarized_termcolors = 256
-let g:solarized_termtrans  = 1
-let g:solarized_visibility = 'low'
+"let g:solarized_termtrans  = 1
+let g:solarized_contrast = 'high'
 
-set guifont=Source\ Code\ Pro\ for\ Powerline
-set laststatus=2
-let g:airline_powerline_fonts = 1
 "let g:lightline = {
       "\ 'colorscheme': 'solarized',
       "\ 'component': {
@@ -241,8 +239,11 @@ let g:airline_powerline_fonts = 1
       "\ 'separator': { 'left': '', 'right': '' },
       "\ 'subseparator': { 'left': '', 'right': '' }
       "\ }
-"let g:Powerline_symbols = 'fancy'
-" set guifont=Source\ Code\ Pro\ for\ Powerline\ Regular
+set laststatus=2
+let g:airline_powerline_fonts = 1
+set guifont=Sauce\ Code\ Powerline:h12
+"set guifontwide=Sauce\ Code\ Pro\ Powerline\ Bold:h12
+let g:Powerline_symbols = 'fancy'
 
 
 " Rainbow Parentheses 
