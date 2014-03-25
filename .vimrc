@@ -1,3 +1,4 @@
+" Prototype for split-up of vimrc into sections
 "let s:vim_home = '~/.vim/'
  
 "let config_list = [
@@ -72,6 +73,10 @@ set showmatch
 set number
 set cursorline
 
+nnoremap <silent> <Leader><Up>    :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader><Down>  :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader><Right> :exe "vertical resize +6"<CR>
+nnoremap <silent> <Leader><Left>  :exe "vertical resize -6"<CR>
 
 " Diff in gutter
 let g:changes_autocmd=1
@@ -129,9 +134,8 @@ nnoremap <f5> :call g:ToggleNuMode()<cr>
 
 
 " Unite navigations
-"nnoremap <C-p> :Unite -start-insert file_rec/async<cr>
-nnoremap <space>p :<C-u>Unite -no-split -buffer-name=files   -start-insert buffer file_rec/async<cr>
-"nnoremap <space>p :<C-u>Unite -no-split -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
+"nnoremap <space>p :<C-u>Unite -no-split -buffer-name=files   -start-insert buffer file_rec/async<cr>
+nnoremap <space>p :<C-u>Unite -no-split -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
 nnoremap <space>/ :Unite grep:.<cr>
 nnoremap <space>? :execute 'Unite grep:.::' . expand("<cword>") . ' -auto-preview'<CR>
 nnoremap <space>' :execute 'Unite grep:.::' . expand("<cword>") . ' -default-action=above -auto-preview'<CR>
@@ -142,9 +146,8 @@ nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
 let g:unite_source_file_rec_max_cache_files = 50000
 
-"nnoremap sG :<C-u>execute 'Unite grep:.:-iR:' . expand('<cword>') . ' -default-action=split'<Cr>
-
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
 " Use ag for search
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
@@ -231,19 +234,9 @@ let g:solarized_termcolors = 256
 "let g:solarized_termtrans  = 1
 let g:solarized_contrast = 'high'
 
-"let g:lightline = {
-      "\ 'colorscheme': 'solarized',
-      "\ 'component': {
-      "\   'readonly': '%{&readonly?"⭤":""}'
-      "\ },
-      "\ 'separator': { 'left': '', 'right': '' },
-      "\ 'subseparator': { 'left': '', 'right': '' }
-      "\ }
+set guifont=Source\ Code\ Pro\ for\ Powerline
 set laststatus=2
 let g:airline_powerline_fonts = 1
-set guifont=Sauce\ Code\ Powerline:h12
-"set guifontwide=Sauce\ Code\ Pro\ Powerline\ Bold:h12
-let g:Powerline_symbols = 'fancy'
 
 
 " Rainbow Parentheses 
@@ -337,5 +330,7 @@ let s:ctags_opts = '
   \ --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/'
 
 let $CTAGS = substitute(s:ctags_opts, '\v\([nst]\)', '\\', 'g')
+autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R 2> /dev/null &
+autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
 
 

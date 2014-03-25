@@ -1,7 +1,7 @@
 # Loaders
 [submodule ".vim/bundle/vim-pathogen"]
 	path = .vim/bundle/vim-pathogen
-	url  = https://github.com/thisivan/vim-taglist.git
+	url  = https://github.com/tpope/vim-pathogen.git
 
 # IDE
 [submodule ".vim/bundle/unite.vim"]
@@ -39,7 +39,7 @@
 	url  = https://github.com/scrooloose/nerdtree.git
 [submodule ".vim/bundle/vim-nerdtree-tabs"]
 	path = .vim/bundle/vim-nerdtree-tabs
-	url  = https://github.com/scrooloose/nerdtree.git
+  url  = https://github.com/jistr/vim-nerdtree-tabs.git
 [submodule ".vim/bundle/vim-buffergator"]
 	path = .vim/bundle/vim-buffergator
 	url  = https://github.com/jeetsukumaran/vim-buffergator.git
