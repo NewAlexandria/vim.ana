@@ -25,13 +25,9 @@ call pathogen#infect()
 filetype plugin indent on
 
 
-" Enable basic mouse behavior such as resizing buffers.
-set mouse=a
-if exists('$TMUX')  " Support resizing in tmux
-  set ttymouse=xterm2
-endif
+""===================  Text Stuff  =====================""
+""                                                      ""
 
-" Text stuff
 set tabstop=4
 retab  " this will cause all existing tabs to be expanded
 set ts=2
@@ -66,7 +62,32 @@ set showmode
 vnoremap < <gv
 vnoremap > >gv
 
-" IDE
+
+" Box character (turburul) hax
+" https://bitbucket.org/atimholt/dot_files/src/default/vimrc
+function! g:BoxCharacters()  
+  :'<,'>s'r'┌'e   " This:
+  :'<,'>s','┐'e    " r---—v-,
+  :'<,'>s'’'┘'e    " |    | |
+  :'<,'>s/'/┘/e    " >----+-<
+  :'<,'>s'L'└'e    " |    | |
+                   " >————+—<
+  :'<,'>s'|'│'e    " |    | |
+  :'<,'>s'-'─'e    " L----^—’
+  :'<,'>s'—'─'e    "
+  :'<,'>s'+'┼'e   " Becomes This:
+                   " ┌────┬─┐
+  :'<,'>s'\^'┴'e   " │    │ │
+  :'<,'>s'>'├'e    " ├────┼─┤
+  :'<,'>s'v'┬'e    " │    │ │
+  :'<,'>s'T'┬'e    " ├────┼─┤
+  :'<,'>s'<'┤'e    " │    │ │
+endfunction        " └────┴─┘
+
+
+""===================     IDE     ======================""
+""                                                      ""
+
 set cmdheight=2
 set history=50
 set showmatch
@@ -77,6 +98,12 @@ nnoremap <silent> <Leader><Up>    :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader><Down>  :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <Leader><Right> :exe "vertical resize +6"<CR>
 nnoremap <silent> <Leader><Left>  :exe "vertical resize -6"<CR>
+
+" Enable basic mouse behavior such as resizing buffers.
+set mouse=a
+if exists('$TMUX')  " Support resizing in tmux
+  set ttymouse=xterm2
+endif
 
 " Diff in gutter
 let g:changes_autocmd=1
