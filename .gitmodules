@@ -74,6 +74,9 @@
 [submodule ".vim/bundle/indentLine"]
 	path = .vim/bundle/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
+[submodule "vim-ruby-interpolation"]
+	path = .vim/bundle/vim-ruby-interpolation
+	url = https://github.com/p0deje/vim-ruby-interpolation.git
 
 # Syntax Colors
 [submodule ".vim/bundle/vim-colors-solarized"]

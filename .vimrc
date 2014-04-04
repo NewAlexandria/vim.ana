@@ -311,6 +311,9 @@ au Syntax * RainbowParenthesesLoadBraces
 au BufWritePost *.rb silent! !ctags -R &
 au BufWritePost *.js silent! !ctags -R &
 
+" load tag files from several base sets
+" :set tags=./tags,c:/ruby/lib/tags
+
 " file types
 au BufRead,BufNewFile *.thor set filetype=ruby
 autocmd BufRead,BufNewFile *.md set filetype=markdown
