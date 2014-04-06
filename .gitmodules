@@ -34,9 +34,9 @@
 	url  = https://github.com/tpope/vim-bundler.git
 
 ## Layout
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
-	url  = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/git-nerdtree"]
+	path = .vim/bundle/git-nerdtree
+	url = https://github.com/Xuyuanp/git-nerdtree.git
 [submodule ".vim/bundle/vim-nerdtree-tabs"]
 	path = .vim/bundle/vim-nerdtree-tabs
   url  = https://github.com/jistr/vim-nerdtree-tabs.git
@@ -95,3 +95,4 @@
 [submodule ".vim/bundle/scss-syntax"]
   path = .vim/bundle/scss-syntax
   url  = https://github.com/cakebaker/scss-syntax.vim.git
+
