@@ -178,6 +178,8 @@ nnoremap <space>o :Unite -start-insert -vertical -winwidth=50 -direction=belowri
 nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
 nnoremap <space>b :<C-u>Unite -no-split -buffer-name=buffers  buffer<cr>
+nnoremap <space>g :Unite grep:$buffers<cr>
+nnoremap <space>G :execute 'Unite grep:$buffers::' . expand("<cword>") . '  -start-insert'<cr>
 
 let g:unite_source_file_rec_max_cache_files = 50000
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -188,42 +190,6 @@ if executable('ag')
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
 endif
-
-
-""
-" Description: Find all the lines that contain the search term and display them in the location list
-" Arguments:
-"   mode (str) "local"   : Find only with the current buffer and display results in a location list
-"              "global"  : Find across all windows and display results in a quickfix list
-"   a:1  (str, optional) : Default value to be specified at the "Find:" prompt
-" courtesy of kshenoy: https://github.com/kshenoy/dotvim/blob/master/autoload/myFunctions.vim#L452-L479
-function! g:FindAndList( mode, ... )
-  " Use default argument to provide the visually selected text as a default prompt in Visual Mode
-  let prompt = ( a:0 > 0 ? a:1 : "" )
-  echo prompt
-  let term = input( substitute(a:mode, ".*", "\\L\\u\\0", "") . ": /", prompt)
-
-  let v:errmsg = ""
-  " Return if search term is empty
-  if term == ""
-    "let term = expand('<cword>')
-    return
-  endif
-  if ( v:errmsg != "" ) | return | endif
-
-  if ( a:mode ==? "local" )
-    execute "lvimgrep! /" . term . "/ " . fnameescape(expand('%:p'))
-    lopen 15
-  elseif ( a:mode ==? "global" )
-    execute "vimgrep! /" . term . "/ ##"
-    copen 15
-  endif
-endfunction
-
-""" Find and show results in a QuickfixList
-nnoremap <silent> <space>g :call g:FindAndList("global")<CR>
-vnoremap <silent> <space>G :<C-U>call g:FindAndList("global", expand("<cword>"))<CR>
-"vnoremap <silent> <space>G :<C-U>call g:FindAndList("global", escape(@*, '$*[]/'))<CR>
 
 
 
