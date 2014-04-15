@@ -94,11 +94,6 @@ set showmatch
 set number
 set cursorline
 
-nnoremap <silent> <Leader><Up>    :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader><Down>  :exe "resize " . (winheight(0) * 2/3)<CR>
-nnoremap <silent> <Leader><Right> :exe "vertical resize +6"<CR>
-nnoremap <silent> <Leader><Left>  :exe "vertical resize -6"<CR>
-
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
 if exists('$TMUX')  " Support resizing in tmux
@@ -124,6 +119,10 @@ map :wq :xa
 map j 5gj
 map k 5gk
 
+""" Ruby Movements
+" put the curson on the name of the function that you are currently in
+map bb ?def <cr>:noh<cr>ee
+
 map <Leader>n :NERDTreeFocus<cr>
 map <Leader>nf :NERDTreeFind<cr>
 map <Leader>b :BuffergatorOpen<cr>
@@ -142,11 +141,18 @@ set foldmethod=marker     " Enable folding by fold markers
 set foldclose=all         " Autoclose folds, when moving out of them
 set scrolljump=5          " Jump 5 lines when running out of the screen
 set scrolloff=3           " Indicate jump out of the screen when 3 lines before end of the screen
-" MovingThroughCamelCaseWords
+
+""  MovingThroughCamelCaseWords
 nnoremap <silent><C-Left>  :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
 nnoremap <silent><C-Right> :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
 inoremap <silent><C-Left>  <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
 inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
+
+""  Find and show results in a QuickfixList
+nnoremap <silent> <space><Up> :cn<CR>
+nnoremap <silent> <space><Down> :cp<CR>
+nnoremap <silent> <space><Right> :cnf<CR>
+nnoremap <silent> <space><Left> :cpf<CR>
 
 " function to toggle number mode
 function! g:ToggleNuMode()
@@ -157,7 +163,7 @@ function! g:ToggleNuMode()
     endif
 endfunc
 " map the above function to F5
-nnoremap <f5> :call g:ToggleNuMode()<cr>
+nnoremap <leader>t :call g:ToggleNuMode()<cr>
 
 
 " Unite navigations
@@ -171,8 +177,9 @@ nnoremap <space>t :Unite -start-insert tag<cr>
 nnoremap <space>o :Unite -start-insert -vertical -winwidth=50 -direction=belowright outline<cr>
 nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
-let g:unite_source_file_rec_max_cache_files = 50000
+nnoremap <space>b :<C-u>Unite -no-split -buffer-name=buffers  buffer<cr>
 
+let g:unite_source_file_rec_max_cache_files = 50000
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 " Use ag for search
@@ -182,12 +189,43 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt = ''
 endif
 
-" Use ack search
-"if executable('ack')
-  "let g:unite_source_grep_command = 'ack'
-  "let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
- ""let g:unite_source_grep_recursive_opt = ''
-"endif
+
+""
+" Description: Find all the lines that contain the search term and display them in the location list
+" Arguments:
+"   mode (str) "local"   : Find only with the current buffer and display results in a location list
+"              "global"  : Find across all windows and display results in a quickfix list
+"   a:1  (str, optional) : Default value to be specified at the "Find:" prompt
+" courtesy of kshenoy: https://github.com/kshenoy/dotvim/blob/master/autoload/myFunctions.vim#L452-L479
+function! g:FindAndList( mode, ... )
+  " Use default argument to provide the visually selected text as a default prompt in Visual Mode
+  let prompt = ( a:0 > 0 ? a:1 : "" )
+  echo prompt
+  let term = input( substitute(a:mode, ".*", "\\L\\u\\0", "") . ": /", prompt)
+
+  let v:errmsg = ""
+  " Return if search term is empty
+  if term == ""
+    "let term = expand('<cword>')
+    return
+  endif
+  if ( v:errmsg != "" ) | return | endif
+
+  if ( a:mode ==? "local" )
+    execute "lvimgrep! /" . term . "/ " . fnameescape(expand('%:p'))
+    lopen 15
+  elseif ( a:mode ==? "global" )
+    execute "vimgrep! /" . term . "/ ##"
+    copen 15
+  endif
+endfunction
+
+""" Find and show results in a QuickfixList
+nnoremap <silent> <space>g :call g:FindAndList("global")<CR>
+vnoremap <silent> <space>G :<C-U>call g:FindAndList("global", expand("<cword>"))<CR>
+"vnoremap <silent> <space>G :<C-U>call g:FindAndList("global", escape(@*, '$*[]/'))<CR>
+
+
 
 
 ""================     Windowing     ===================""
@@ -202,6 +240,11 @@ nnoremap <leader>, <C-W>-
 nnoremap <leader>,, 5<C-W>-
 nnoremap <leader>. <C-W>+
 nnoremap <leader>.. 5<C-W>+
+
+nnoremap <silent> <Leader><Up>    :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader><Down>  :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader><Right> :exe "vertical resize +6"<CR>
+nnoremap <silent> <Leader><Left>  :exe "vertical resize -6"<CR>
 
 
 " Split VIEWPORT horizontally, with new split on the top
