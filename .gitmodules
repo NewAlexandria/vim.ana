@@ -32,6 +32,9 @@
 [submodule ".vim/bundle/vim-bundler"]
 	path = .vim/bundle/vim-bundler
 	url  = https://github.com/tpope/vim-bundler.git
+[submodule ".vim/bundle/ack"]
+	path = .vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim.git
 
 ## Layout
 [submodule ".vim/bundle/git-nerdtree"]
@@ -68,6 +71,9 @@
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url  = https://github.com/tpope/vim-surround.git
+[submodule ".vim/bundle/indentLine"]
+	path = .vim/bundle/indentLine
+	url = https://github.com/Yggdroot/indentLine.git
 
 # Syntax Colors
 [submodule ".vim/bundle/vim-colors-solarized"]
@@ -76,10 +82,6 @@
 [submodule ".vim/bundle/rainbow_parentheses.vim"]
 	path = .vim/bundle/rainbow_parentheses.vim
 	url = https://github.com/kien/rainbow_parentheses.vim.git
-[submodule ".vim/bundle/indentLine"]
-	path = .vim/bundle/indentLine
-	url = https://github.com/Yggdroot/indentLine.git
-
 [submodule ".vim/bundle/vim-haml"]
 	path = .vim/bundle/vim-haml
 	url  = https://github.com/tpope/vim-haml.git
