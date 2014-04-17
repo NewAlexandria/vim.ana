@@ -121,7 +121,7 @@ map k 5gk
 
 """ Ruby Movements
 " put the curson on the name of the function that you are currently in
-map bb ?def <cr>:noh<cr>ee
+map gd ?def <cr>:noh<cr>ee
 
 map <Leader>n :NERDTreeFocus<cr>
 map <Leader>nf :NERDTreeFind<cr>
