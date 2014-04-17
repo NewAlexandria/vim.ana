@@ -24,6 +24,9 @@
 call pathogen#infect()
 filetype plugin indent on
 
+" Neobundle inits
+NeoBundle 'mileszs/ack.vim'
+
 
 ""===================  Text Stuff  =====================""
 ""                                                      ""
