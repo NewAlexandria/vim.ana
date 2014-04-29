@@ -57,6 +57,10 @@
 	path = .vim/bundle/vim-airline.git
 	url = https://github.com/bling/vim-airline.git
 
+[submodule ".vim/bundle/microviche"]
+	path = .vim/bundle/microviche
+	url = https://github.com/q335r49/microviche.git
+
 ## VCS
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
@@ -108,4 +112,3 @@
 [submodule ".vim/bundle/scss-syntax"]
   path = .vim/bundle/scss-syntax
   url  = https://github.com/cakebaker/scss-syntax.vim.git
-
