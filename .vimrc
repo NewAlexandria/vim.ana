@@ -40,7 +40,7 @@ let g:matchparen_insert_timeout=5
 set wildmenu
 set wildmode=list:longest,full
 " remove trailing whitespaces
-nnoremap <C-r> :%s/\s\+$//e<CR>
+nnoremap RR :%s/\s\+$//e<CR>
 " set list  "show whitespace and invisible characters
 
 "" Searching
@@ -51,7 +51,6 @@ set smartcase     " ... unless they contain at least one capital letter
 set infercase     " Infer the current case in insert completion
 map <Leader>\ :noh<cr>
 runtime macros/matchit.vim
-
 
 "" Modes
 nnoremap <C-i> :set invpaste paste?<CR>
@@ -108,6 +107,8 @@ nnoremap <leader>d :CL<cr>
 " Blame gutter
 map <leader>s :call SvnBlame()<CR>
 
+" Sessions
+let g:session_autosave = 'no'
 
 
 ""================     Movements     ===================""
@@ -119,9 +120,9 @@ map :wq :xa
 map j 5gj
 map k 5gk
 
-""" Ruby Movements
+""" Ruby/JS Movements
 " put the curson on the name of the function that you are currently in
-map bb ?def <cr>:noh<cr>ee
+map gd ?\(def\|function\) <cr>:noh<cr>ee
 
 map <Leader>n :NERDTreeFocus<cr>
 map <Leader>nf :NERDTreeFind<cr>
@@ -177,9 +178,9 @@ nnoremap <space>t :Unite -start-insert tag<cr>
 nnoremap <space>o :Unite -start-insert -vertical -winwidth=50 -direction=belowright outline<cr>
 nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
-nnoremap <space>b :<C-u>Unite -no-split -buffer-name=buffers  buffer<cr>
-nnoremap <space>g :Unite grep:$buffers<cr>
-nnoremap <space>G :execute 'Unite grep:$buffers::' . expand("<cword>") . '  -start-insert'<cr>
+nnoremap <space>u :<C-u>Unite -no-split -buffer-name=buffers  buffer<cr>
+nnoremap <space>b :Unite grep:$buffers<cr>
+nnoremap <space>B :execute 'Unite grep:$buffers::' . expand("<cword>") . '  -start-insert'<cr>
 
 let g:unite_source_file_rec_max_cache_files = 50000
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -254,15 +255,21 @@ map! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
 
 " Color formatting guide:
 " http://misc.flogisoft.com/bash/tip_colors_and_formatting
-let g:indentLine_color_term = 0
-let g:indentLine_color_gui = '#29393f'
-let g:indentLine_char = '¦'   " ┆ ¦
 " highlight ColorColumn ctermbg=234 guibg=#2c2d27
 "highlight ColorColumn ctermbg=234 guibg=#1c1d17
 let colorcolumn="80,".join(range(120,999),",")
 syntax enable
 set background=dark
 colorscheme solarized
+
+"" Indent Guides
+set ts=2 sw=2 et
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 3
+"let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=8
 
 
 let g:solarized_italic     = 1
@@ -309,8 +316,8 @@ au Syntax * RainbowParenthesesLoadBraces
 ""                                                      ""
 
 " Auto-regenerate tags after saving files
-au BufWritePost *.rb silent! !ctags -R &
-au BufWritePost *.js silent! !ctags -R &
+au BufWritePost *.rb silent! !rm tags; ctags -R 2> /dev/null &
+au BufWritePost *.js silent! !rm tags; ctags -R 2> /dev/null &
 
 " file types
 au BufRead,BufNewFile *.thor set filetype=ruby

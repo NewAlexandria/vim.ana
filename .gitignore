@@ -2,5 +2,7 @@
 
 # User Files
 backups
+tags
 .vim/.netrwhist
-.vim/bundle/
+# .vim/bundle/
+.vim/sessions
