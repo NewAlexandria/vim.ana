@@ -3,10 +3,10 @@
 	path = .vim/bundle/vim-pathogen
 	url  = https://github.com/tpope/vim-pathogen.git
 
-[submodule ".vim/bundle/vim-session"]
+[submodule ".vim/bundle/vim-session"]               ## Record and Reopen active buffers
 	path = .vim/bundle/vim-session
 	url = https://github.com/xolox/vim-session.git
-[submodule ".vim/bundle/vim-misc"]
+[submodule ".vim/bundle/vim-misc"]                  # dependency of vim-session
 	path = .vim/bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
 

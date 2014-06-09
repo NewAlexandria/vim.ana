@@ -122,7 +122,9 @@ map k 5gk
 
 """ Ruby/JS Movements
 " put the curson on the name of the function that you are currently in
-map gd ?\(def\|function\) <cr>:noh<cr>ee
+"map gd :?\(def\|function\) <cr>:noh<cr>ee
+map gdd :?def <cr>:noh<cr>ee
+map gdf :?function <cr>:noh<cr>ee
 
 map <Leader>n :NERDTreeFocus<cr>
 map <Leader>nf :NERDTreeFind<cr>
@@ -268,8 +270,8 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 3
 "let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=8
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#011C22 ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#022B34 ctermbg=8
 
 
 let g:solarized_italic     = 1
