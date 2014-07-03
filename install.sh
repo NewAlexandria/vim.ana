@@ -59,6 +59,32 @@ make
 echo "Remember to install CTAGS from http://ctags.sourceforge.net/"
 echo "or `brew install ctags` on OS X"
 
+if [ -d "$HOME/.homebrew" ]; then
+  read -p "Do you want to install with brew?" yn
+  case $yn in
+    [Yy]* )
+      brew install ctags
+      gem install gem-ctags
+      gem ctags
+      ;;
+    * )
+      break;;
+  esac
+fi
+
+if [ -d "~/.rbenv" ]; then
+  read -p "You seem to be running rbenv, would you like to compile tags for your active ruby?" yn
+  case $yn in
+    [Yy]* )
+      mkdir -p ~/.rbenv/plugins
+      git clone https://github.com/tpope/rbenv-ctags.git  ~/.rbenv/plugins/rbenv-ctags
+      rbenv ctags
+      ;;
+    * )
+      break;;
+  esac
+  echo "You can run 'rbenv ctags' whenever you switch toa new ruby, to rebuild tags for its gems"
+fi
 
 echo 
 echo "Done!"

@@ -11,6 +11,7 @@
 	url = https://github.com/xolox/vim-misc.git
 
 # IDE
+# also note that some IDE affordance provided by ctags-gem-rbenv integration
 [submodule ".vim/bundle/unite.vim"]
 	path = .vim/bundle/unite.vim
 	url = https://github.com/Shougo/unite.vim.git

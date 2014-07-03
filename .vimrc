@@ -318,8 +318,9 @@ au Syntax * RainbowParenthesesLoadBraces
 ""                                                      ""
 
 " Auto-regenerate tags after saving files
-au BufWritePost *.rb silent! !rm tags; ctags -R 2> /dev/null &
-au BufWritePost *.js silent! !rm tags; ctags -R 2> /dev/null &
+"let $CTAGS = substitute(s:ctags_opts, '\v\([nst]\)', '\\', 'g')
+autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R 2> /dev/null &
+autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
 
 " file types
 au BufRead,BufNewFile *.thor set filetype=ruby
@@ -373,9 +374,5 @@ let s:ctags_opts = '
   \ --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){7}/\8/f,field/
   \ --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){8}/\8/f,field/
   \ --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/'
-
-let $CTAGS = substitute(s:ctags_opts, '\v\([nst]\)', '\\', 'g')
-autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R 2> /dev/null &
-autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
 
 
