@@ -44,6 +44,10 @@
 	path = .vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
 
+[submodule ".vim/bundle/gtfo"]
+	path = .vim/bundle/gtfo
+	url = https://github.com/justinmk/vim-gtfo.git
+
 ## Layout
 [submodule ".vim/bundle/git-nerdtree"]
 	path = .vim/bundle/git-nerdtree
@@ -58,6 +62,9 @@
 	path = .vim/bundle/vim-airline.git
 	url = https://github.com/bling/vim-airline.git
 
+[submodule ".vim/bundle/vim-indent"]
+	path = .vim/bundle/vim-indent
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
 [submodule ".vim/bundle/microviche"]
 	path = .vim/bundle/microviche
 	url = https://github.com/q335r49/microviche.git
@@ -86,6 +93,9 @@
 [submodule ".vim/bundle/vim-ruby-interpolation"]
 	path = .vim/bundle/vim-ruby-interpolation
 	url = https://github.com/p0deje/vim-ruby-interpolation.git
+[submodule ".vim/bundle/tabular"]
+	path = .vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
 
 # Syntax Colors
 [submodule ".vim/bundle/vim-colors-solarized"]

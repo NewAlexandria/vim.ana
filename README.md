@@ -25,7 +25,7 @@ The following plugin is being used experimentally:
 
 
 ## Install ##
-**Vim 7.2 is recommended.  Some version greater than 7.0.23 is required for buffergator, unite, and possibly others.**
+**Vim 7.3 is recommended.  Some version greater than 7.0.23 is required for buffergator, unite, and possibly others.**
 
 Download and unpack to `~/.vim.ana` (the installer will look for it here. You can move it later)
 

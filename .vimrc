@@ -110,6 +110,8 @@ map <leader>s :call SvnBlame()<CR>
 " Sessions
 let g:session_autosave = 'no'
 
+let g:gtfo#terminals = { 'mac' : 'iterm' }
+
 
 ""================     Movements     ===================""
 ""                                                      ""
@@ -157,7 +159,7 @@ nnoremap <silent> <space><Down> :cp<CR>
 nnoremap <silent> <space><Right> :cnf<CR>
 nnoremap <silent> <space><Left> :cpf<CR>
 
-" function to toggle number mode
+" functions to toggle number mode
 function! g:ToggleNuMode()
     if(&rnu == 1)
         set number
@@ -165,8 +167,21 @@ function! g:ToggleNuMode()
         set relativenumber
     endif
 endfunc
-" map the above function to F5
 nnoremap <leader>t :call g:ToggleNuMode()<cr>
+
+let g:toggle_rnu_mode = 0
+function! g:ToggleRNuMode()
+    if(g:toggle_rnu_mode == 1)
+        set relativenumber!
+        set number
+        let g:toggle_rnu_mode = 0
+    else
+        set relativenumber
+        set number
+        let g:toggle_rnu_mode = 1
+    endif
+endfunc
+nnoremap <leader>r :call g:ToggleRNuMode()<cr>
 
 
 " Unite navigations
@@ -374,5 +389,8 @@ let s:ctags_opts = '
   \ --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){7}/\8/f,field/
   \ --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){8}/\8/f,field/
   \ --regex-coffee=/((constructor|initialize):[ \t]*\()@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?(,[ \t]*@(([A-Za-z][A-Za-z0-9_.]*)+)([ \t]*=[ \t]*[^,)]+)?){9}/\8/f,field/'
+
+
+let g:gtfo#terminals = { 'mac' : 'iterm' }
 
 

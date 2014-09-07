@@ -45,6 +45,9 @@ else
   echo "$SOURCE_LINE" >> "$PROFILE"
 fi
 
+## prevent non-ntaive submodules from introducing wonk line endings
+git config --global core.autocrlf input
+
 ## Setup Submodules
 cd ~/.vim.ana
 git submodule init
