@@ -84,9 +84,6 @@
 [submodule ".vim/bundle/nerdcommenter"]
 	path = .vim/bundle/nerdcommenter
 	url  = https://github.com/scrooloose/nerdcommenter.git
-[submodule ".vim/bundle/vim-align"]
-	path = .vim/bundle/vim-align
-	url  = https://github.com/jezcope/vim-align.git
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url  = https://github.com/tpope/vim-surround.git
@@ -96,6 +93,9 @@
 [submodule ".vim/bundle/tabular"]
 	path = .vim/bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule ".vim/bundle/vim-align"]
+	path = .vim/bundle/vim-align
+	url  = https://github.com/jezcope/vim-align.git
 
 # Syntax Colors
 [submodule ".vim/bundle/vim-colors-solarized"]
@@ -104,9 +104,6 @@
 [submodule ".vim/bundle/rainbow_parentheses.vim"]
 	path = .vim/bundle/rainbow_parentheses.vim
 	url = https://github.com/kien/rainbow_parentheses.vim.git
-[submodule ".vim/bundle/vim-indent-guides"]
-	path = .vim/bundle/vim-indent-guides
-	url = https://github.com/nathanaelkane/vim-indent-guides.git
 
 [submodule ".vim/bundle/vim-haml"]
 	path = .vim/bundle/vim-haml
