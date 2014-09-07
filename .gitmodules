@@ -12,6 +12,7 @@
 
 # IDE
 # also note that some IDE affordance provided by ctags-gem-rbenv integration
+## Unite
 [submodule ".vim/bundle/unite.vim"]
 	path = .vim/bundle/unite.vim
 	url = https://github.com/Shougo/unite.vim.git
@@ -22,11 +23,13 @@
 	path = .vim/bundle/unite-outline
 	url = https://github.com/h1mesuke/unite-outline.git
 
+## Async
 [submodule ".vim/bundle/vimproc.vim"]
 	path = .vim/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim.git
   ignore = dirty
 
+## Completions
 [submodule ".vim/bundle/supertab"]
 	path = .vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
@@ -34,24 +37,32 @@
 	path = .vim/bundle/signature
 	url = https://github.com/kshenoy/vim-signature.git
 
+## Frameworks
 [submodule ".vim/bundle/vim-rails"]
 	path = .vim/bundle/vim-rails
 	url  = https://github.com/tpope/vim-rails.git
 [submodule ".vim/bundle/vim-bundler"]
 	path = .vim/bundle/vim-bundler
 	url  = https://github.com/tpope/vim-bundler.git
+[submodule ".vim/bundle/vim-rake"]
+	path = .vim/bundle/vim-rake
+	url = https://github.com/tpope/vim-rake.git
+[submodule ".vim/bundle/vim-projectionist"]
+	path = .vim/bundle/vim-projectionist
+	url = https://github.com/tpope/vim-projectionist.git
+
+## File System
 [submodule ".vim/bundle/ack"]
 	path = .vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
-
 [submodule ".vim/bundle/gtfo"]
 	path = .vim/bundle/gtfo
 	url = https://github.com/justinmk/vim-gtfo.git
 
-## Layout
+# Layout
 [submodule ".vim/bundle/git-nerdtree"]
 	path = .vim/bundle/git-nerdtree
-	url = https://github.com/Xuyuanp/git-nerdtree.git
+	url = https://github.com/scrooloose/nerdtree.git
 [submodule ".vim/bundle/vim-nerdtree-tabs"]
 	path = .vim/bundle/vim-nerdtree-tabs
   url  = https://github.com/jistr/vim-nerdtree-tabs.git
@@ -69,7 +80,7 @@
 	path = .vim/bundle/microviche
 	url = https://github.com/q335r49/microviche.git
 
-## VCS
+# VCS
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
 	url  = https://github.com/tpope/vim-fugitive.git
@@ -79,6 +90,9 @@
 [submodule ".vim/bundle/svnblame.vim"]
 	path = .vim/bundle/svnblame.vim
 	url = https://github.com/NewAlexandria/svnblame.vim.git
+[submodule "nerdtree-git-status"]
+	path = nerdtree-git-status
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
 
 # Formatting
 [submodule ".vim/bundle/nerdcommenter"]
@@ -113,7 +127,7 @@
 	url  = https://github.com/tpope/vim-markdown.git
 [submodule ".vim/bundle/vim-nginx"]
 	path = .vim/bundle/vim-nginx
-	url  = https://github.com/tpope/vim-markdown.git
+	url  = https://github.com/evanmiller/nginx-vim-syntax.git
 [submodule ".vim/bundle/vim-javascript-syntax"]
 	path = .vim/bundle/vim-javascript-syntax
 	url  = https://github.com/pangloss/vim-javascript
