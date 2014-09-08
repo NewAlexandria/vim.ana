@@ -1,6 +1,8 @@
 # Vim.ana #
 
-**Vim.ana** aims to make a 2-command install of a full vim IDE with CLI conveniences.  The focus of this repo is to deliver a Vim & related environment that can be dropped into any unix-flavor box, and without disruption to existing production configs.
+**Vim.ana** aims to make a 2-command install of a full vim IDE with CLI conveniences.  Think of Vim being able to do everything that can be done with IntelliJ, or similar.  
+
+The focus of this repo is to be portable, environment-neutral, and safe for existing configs.  Vim.ana is a Vim & related environment that can be dropped into any unix-flavor box, and without disruption to existing production configs.
 
 ## Features ##
 * Pathogen for loading
@@ -18,10 +20,7 @@ The submodules file is structured and commented, and wil provide a nice guide as
 
 To see a list of all the mappings from plugings, vimrc, etc. then type: `:nor`
 
-
-The following plugin is being used experimentally:
-
-- [tagbar](https://github.com/majutsushi/tagbar) (probably to swivel-out in the same way that <leader-w> hides everything right now.)
+**dbext**, the DB browser, [has a great tutorial, here](http://mutelight.org/dbext-the-last-sql-client-youll-ever-need)
 
 
 ## Install ##
@@ -72,22 +71,21 @@ They *used* to be, before `deinit`. [See the talk, here](http://stackoverflow.co
 
 ## Mañana ##
 
-The following Vim plugins are under review
+The following directions are under review:
 
-- [AlignMaps](http://www.drchip.org/astronaut/vim/align.html)
+- adding a Unite scope for `dbext` databases
+- tabular instead of AlignMaps
 - VCSCommand
 - netrw
-- [syntastic](https://github.com/scrooloose/syntastic)
-- [supertab](https://github.com/ervandew/supertab)
-- [ruby.vim](https://github.com/vim-ruby/vim-ruby)
-- a proper tag parses for ruby namespaces, since 'ctags' fails at this, perhaps [tagfinder](http://andrewradev.com/2011/10/15/vim-and-ctags-finding-tag-definitions/), or [rdoc-tags](https://github.com/rdoc/rdoc-tags)
+- a proper tag parses for ruby *and rspec* namespaces, since 'ctags' fails at this, perhaps [tagfinder](http://andrewradev.com/2011/10/15/vim-and-ctags-finding-tag-definitions/), or [rdoc-tags](https://github.com/rdoc/rdoc-tags)
 - A clear winner for ctag support, whether tpope's, [vim-tags](https://github.com/szw/vim-tags), or another.
 
 
 # Спасибо #
 
-Thanks for experimenting with this repo. **Architectural** suggestions highly welcome. I'm particularly interested in 
+Thanks for experimenting with this repo.  Suggestions always welcome. I'm particularly interested in 
 
+* A new way to onbaord people into using the features of this configuration. (I'm thinking a docs page)
 * How this can more-safely integrate with your existing environment practices
 * How to lower the version dependecy with Vim
 * How to integrate with windowing apps on all platforms

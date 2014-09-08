@@ -36,6 +36,7 @@ set autoindent
 set expandtab
 set nostartofline
 let g:matchparen_insert_timeout=5
+set encoding=utf8
 
 set wildmenu
 set wildmode=list:longest,full
@@ -160,15 +161,6 @@ nnoremap <silent> <space><Right> :cnf<CR>
 nnoremap <silent> <space><Left> :cpf<CR>
 
 " functions to toggle number mode
-function! g:ToggleNuMode()
-    if(&rnu == 1)
-        set number
-    else
-        set relativenumber
-    endif
-endfunc
-nnoremap <leader>t :call g:ToggleNuMode()<cr>
-
 let g:toggle_rnu_mode = 0
 function! g:ToggleRNuMode()
     if(g:toggle_rnu_mode == 1)
