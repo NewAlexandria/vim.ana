@@ -140,3 +140,6 @@
 [submodule ".vim/bundle/fidgit"]
 	path = .vim/bundle/fidgit
 	url = https://github.com/mohitleo9/vim-fidget.git
+[submodule ".vim/bundle/startify"]
+	path = .vim/bundle/startify
+	url = https://github.com/mhinz/vim-startify.git
