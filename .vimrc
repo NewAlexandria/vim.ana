@@ -38,6 +38,11 @@ set nostartofline
 let g:matchparen_insert_timeout=5
 set encoding=utf8
 
+" uses Vim >= 7.4.338
+set breakindent
+set showbreak=➣➣\ 
+set nolist wrap linebreak breakat&vim
+
 set wildmenu
 set wildmode=list:longest,full
 " remove trailing whitespaces
@@ -270,6 +275,7 @@ let colorcolumn="80,".join(range(120,999),",")
 syntax enable
 set background=dark
 colorscheme solarized
+let g:airline_theme = 'base16'
 
 "" Indent Guides
 set ts=2 sw=2 et

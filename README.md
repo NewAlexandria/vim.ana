@@ -73,7 +73,7 @@ They *used* to be, before `deinit`. [See the talk, here](http://stackoverflow.co
 
 The following directions are under review:
 
-- adding a Unite scope for `dbext` databases
+- adding a Unite scope for `dbext` databases (or [SQLcomplete](https://github.com/vim-scripts/SQLComplete.vim))
 - tabular instead of AlignMaps
 - VCSCommand
 - netrw

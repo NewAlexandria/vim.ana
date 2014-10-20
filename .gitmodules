@@ -143,3 +143,6 @@
 [submodule ".vim/bundle/startify"]
 	path = .vim/bundle/startify
 	url = https://github.com/mhinz/vim-startify.git
+[submodule ".vim/bundle/vim-cucumber"]
+	path = .vim/bundle/vim-cucumber
+	url = https://github.com/tpope/vim-cucumber.git
