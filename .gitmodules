@@ -50,6 +50,11 @@
 [submodule ".vim/bundle/vim-projectionist"]
 	path = .vim/bundle/vim-projectionist
 	url = https://github.com/tpope/vim-projectionist.git
+[submodule ".vim/bundle/vim-cucumber"]
+	url = https://github.com/tpope/vim-cucumber.git
+[submodule ".vim/bundle/dbext"]
+	path = .vim/bundle/dbext
+	url = https://github.com/vim-scripts/dbext.vim.git
 
 ## File System
 [submodule ".vim/bundle/ack"]
@@ -72,13 +77,20 @@
 [submodule ".vim/bundle/vim-airline.git"]
 	path = .vim/bundle/vim-airline.git
 	url = https://github.com/bling/vim-airline.git
-
 [submodule ".vim/bundle/vim-indent"]
 	path = .vim/bundle/vim-indent
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
+
+## Windowing Systems
 [submodule ".vim/bundle/microviche"]
 	path = .vim/bundle/microviche
 	url = https://github.com/q335r49/microviche.git
+[submodule ".vim/bundle/startify"]
+	path = .vim/bundle/startify
+	url = https://github.com/mhinz/vim-startify.git
+[submodule ".vim/bundle/scratch"]
+	path = .vim/bundle/scratch
+	url = https://github.com/mtth/scratch.vim
 
 # VCS
 [submodule ".vim/bundle/vim-fugitive"]
@@ -134,15 +146,4 @@
 [submodule ".vim/bundle/scss-syntax"]
   path = .vim/bundle/scss-syntax
   url  = https://github.com/cakebaker/scss-syntax.vim.git
-[submodule ".vim/bundle/dbext"]
-	path = .vim/bundle/dbext
-	url = https://github.com/vim-scripts/dbext.vim.git
-[submodule ".vim/bundle/fidgit"]
-	path = .vim/bundle/fidgit
-	url = https://github.com/mohitleo9/vim-fidget.git
-[submodule ".vim/bundle/startify"]
-	path = .vim/bundle/startify
-	url = https://github.com/mhinz/vim-startify.git
-[submodule ".vim/bundle/vim-cucumber"]
-	path = .vim/bundle/vim-cucumber
-	url = https://github.com/tpope/vim-cucumber.git
+

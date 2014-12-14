@@ -89,6 +89,9 @@ function! g:BoxCharacters()
   :'<,'>s'<'┤'e    " │    │ │
 endfunction        " └────┴─┘
 
+" json format/beautifier
+nnoremap =j :%!python -m json.tool<CR>
+
 
 ""===================     IDE     ======================""
 ""                                                      ""
@@ -329,6 +332,7 @@ au Syntax * RainbowParenthesesLoadBraces
 
 ""================     File Types    ===================""
 ""                                                      ""
+
 
 " Auto-regenerate tags after saving files
 "let $CTAGS = substitute(s:ctags_opts, '\v\([nst]\)', '\\', 'g')
