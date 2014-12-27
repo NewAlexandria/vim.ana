@@ -51,6 +51,7 @@
 	path = .vim/bundle/vim-projectionist
 	url = https://github.com/tpope/vim-projectionist.git
 [submodule ".vim/bundle/vim-cucumber"]
+  path = .vim/bundle/vim-cucumber
 	url = https://github.com/tpope/vim-cucumber.git
 [submodule ".vim/bundle/dbext"]
 	path = .vim/bundle/dbext
