@@ -20,7 +20,7 @@ The submodules file is structured and commented, and wil provide a nice guide as
 
 The `.vimrc` is [organized into logical sections](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin), with the `.vimrc` retainin jump-points to each.
 
-1. To see a list of all mappings in the .vimrc group - type: `<leader>L` *(which should be `\L`)*
+1. To see a [list of all mappings](https://github.com/NewAlexandria/vim.ana#leader-and-unite-mappings) in the .vimrc group - type: `<leader>L` *(which should be `\L`)*
 2. To see a list of all the mappings from plugings, vimrc, etc. - type: `:map`
 
 **dbext**, the DB browser, [has a great tutorial, here](http://mutelight.org/dbext-the-last-sql-client-youll-ever-need)
@@ -97,4 +97,10 @@ Thanks for experimenting with this repo.  Suggestions always welcome. I'm partic
 
 ## Sauce ##
 
+#### Windowing Layout
 ![The awesomeness you'll get with this repo](http://i.imgur.com/p262L.png)
+
+#### Leader and Unite Mappings
+![the LeaderMap() function](http://i.imgur.com/4InDFSt.png)
+[See the function](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/ide.rc.vim#L51)
+

@@ -43,7 +43,20 @@ let g:tagbar_type_coffee = {
 " be passed as an environment variable, no whitespace can exist in the options
 " so [:space:] is used instead of normal whitespaces.
 " Adapted from: https://gist.github.com/2901844
+  "\ --regex-js=/\$scope[A-Za-z0-9._$]*\.([A-Za-z0-9._$]+?)[ \t]*[:=]/\1/t,ng-scope-variable/
+  "\ --regex-js=/\.controller\('([A-Za-z0-9._$]+)'/\1/c,ng-controller/
 let s:ctags_opts = '
+  \ --langdef=js
+  \ --langmap=js:.js
+  \ --regex-js=/([A-Za-z0-9._$()]+)[ \t]*[=][ \t]*function[ \t]*\(/\1/,function/
+  \ --regex-js=/function[ \t]+([A-Za-z0-9._$]+)[ \t]*\(([^)])\)/\1/,function/
+  \ --regex-js=/(var)*[ \t]+(\w+)[ \t]+=/\2/,var/
+  \ --langdef=css
+  \ --langmap=css:.css
+  \ --regex-css=/^[ \t]*\.([A-Za-z0-9_-]+)/.\1/c,class,classes/
+  \ --regex-css=/^[ \t]*#([A-Za-z0-9_-]+)/#\1/i,id,ids/
+  \ --regex-css=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+)\{/\1/t,tag,tags/
+  \ --regex-css=/^[ \t]*@media\s+([A-Za-z0-9_-]+)/\1/m,media,medias/
   \ --langdef=coffee
   \ --langmap=coffee:.coffee
   \ --regex-coffee=/(^|=[ \t])*class ([A-Za-z_][A-Za-z0-9_]+\.)*([A-Za-z_][A-Za-z0-9_]+)( extends ([A-Za-z][A-Za-z0-9_.]*)+)?$/\3/c,class/
