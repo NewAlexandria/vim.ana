@@ -11,16 +11,13 @@ set nostartofline
 let g:matchparen_insert_timeout=5
 set encoding=utf8
 
+" Intuitive backspacing in insert mode
+set backspace=indent,eol,start
+
 " uses Vim >= 7.4.338
 set breakindent
-set showbreak=➣➣\ 
+set showbreak=➣➣\
 set nolist wrap linebreak breakat&vim
-
-set wildmenu
-set wildmode=list:longest,full
-" remove trailing whitespaces
-nnoremap RR :%s/\s\+$//e<CR>
-" set list  "show whitespace and invisible characters
 
 "" Searching
 set hlsearch      " highlight matches
@@ -30,6 +27,22 @@ set smartcase     " ... unless they contain at least one capital letter
 set infercase     " Infer the current case in insert completion
 map <Leader>\ :noh<cr>
 runtime macros/matchit.vim
+
+set wildmenu
+set wildmode=list:longest,full
+
+" Whitespace
+set listchars=tab:>-,trail:·,eol:$
+nmap <silent> <leader>R :set nolist!<CR>
+" remove trailing whitespaces
+nnoremap RR :%s/\s\+$//e<CR>
+
+"" Variable replacement, per http://stackoverflow.com/a/597932/263858
+" For local replace
+nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+" For global replace
+nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+
 
 "" Modes
 nnoremap <C-i> :set invpaste paste?<CR>
@@ -41,24 +54,9 @@ vnoremap < <gv
 vnoremap > >gv
 
 
-" functions to toggle number mode
-let g:toggle_rnu_mode = 0
-function! g:ToggleRNuMode()
-    if(g:toggle_rnu_mode == 1)
-        set relativenumber!
-        set number
-        let g:toggle_rnu_mode = 0
-    else
-        set relativenumber
-        set number
-        let g:toggle_rnu_mode = 1
-    endif
-endfunc
-nnoremap <leader>r :call g:ToggleRNuMode()<cr>
-
 " Box character (turburul) hax
 " https://bitbucket.org/atimholt/dot_files/src/default/vimrc
-function! g:BoxCharacters()  
+function! g:BoxCharacters()
   :'<,'>s'r'┌'e   " This:
   :'<,'>s','┐'e    " r---—v-,
   :'<,'>s'’'┘'e    " |    | |

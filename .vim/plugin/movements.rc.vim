@@ -35,16 +35,11 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 ""================     Navigations     ===================""
 ""                                                      ""
 
-set foldmethod=marker     " Enable folding by fold markers
-set foldclose=all         " Autoclose folds, when moving out of them
-set scrolljump=5          " Jump 5 lines when running out of the screen
-set scrolloff=3           " Indicate jump out of the screen when 3 lines before end of the screen
-
 ""  MovingThroughCamelCaseWords
-nnoremap <silent><C-Left>  :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
-nnoremap <silent><C-Right> :<C-u>cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
-inoremap <silent><C-Left>  <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
-inoremap <silent><C-Right> <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+"inoremap <silent> <C-Left>  <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%^','bW')<CR>
+"inoremap <silent> <C-Right> <C-o>:cal search('\<\<Bar>\U\@<=\u\<Bar>\u\ze\%(\U\&\>\@!\)\<Bar>\%$','W')<CR>
 
 ""  Find and show results in a QuickfixList
 nnoremap <silent> <space><Up> :cn<CR>

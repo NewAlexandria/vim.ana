@@ -12,3 +12,6 @@
 call pathogen#infect()
 
 let mapleader = '\'
+
+let g:init_with_blended_relative_absolute_number_line = 1
+

@@ -29,13 +29,16 @@
 	url = https://github.com/Shougo/vimproc.vim.git
   ignore = dirty
 
-## Completions
+## Text & Completions
 [submodule ".vim/bundle/supertab"]
 	path = .vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
 [submodule ".vim/bundle/signature"]
 	path = .vim/bundle/signature
 	url = https://github.com/kshenoy/vim-signature.git
+[submodule ".vim/bundle/CamelCaseMotion"]
+	path = .vim/bundle/CamelCaseMotion
+	url = https://github.com/bkad/CamelCaseMotion.git
 
 ## Frameworks
 [submodule ".vim/bundle/vim-rails"]

@@ -5,11 +5,11 @@
 The focus of this repo is to be portable, environment-neutral, and safe for existing configs.  Vim.ana is a Vim & related environment that can be dropped into any unix-flavor box, and without disruption to existing production configs.
 
 ## Features ##
-* Pathogen for loading
-* Familiar windowing setup of File Browser + Open Files + Edit Window
-* IDE features via Unite and Fugitive
-* Prompt colorization and formatting to `user@host /path (git branch) $`
-* Sets up some git aliases
+* Pathogen for loading.
+* Familiar windowing setup of File Browser + Open Files + Edit Window.
+* IDE features that align with RubyMine, Eclipse, and others.
+* Comprehensive file and symbol search system
+
 
 ## Components ##
 
@@ -18,7 +18,10 @@ The submodules file is structured and commented, and wil provide a nice guide as
 
    Loader, IDE, 'Windowing', Formatting, Syntax Colors
 
-To see a list of all the mappings from plugings, vimrc, etc. then type: `:nor`
+The `.vimrc` is [organized into logical sections](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin), with the `.vimrc` retainin jump-points to each.
+
+1. To see a list of all mappings in the .vimrc group - type: `<leader>L` *(which should be `\L`)*
+2. To see a list of all the mappings from plugings, vimrc, etc. - type: `:map`
 
 **dbext**, the DB browser, [has a great tutorial, here](http://mutelight.org/dbext-the-last-sql-client-youll-ever-need)
 
@@ -74,7 +77,6 @@ They *used* to be, before `deinit`. [See the talk, here](http://stackoverflow.co
 The following directions are under review:
 
 - adding a Unite scope for `dbext` databases (or [SQLcomplete](https://github.com/vim-scripts/SQLComplete.vim))
-- tabular instead of AlignMaps
 - VCSCommand
 - netrw
 - a proper tag parses for ruby *and rspec* namespaces, since 'ctags' fails at this, perhaps [starscope](https://github.com/eapache/starscope/blob/master/doc/USER_GUIDE.md),  [tagfinder](http://andrewradev.com/2011/10/15/vim-and-ctags-finding-tag-definitions/), or [rdoc-tags](https://github.com/rdoc/rdoc-tags)
@@ -87,8 +89,8 @@ The following directions are under review:
 
 Thanks for experimenting with this repo.  Suggestions always welcome. I'm particularly interested in 
 
-* A new way to onbaord people into using the features of this configuration. (I'm thinking a docs page)
-* How this can more-safely integrate with your existing environment practices
+* A new way to onbaord people into using the features of this configuration. (Recent `LeaderMap()` function was the start)
+* How this can more-safely integrate with your existing environment practices (this may be Vimswitch)
 * How to lower the version dependecy with Vim
 * How to integrate with windowing apps on all platforms
 * How to get the lauch time near-instant (takes as much as 1.5 sec on slow slices)
