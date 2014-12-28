@@ -5,12 +5,16 @@ filetype plugin indent on
 
 " Auto-regenerate tags after saving files
 "let $CTAGS = substitute(s:ctags_opts, '\v\([nst]\)', '\\', 'g')
-autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R 2> /dev/null &
-autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
+if has('autocmd')
+  autocmd BufWritePost *.rb,*.js silent! !/usr/local/bin/ctags -R 2> /dev/null &
+  autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
+endif
 
 " file types
-au BufRead,BufNewFile *.thor set filetype=ruby
-autocmd BufRead,BufNewFile *.md set filetype=markdown
+if has('autocmd')
+  au BufRead,BufNewFile *.thor set filetype=ruby
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+endif
 
 
 let g:tagbar_type_ruby = {

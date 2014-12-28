@@ -34,20 +34,33 @@ let g:nerdtree_tabs_autoclose = 1
 " Setup the buffers
 " we set buffergator_autoupdate serially after toggling buffergator to avoid
 " creating a buffer listing 'NERD_tree_1' due to focus issues
-autocmd VimEnter * NERDTree
-autocmd VimEnter * BuffergatorToggle
-autocmd VimEnter * let g:buffergator_autoupdate=1
-autocmd VimEnter * wincmd w
+if has('autocmd')
+  autocmd VimEnter * NERDTree
+  autocmd VimEnter * BuffergatorToggle
+  autocmd VimEnter * let g:buffergator_autoupdate=1
+  autocmd VimEnter * wincmd w
+endif
 
 
 "" Buffer Navigation
 " Toggle left sidebar: NERDTree and BufferGator
 " test per http://justmao.name/life/integrate-nerdtree-and-buffergator/
+let g:l_sidebar_toggle = 0
 fu! LSidebarToggle()
   let b = bufnr("%")
   execute "NERDTreeToggle | BuffergatorToggle" 
-  execute "set nonumber!"
-  execute ( bufwinnr(b) . "wincmd w" )
+
+  if(g:l_sidebar_toggle == 0)
+    execute "call g:ToggleRNuMode()"
+    execute "set nonumber!"
+    execute ( bufwinnr(b) . "wincmd w" )
+    let g:l_sidebar_toggle = 1
+  else
+    execute ( bufwinnr(b) . "wincmd w" )
+    execute "set nonumber!"
+    execute "call g:ToggleRNuMode()"
+    let g:l_sidebar_toggle = 0
+  endif
 endf
 map  <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
 map! <silent> <Leader>w  <esc>:call LSidebarToggle()<cr>
