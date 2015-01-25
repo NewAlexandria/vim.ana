@@ -151,3 +151,6 @@
   path = .vim/bundle/scss-syntax
   url  = https://github.com/cakebaker/scss-syntax.vim.git
 
+[submodule ".vim/bundle/recover"]
+	path = .vim/bundle/recover
+	url = https://github.com/chrisbra/Recover.vim.git
