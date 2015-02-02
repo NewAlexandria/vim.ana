@@ -17,6 +17,14 @@ set backspace=indent,eol,start
 " uses Vim >= 7.4.338
 set breakindent
 set showbreak=➣➣\
+if has('autocmd')
+  augroup wrapping_types
+    autocmd BufNewFile,BufRead *.feature set nowrap
+    autocmd BufNewFile,BufRead *.js set wrap
+    autocmd BufNewFile,BufRead *.rb set wrap
+    autocmd BufNewFile,BufRead *.md set wrap
+  augroup END
+endif
 set nolist wrap linebreak breakat&vim
 
 "" Searching
