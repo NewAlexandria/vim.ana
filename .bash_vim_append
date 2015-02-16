@@ -31,3 +31,8 @@ function mvi() {
     mvim --servername $srvname $vars
   fi
 }
+
+function mvis() {
+  mvim --servername $1 --remote-silent ${*:2}
+}
+
