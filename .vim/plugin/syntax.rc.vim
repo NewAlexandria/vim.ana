@@ -11,6 +11,16 @@ set background=dark
 colorscheme solarized
 let g:airline_theme = 'base16'
 
+let g:solarized_italic     = 1
+let g:solarized_termcolors = 256
+"let g:solarized_termtrans  = 1
+let g:solarized_contrast = 'high'
+
+set guifont=Source\ Code\ Pro\ for\ Powerline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+
+
 "" Indent Guides
 set ts=2 sw=2 et
 let g:indent_guides_enable_on_vim_startup = 1
@@ -21,16 +31,6 @@ if has('autocmd')
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#011C22 ctermbg=0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#022B34 ctermbg=8
 endif
-
-
-let g:solarized_italic     = 1
-let g:solarized_termcolors = 256
-"let g:solarized_termtrans  = 1
-let g:solarized_contrast = 'high'
-
-set guifont=Source\ Code\ Pro\ for\ Powerline
-set laststatus=2
-let g:airline_powerline_fonts = 1
 
 
 " Rainbow Parentheses 

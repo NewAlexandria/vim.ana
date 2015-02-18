@@ -11,21 +11,17 @@ set nostartofline
 let g:matchparen_insert_timeout=5
 set encoding=utf8
 
+"" Modes
+nnoremap <C-i> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+call togglebg#map("<F5>")
+set showmode
+"make < > shifts keep selection
+vnoremap < <gv
+vnoremap > >gv
+
 " Intuitive backspacing in insert mode
 set backspace=indent,eol,start
-
-" uses Vim >= 7.4.338
-set breakindent
-set showbreak=➣➣\
-if has('autocmd')
-  augroup wrapping_types
-    autocmd BufNewFile,BufRead *.feature set nowrap
-    autocmd BufNewFile,BufRead *.js set wrap
-    autocmd BufNewFile,BufRead *.rb set wrap
-    autocmd BufNewFile,BufRead *.md set wrap
-  augroup END
-endif
-set nolist wrap linebreak breakat&vim
 
 "" Searching
 set hlsearch      " highlight matches
@@ -45,21 +41,25 @@ nmap <silent> <leader>R :set nolist!<CR>
 " remove trailing whitespaces
 nnoremap RR :%s/\s\+$//e<CR>
 
+
+" uses Vim >= 7.4.338
+set breakindent
+set showbreak=➣➣\
+if has('autocmd')
+  augroup wrapping_types
+    autocmd BufNewFile,BufRead *.feature set nowrap
+    autocmd BufNewFile,BufRead *.js set wrap
+    autocmd BufNewFile,BufRead *.rb set wrap
+    autocmd BufNewFile,BufRead *.md set wrap
+  augroup END
+endif
+set nolist wrap linebreak breakat&vim
 "" Variable replacement, per http://stackoverflow.com/a/597932/263858
 " For local replace
 nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
 " For global replace
 nnoremap gR gD:%s/<C-R>///gc<left><left><left>
 
-
-"" Modes
-nnoremap <C-i> :set invpaste paste?<CR>
-set pastetoggle=<F2>
-call togglebg#map("<F5>")
-set showmode
-"make < > shifts keep selection
-vnoremap < <gv
-vnoremap > >gv
 
 
 " Box character (turburul) hax

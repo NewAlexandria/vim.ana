@@ -7,6 +7,16 @@ map :wq :xa
 map j 5gj
 map k 5gk
 
+"map gt :tabnext<cr>
+"map gT :tabprevious<cr>
+map gb :bnext<cr>
+map gB :bprevious<cr>
+map <Leader>] :bnext<cr>
+map <Leader>[ :bprevious<cr>
+map <Leader>} :blast<cr>
+map <Leader>{ :bfirst<cr>
+
+
 """ Ruby/JS Movements
 " put the curson on the name of the function that you are currently in
 "map gd :?\(def\|function\) <cr>:noh<cr>ee
@@ -17,15 +27,6 @@ map <Leader>n :NERDTreeFocus<cr>
 map <Leader>nf :NERDTreeFind<cr>
 map <Leader>b :BuffergatorOpen<cr>
 map <Leader>v :wincmd b<cr>
-
-"map gt :tabnext<cr>
-"map gT :tabprevious<cr>
-map gb :bnext<cr>
-map gB :bprevious<cr>
-map <Leader>] :bnext<cr>
-map <Leader>[ :bprevious<cr>
-map <Leader>} :blast<cr>
-map <Leader>{ :bfirst<cr>
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
