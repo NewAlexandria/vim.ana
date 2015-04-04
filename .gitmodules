@@ -39,6 +39,9 @@
 [submodule ".vim/bundle/CamelCaseMotion"]
 	path = .vim/bundle/CamelCaseMotion
 	url = https://github.com/bkad/CamelCaseMotion.git
+[submodule ".vim/bundle/vim-over"]
+	path = .vim/bundle/vim-over
+	url = https://github.com/osyo-manga/vim-over.git
 
 ## Frameworks
 [submodule ".vim/bundle/vim-rails"]
@@ -67,6 +70,9 @@
 [submodule ".vim/bundle/gtfo"]
 	path = .vim/bundle/gtfo
 	url = https://github.com/justinmk/vim-gtfo.git
+[submodule ".vim/bundle/recover"]
+	path = .vim/bundle/recover
+	url = https://github.com/chrisbra/Recover.vim.git
 
 # Layout
 [submodule ".vim/bundle/git-nerdtree"]
@@ -151,6 +157,3 @@
   path = .vim/bundle/scss-syntax
   url  = https://github.com/cakebaker/scss-syntax.vim.git
 
-[submodule ".vim/bundle/recover"]
-	path = .vim/bundle/recover
-	url = https://github.com/chrisbra/Recover.vim.git
