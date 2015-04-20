@@ -64,3 +64,5 @@ if has('autocmd')
   au Syntax * RainbowParenthesesLoadBraces
 endif
 
+let g:used_javascript_libs = 'underscore,angularjs,jasmine,jquery'
+
