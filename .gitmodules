@@ -81,6 +81,9 @@
 [submodule ".vim/bundle/vim-nerdtree-tabs"]
 	path = .vim/bundle/vim-nerdtree-tabs
   url  = https://github.com/jistr/vim-nerdtree-tabs.git
+[submodule ".vim/bundle/vim-nerdtree-ignore"]
+	path = .vim/bundle/vim-nerdtree-ignore
+	url = https://github.com/dsimidzija/vim-nerdtree-ignore.git
 [submodule ".vim/bundle/vim-buffergator"]
 	path = .vim/bundle/vim-buffergator
 	url  = https://github.com/jeetsukumaran/vim-buffergator.git
