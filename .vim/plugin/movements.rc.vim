@@ -48,6 +48,7 @@ nnoremap <silent> <space><Down> :cp<CR>
 nnoremap <silent> <space><Right> :cnf<CR>
 nnoremap <silent> <space><Left> :cpf<CR>
 
+nnoremap <space>O :TagbarToggle<cr>
 
 " unite navigations
 "nnoremap <space>p :<C-u>Unite -no-split -buffer-name=files   -start-insert buffer file_rec/async<cr>
