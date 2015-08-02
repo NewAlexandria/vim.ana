@@ -1,7 +1,7 @@
 " vimrc split-up into sections
 " by hijacking the .vim/plugin directory
 
-" [ 0]   .vim/plugin/completions.rc.vim
+" [ 0]   .vim/plugin/Completions.rc.vim
 " [ 1]   .vim/plugin/File_types.rc.vim
 " [ 2]   .vim/plugin/Ide.rc.vim
 " [ 3]   .vim/plugin/Movements.rc.vim

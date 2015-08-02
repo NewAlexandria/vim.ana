@@ -54,10 +54,15 @@ git submodule init
 git submodule update
 
 ## Compile Submodule Components
+### add angular snippets
+mkdir -p .vim/bundle/neosnippet-snippets/neosnippets/vim-angular-snippets
+cp angular-styleguide/assets/vim-angular-snippets/* .vim/bundle/neosnippet-snippets/neosnippets/vim-angular-snippets
+
 ### vimproc
 echo 'Compiling vimproc binary into ~/.vim.ana/.vim/bundle/vimproc.vim/'
 cd ~/.vim.ana/.vim/bundle/vimproc.vim/
 make
+
 ### Ctags
 echo "Remember to install CTAGS from http://ctags.sourceforge.net/"
 echo "or `brew install ctags` on OS X"
