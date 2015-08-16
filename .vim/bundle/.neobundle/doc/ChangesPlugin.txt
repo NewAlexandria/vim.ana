@@ -1,0 +1,500 @@
+*ChangesPlugin.txt*  Print indication of changed lines for a buffer
+
+Author:  Christian Brabandt <cb@256bit.org>
+Version: 0.15 Thu, 15 Jan 2015 21:16:40 +0100
+Copyright: (c) 2010-2014 by Christian Brabandt
+
+                                           *ChangesPlugin-copyright*
+The VIM LICENSE applies to ChangesPlugin.txt (see |copyright|)
+except use ChangesPlugin instead of "Vim".  NO WARRANTY, EXPRESS OR
+IMPLIED. USE AT-YOUR-OWN-RISK.
+
+==============================================================================
+1. Contents                                                   *ChangesPlugin*
+
+  1.  Contents......................................: |ChangesPlugin|
+  2.  Manual........................................: |ChangesPlugin-manual|
+  3.  Configuration.................................: |ChangesPlugin-Config|
+  4.  ChangesPlugin Feedback........................: |ChangesPlugin-Feedback|
+  5.  ChangesPlugin History.........................: |ChangesPlugin-history|
+==============================================================================
+
+                                                       *ChangesPlugin-manual*
+2. Functionality
+----------------
+
+This plugin was written to help visualize which lines have been changes since
+editing started for a file. The plugin was inspired by so called changed-bars,
+available at other editors, such as Embarcadero C++ Builder (there it is
+called Change Bars, see:
+http://edn.embarcadero.com/article/33453#6PersonalDeveloperProductivity)
+or Visual Studio where it is called indicator margin (see
+http://blog.eveningcreek.com/?p=151).
+
+ChangesPlugin.vim uses the |diff|-feature of vim and compares the actual
+buffer with it's saved state (or possibly against a state in a repository).
+In order to highlight the indicator signs at the first column, its using
+|signs|. For a description of the highlighting and how to customize it see
+|ChangesPlugin-colors|
+
+Note, that a '-' indicates, that at least one line was deleted between that
+particular line and the following line.
+
+This means, that in order to use this plugin you need a vim, that was built
+with |+signs|-support and |+diff|-support and you also need an executable diff
+command. If neither of these conditions are met, changePlugin.vim will issue a
+warning and abort.
+
+The plugin does not place signs on lines, on which a sign was already placed
+(by e.g. another plugin).
+
+                                                        *:EC* *:EnableChanges*
+By default the plugin is not enabled. To enable it enter >
+    :EnableChanges
+When you run this command, ChangesPlugin.vim diffs the current file agains
+its saved file on disk and displays the changes in the first column.
+
+If you like to display the Changes against a different file, simply supply its
+filename as optional argument to that command, e.g. >
+    :EnableChanges ~/project/foobar.c
+would display the Signs as if your current file has been diffed against the
+file ~/project/foobar.c
+
+Alternatively, you can enter the shortcut >
+     :EC
+which basically calls :EnableChanges and supports the same arguments.
+
+If errors happen, the current buffer will be silently ignored when :EC
+is called later. Use the ! attribute, to force reevaluating the command (and
+see error messages).
+
+                                                    *:DC* *:DisableChanges*
+If you want to disable the plugin, enter >
+    :DisableChanges
+or alternatively, you can enter the shortcut >
+     :DC
+and the Display of Changes will be disabled.
+
+                                                    *:TCV* *:ToggleChangeView*
+You can toggle, between turning on and off the indicator bars, using >
+     :ToggleChangeView
+or alternatively: >
+     :TCV
+to toggle the display of indicator bars.
+
+                                                     *:CC* *:ChangesCaption*
+You are probably wondering, what those strange looking signs mean. You can
+use either >
+    :CC
+or >
+    :ChangesCaptions
+to let the Plugin display a small caption, so you know what each sign means
+and how they are colored.
+
+                                                 *:CL* *:ChangesLineOverview*
+If you are editing a huge file with several hundreds of lines, it may be hard
+to find the lines that have been changed. >
+    :CL
+or >
+    :ChangesLineOverview
+provide an easy view to only see all modified lines. This will open the
+|location-list| buffer where you can easily see the affected lines. Pushing
+enter on any line, allows you to easily jump to that line in the buffer.
+Note: Only the first line of a hunk will be added. This makes it easier to use
+|:lnext| to jump from hunk to hunk.
+
+                                                 *:CD* *:ChangesDiffMode*
+You might want to keep the diff-window open, so you can use it for modifying
+your buffer using e.g. |:diffput| or |:diffget|
+Therefore ChangesPlugin defines the two commands >
+    :CD
+and >
+    :ChangesDiffMode
+If you issue any of these commands, a vertical split buffer will open,
+that contains the changes from either your VCS or from the unmodified buffer
+as it is saved on disk. See |copy-diffs| for how to merge changes between
+those two buffers.
+
+                                                 *:CF* *:ChangesFoldDiff*
+To temporarily fold aways all non-modified lines, you can use the :CF
+command >
+    :CF
+and >
+    :ChangesFoldDiff
+
+An optional number argument can be given to select the number of context lines
+to be shown (default: context value from 'diffopt' or 3 if not given).
+Issuing the command again, will restore the previous state.
+
+                                                 *:CT* *:ChangesStyleToggle*
+This command changes how changed lines will be highlighted. It toggles between
+three states. Initially changed lines will only be indicated by a sign in the
+first column. After toggling, the sign will be displayed and additionally, all
+lines will be highlighted. After calling it a second time, all lines will be
+highlighted, but there won't be an indicator sign in the first line. Use: >
+    :CT
+and >
+    :ChangesStyleToggle
+
+To toggle between all states.
+                                                *:ChangesStageCurrentHunk*
+Stages the hunk, the cursor is currently on (works only for git). This is like
+incrementally save only part of a diff and commit it separately so that your
+commit histoy is cleaner. Use: >
+
+    :ChangesStageCurrentHunk
+< 
+to stage the hunk the cursor is currently on. Use: >
+
+    :ChangesStageCurrentHunk!
+
+to revert a staged hunk. Note: The cursor needs to be on a line, that has been
+staged or that is on a diff.
+
+                                                *ChangesPlugin-Maps* *[h* *]h*
+ChangesPlugin also sets up some mappings to move from one changed line to
+another. By default, those mappings are defined:
+
+`[h`        move backwards to the next changed line,
+`]h`        moves forward to the next changed line.
+                                                                    *v_ah*
+`ah`        selects the current hunk (only in Visual and Operator pending
+          mode)
+                                                                *<Leader>h*
+`<Leader>h` selects the current hunk and stages it. (only possible for git).
+`<Leader>H` selects the staged hunk and reverts it. (only possible for git).
+
+==============================================================================
+                                                        *ChangesPlugin-Config*
+3. Configuring ChangesPlugin.vim
+
+There are several different configuration options available.
+
+                                                        *ChangesPlugin-aucmd*
+g:changes_autocmd (default: 1)
+------------------------------
+
+By default ChangesPlugin.vim will automatically update the view. You can
+however configure it to do not so. To disable this, set this variable in your
+|.vimrc| >
+
+    let g:changes_autocmd=0
+
+The autocommands check, whether there have been changes to the file, or else
+they won't update the view.
+                                                          *ChangesPlugin-VCS*
+g:changes_vcs_check (default: 0)
+g:changes_vcs_system (default: '')
+----------------------------------
+
+Those variables allow to check for differences agains a VCS.
+Warning: This feature is rather experimental. So use it with care.
+
+You can configure ChangesPlugin to check the differrences of the current
+buffer not only against the file stored on disk, but rather query a Version
+Control System (VCS) for its latest version and indicate changes based on
+this version.
+
+Currently, ChangesPlugin supports these VCS Systems:
+    - git
+    - hg
+    - svn
+    - cvs
+    - bzr
+    - darcs
+    - fossil
+    - RCS
+
+To enable this feature, you need to set the variable g:changes_vcs_check to 1.
+ChangesPlugin will then try to auto-detect, which of the above supported
+VCS-Systems is in use. This may fail obviously, so you can always force
+ChangesPlugin to use any of the above by setting the g:changes_vcs_system
+Variable.
+
+To enable this feature, you need to set the g:changes_vcs_check variable to 1.
+The following example enables this feature and ensures, EnablePlugin is using
+git as VCS, so these lines have been entered in the |.vimrc| >
+
+    :let g:changes_vcs_check=1
+    :let g:changes_vcs_system='git'
+
+Note, that depending on the VCS System you use, this might slow down
+ChangesPlugin significantly. Especially CVS seems to be very slow.
+
+To only specify a specific VCS for a certain buffer, set the buffer-local
+variable `b:changes_vcs_system` in that particular buffer. That overrides the
+global variable `g:changes_vcs_system`.
+
+Note also, that setting g:changes_vcs_system is setting a global variable (see
+|g:-var|) and therefore would set the VCS for every buffer opened in vim (thus
+you could use changesPlugin only with one single VCS). However, guessing the
+VCS System should work fairely well and in case it doesn't, please report a
+bug to the maintainer of the plugin. Setting g:changes_vcs_check will however
+disable the check against the on-disk version of a buffer.
+
+                                                    *ChangesPlugin-preview*
+g:changes_diff_preview (default: 0)
+----------------------------------
+
+If you'd like to see the diff of the changes, you can set the variable
+g:changes_diff_preview. e.g. in your |.vimrc| set >
+
+    :let g:changes_diff_preview = 1
+<
+This will display and update the preview window, whenever the indicator signs
+are displayed.
+
+
+g:changes_respect_SignColumn (default 0)
+----------------------------------------
+
+    If set, will not reset the highlighting color of the Sign Column to that of
+    the Normal Highlighting group.
+
+g:changes_sign_text_utf8 (default 1)
+------------------------------------
+
+    If set, will use nice little UTF8 symbols for displaying the indicator
+    signs.
+
+g:changes_max_filesize (default 500)
+------------------------------------
+
+    Maximum size in kbytes of a buffer, for which to perform the check. Larger
+    buffers will likely slow down Vim considerably, since it needs to perform
+    diffs and parse the result often.
+
+                                                        *ChangesPlugin-colors*
+Specify different colors
+------------------------
+
+By default, changes Plugin uses 3 different colors for highlighting changes
+to the buffer. Added Lines will be highlighted in green, Modified lines in
+blue and deleted lines will be highlighted in yellow, where the first line
+of a number of consecutive lines will be additionally marked by a letter
+(or a nice gui icon, if your Vim version supports it [usually only the gui
+version]).
+
+If you want to changes those colors, you can define your own custom
+highlighting. For example, you can place the following lines in your
+|.vimrc| >
+
+    hi ChangesSignTextAdd ctermbg=yellow ctermfg=black guibg=green
+    hi ChangesSignTextDel ctermbg=white  ctermfg=black guibg=red
+    hi ChangesSignTextCh  ctermbg=black  ctermfg=white guibg=blue
+
+g:changes_linehi_diff (default: 0)
+----------------------------------
+
+    If set, will use Cursorline highlighting to overlay within a line the
+    changes. Use |:DC| and |:EC| to reset all highlighting. Note, will only
+    highlight changes, that have happened within the current editing session
+    (does not attempt to parse the VCS diff to try to figure the differences
+    out). Note: Currently very experimental!
+
+                                                        *ChangesPlugin-Signcol*
+g:changes_fixed_sign_column (default: 0)
+----------------------------------------
+
+When set, ChangesPlugin always tries to have the sign column visible, so that
+modifying the buffer won't make it "shift" because of a sudden disappearing or
+appearing SignColumn (|hl-SignColumn|) To enable, set in your |.vimrc| >
+
+    let g:changes_fixed_sign_column=1
+<
+g:changes_fast (default: 1)
+--------------------------
+If set (which it is by default), skip creating diffs at a couple occasions.
+
+Currently the following features are disabled, when g:changes_fast is set:
+    - update within a row for small changes (e.g. hitting 'rx' repeatedly in
+      the same row)
+    - InsertEnter/InsertLeave autocommands to update signs
+    - When inserting a new line in the buffer, update signs
+
+While those features are disabled, this also means Vim is more responsive,
+since it does not need to diff the buffer that often (at the cost of being
+slightly more imprecise).
+
+If you want to enable those settings, set in your |.vimrc| >
+
+    let g:changes_fast=0
+<
+                                                        *ChangesPlugin-errors*
+By default the plugin will not display error messages. If you want to see
+them, set the 'verbose' option to 1 (or even 2).
+
+==============================================================================
+4. ChangesPlugin Feedback                           *ChangesPlugin-feedback*
+
+Feedback is always welcome. If you like the plugin, please rate it at the
+vim-page:
+http://www.vim.org/scripts/script.php?script_id=3052
+
+You can also follow the development of the plugin at github:
+http://github.com/chrisbra/changesPlugin
+
+Please don't hesitate to report any bugs to the maintainer, mentioned in the
+third line of this document.
+
+==============================================================================
+5. ChangesPlugin History                             *ChangesPlugin-history*
+
+    BF: Bugfix
+    NF: New Feature
+
+    0.16: unreleased:
+        BF: |:DC| should also undefine the dummy sign
+        BF: Check for <nowait> flag for mappings
+        BF: various improvements by Constantin Kulikov,
+        https://github.com/chrisbra/changesPlugin/pull/14, thanks!
+        BF: Document that |:ChangesFoldDiff| toggles
+        BF: Make |:ChangesFoldDiff| show context lines
+    0.15: Jan 15, 2015:                                                 {{{1
+        NF: use |TextChanged| autocommand to update signs faster
+        NF: use new utf8 symbols
+        NF: Hide SignColumn
+        NF: include some nice looking icons for gvim
+        BF: Code cleanup
+        BF: resolve symlinks
+        NF: airline integration
+        NF: |:CF|
+        NF: |:CT|
+        BF: only draw at most one deleted sign, if a range of several
+            consecutive lines have been deleted
+        NF: only place newly changed lines (instead of always removing all
+            previous signs and adding them again)
+        NF: if g:changes_linehi_diff is set, tries to highlight changes within
+            a line by overlaying |CursorColumn| highlighting over that parts.
+        BF: try to skip expensive TextChanged calls if possible.
+        BF: detect other signs correctly (didn't work with non-english locale)
+        BF: do not try to detect changes on vim help files and read only files
+        BF: calling |:DC| twice would cause an error
+        BF: Make use of patch 7.4.341
+        BF: When undefining signs and starting the gui, make sure no
+           '[Deleted]' signs are left over
+        BF: Clear SignColumn before linking it to Normal group
+        BF: Make sure a warning message is shown for |:EC|
+        BF: Catch |E255| when defining signs
+        BF: prevent recursively calling |FocusGained| autocommand on windows
+        NF: |ChangesPlugin-Signcol|
+        BF: if vim-gitgutter is installed and the current buffer is handled by
+            vim-gitgutter, let gitgutter handle the current buffer (issue
+            https://github.com/chrisbra/changesPlugin/issues/12, reported by
+            Gray-Wind, thanks!)
+        NF: g:changes_fast variable (to enable more correct at the cost of
+            being possibly slower placement of signs).
+        BF: when updating signs, make sure that the first line of a
+            consecutive number has the correcty type
+        NF: In insert mode, when <CR> is pressed, update the signs immediately
+        NF: InsertEnter/Leave autocommands to update signs
+        NF: Stage hunks for git
+        NF: Ignore special buffers (help window, quickfix buffer, command line
+            window..)
+        BF: Make |:CL| only add the first line of each hunk to the location
+            list.
+    0.14: Aug 14, 2013:                                                 {{{1
+        BF: Exception not caught (reported by Marco, thanks!)
+        BF: Prevent flickering by resetting SignColumn on
+        updates (reported by Marco, thanks!)
+        BF: parse diff output instead of relying on vimdiff
+        and parsing the syntax items (prevents flickering
+        since no window needs to be split)
+        BF: avoid error messages, when buffer is ignored
+        (https://github.com/chrisbra/changesPlugin/issues/6
+        reported by mpfusion, thanks!)
+        BF: avoid error messages, using |DC|
+        (https://github.com/chrisbra/changesPlugin/issues/7
+        reported by mpfusion, thanks!)
+        BF: don't mess with the |alternate-file|
+        (https://github.com/chrisbra/changesPlugin/issues/8
+        reported by mpfusion, thanks!)
+        NF: |ChangesPlugin-preview|
+        NF: |ChangesPlugin-Maps|
+            [h/]h move to previous/next changed line
+    0.13: Feb 16, 2013:                                                 {{{1
+        BF: Plugin used :EnableDisplayChanges, but
+        documentation talked about EnableChanges
+        (same for DisableChanges)
+        BF: Don't load the autoload script when sourcing
+        the plugin (reported by Sergey Kholev, thanks!)
+    0.12: Jan, 31, 2012:                                                {{{1
+        NF: Fix issue #3 from github (check changes against
+            any file, suggested by Alessio Bolognino, Thanks!)
+        BF: Fix E117 error (patch by Mate Gabri, Thanks!)
+        BF: Check, that the current file is readable, before
+            diffing (patch by Mate Gabri, Thanks!)
+        BF: Sometimes, the previous Window is not accessible
+            anymore
+            (http://github.com/chrisbra/changesPlugin/issues/5
+            by Mate Gabri, Thanks!)
+    0.11: May 04, 2010:                                                 {{{1
+        BF: Document, that |InsertLeave| autocommand is used
+            as autocommand
+        BF: generate the help file with 'et' set, so that the
+            README at github looks prettier
+        BF: When staying in diff mode, don't reset 'fdm'
+            and apply syntax coloring to scratch buffer
+        BF: the check for the diff executable does not work
+            as expected (Reported by Sergey Khorev),
+            additionally outputting the Warnings did not work
+            in that case
+    0.10: Apr 28, 2010:                                                 {{{1
+        NF: Fixed Issue 1 from github
+            (http://github.com/chrisbra/changesPlugin/issues/1/find)
+    0.9: Apr 24, 2010:                                                  {{{1
+        NF: You can now use different VCS Systems for each
+            buffer you are using.
+        NF: Stay in diff mode
+        BF: Fix the display of deleted signs
+        BF: Undefining old signs, so that changing
+            g:changes_hl_lines works
+        BF: Some more error handling.
+        NF: Show an overview for changed lines in location-list
+            (|:CL|)
+        NF: Show what each sign means using |:CC|
+    0.8: Apr 22, 2010:                                                  {{{1
+        NF: Renamed the helpfile, to make it more obvious,
+        that it refers to a plugin
+        NF: Outputting name of checked file, if checking
+            against VCS
+        BF: Don't check for empty files.
+        BF: Reworked the Message function
+        BF: Don't try to place signs, if there are no
+            differences
+            (unreleased, VCS successfully tested with
+                git, hg, svn, cvs, bzr)
+    0.7: Apr 19, 2010:                                                  {{{1
+        NF: Check against a file in a VCS
+            (unreleased, first working version,
+            needs to be checked for each VCS)
+    0.6: Apr 12, 2010:                                                  {{{1
+        BF: fixed a missing highlight for DiffText
+    0.5: Apr 12, 2010:                                                  {{{1
+        BF: error when trying to access b:diffhl in the
+            scratch buffer. This should be fixed now (thanks
+            Jeet Sukumaran!)
+        BF: Use the correct highlighting groups (thanks Jeet
+            Sukumaran!)
+    0.4: Apr 12, 2010:                                                  {{{1
+        NF: |ToggleChangesView|
+        NF: The autocommand checks, if the buffer has been
+            modified, since the last time.
+        BF: Do not mess with signs, that have not been placed
+            by ChangesPlugin.vim
+        BF: CleanUp was seriously messed up (sorry, I must
+            have been asleep, when writing that)
+        BF: Take care of 'foldcolumn' setting, which would be
+            overwritten by the signs-column
+    0.3: Apr 11, 2010:                                                  {{{1
+        BF: redraw, so that the diff window will not be
+            displayed
+        NF: enabled GLVS (see |GLVS|)
+    0.2: Apr 11, 2010:                                                  {{{1
+        Added Documentation
+        created an autoload version
+    0.1: Apr 10, 2010:                                                  {{{1
+        First working version
+Modeline: {{{1
+==============================================================================
+vim:tw=76:ts=8:ft=help:et:fdm=marker:fdl=0

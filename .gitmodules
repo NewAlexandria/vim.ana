@@ -65,13 +65,13 @@
 
 ## File System
 [submodule ".vim/bundle/ack"]
-	path = .vim/bundle/ack
+	path = .vim/bundle/ack.vim/
 	url = https://github.com/mileszs/ack.vim.git
 [submodule ".vim/bundle/gtfo"]
 	path = .vim/bundle/gtfo
 	url = https://github.com/justinmk/vim-gtfo.git
 [submodule ".vim/bundle/recover"]
-	path = .vim/bundle/recover
+	path = .vim/bundle/Recover.vim/
 	url = https://github.com/chrisbra/Recover.vim.git
 
 # Layout
@@ -99,7 +99,7 @@
 	path = .vim/bundle/microviche
 	url = https://github.com/q335r49/microviche.git
 [submodule ".vim/bundle/startify"]
-	path = .vim/bundle/startify
+	path = .vim/bundle/vim-startify/
 	url = https://github.com/mhinz/vim-startify.git
 [submodule ".vim/bundle/scratch"]
 	path = .vim/bundle/scratch
@@ -110,7 +110,7 @@
 	path = .vim/bundle/vim-fugitive
 	url  = https://github.com/tpope/vim-fugitive.git
 [submodule ".vim/bundle/changesPlugin.git"]
-	path = .vim/bundle/changesPlugin.git
+	path = .vim/bundle/changesPlugin
 	url = https://github.com/chrisbra/changesPlugin.git
 [submodule ".vim/bundle/svnblame.vim"]
 	path = .vim/bundle/svnblame.vim
@@ -151,7 +151,7 @@
 	path = .vim/bundle/vim-markdown
 	url  = https://github.com/tpope/vim-markdown.git
 [submodule ".vim/bundle/vim-nginx"]
-	path = .vim/bundle/vim-nginx
+	path = .vim/bundle/nginx-vim-syntax/
 	url  = https://github.com/evanmiller/nginx-vim-syntax.git
 [submodule ".vim/bundle/vim-javascript-syntax"]
 	path = .vim/bundle/vim-javascript-syntax
@@ -163,3 +163,6 @@
   path = .vim/bundle/scss-syntax
   url  = https://github.com/cakebaker/scss-syntax.vim.git
 
+[submodule "submodules-to-NeoBundle"]
+	path = submodules-to-NeoBundle
+	url = https://gist.github.com/e817b6e175e6641fe4d1.git

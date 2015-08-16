@@ -1,0 +1,29 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g' ]
+2 info using npm@2.12.1
+3 info using node@v0.12.7
+4 verbose node symlink /usr/local/bin/node
+5 verbose install initial load of /usr/local/lib/package.json
+6 verbose readDependencies loading dependencies from /usr/local/lib/package.json
+7 silly cache add args [ '.', null ]
+8 verbose cache add spec .
+9 silly cache add parsed spec { raw: '.',
+9 silly cache add   scope: null,
+9 silly cache add   name: null,
+9 silly cache add   rawSpec: '.',
+9 silly cache add   spec: '/Users/equinox/.vim.ana/.vim/bundle',
+9 silly cache add   type: 'local' }
+10 error addLocal Could not install /Users/equinox/.vim.ana/.vim/bundle
+11 verbose stack Error: EISDIR, read
+11 verbose stack     at Error (native)
+12 verbose cwd /Users/equinox/.vim.ana/.vim/bundle
+13 error Darwin 10.8.0
+14 error argv "node" "/usr/local/bin/npm" "install" "-g"
+15 error node v0.12.7
+16 error npm  v2.12.1
+17 error code EISDIR
+18 error errno -21
+19 error EISDIR, read
+20 error If you need help, you may report this error at:
+20 error     <https://github.com/npm/npm/issues>
+21 verbose exit [ -21, true ]

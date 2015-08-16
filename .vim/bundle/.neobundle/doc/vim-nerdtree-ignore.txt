@@ -1,0 +1,61 @@
+*vim-nerdtree-ignore.txt* Custom NERDTreeIgnore settings per project
+
+==============================================================================
+CONTENTS                                              *nerdtreeignore-contents*
+
+    1. Installation ........................................... |installation|
+    2. Usage ......................................................... |usage|
+    3. Example .nerdtreeignore contents ..................... |nerdtreeignore|
+    4. Commands and Mappings ......................... |commands-and-mappings|
+    5. Configuration ......................................... |configuration|
+    6. Credits ..................................................... |credits|
+    7. License ..................................................... |license|
+
+==============================================================================
+                                                                 *installation*
+Installation ~
+
+Installation by Pathogen recommended, but if you're reading this, it's
+probably installed already.
+
+==============================================================================
+                                                                        *usage*
+Usage ~
+
+For each of your projects, i.e. directories used as root in NERDTree, create a
+|nerdtreeignore| file, containing regex per line commonly used by the
+`NERDTreeIgnore` setting. See ':h NERDTreeIgnore'
+
+==============================================================================
+                                                               *nerdtreeignore*
+Example `.nerdtreeignore` contents ~
+
+^debug$[[dir]]
+^tmp$[[dir]]
+\.sw[po]$
+\.log$
+
+==============================================================================
+                                                        *commands-and-mappings*
+Commands and Mappings ~
+
+None yet. Ideas welcome.
+
+==============================================================================
+                                                                *configuration*
+Configuration ~
+
+None yet. Ideas welcome.
+
+==============================================================================
+                                                                      *credits*
+Credits ~
+
+Path utility functions graciously stolen from `vim-misc`, all credit
+for those goes to Peter Odding.
+
+==============================================================================
+                                                                      *license*
+License ~
+
+MIT License. Copyright (c) Dusko Simidzija.
