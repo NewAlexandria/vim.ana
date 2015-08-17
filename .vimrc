@@ -1,5 +1,6 @@
 " vimrc split-up into sections
 " by hijacking the .vim/plugin directory
+" put the cursor on any file name and press `gf` to open
 
 " [ 1]   .vim/plugin/File_types.rc.vim
 " [ 2]   .vim/plugin/Ide.rc.vim
@@ -74,8 +75,8 @@ NeoBundle 'justinmk/vim-gtfo'
 NeoBundle 'chrisbra/Recover.vim'
 NeoBundle 'mohitleo9/vim-fidget',{
     \ 'build' : {
-    \    'unix' : 'npm install -g',
-    \    'mac' : 'npm install -g',
+    \    'unix' : 'sudo npm install -g',
+    \    'mac' : 'sudo npm install -g',
     \ },
 \}
 
