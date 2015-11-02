@@ -5,10 +5,12 @@
 The focus of this repo is to be portable, environment-neutral, and safe for existing configs.  Vim.ana is a Vim & related environment that can be dropped into any unix-flavor box, and without disruption to existing production configs.
 
 ## Features ##
-* Pathogen for loading.
+* NeoBundle for loading.
 * Familiar windowing setup of File Browser + Open Files + Edit Window.
 * IDE features that align with RubyMine, Eclipse, and others.
-* Comprehensive file and symbol search system
+* Comprehensive file and symbol search system.
+* Version control integration.
+* NeoVim optimized.
 
 
 ## Components ##
@@ -18,7 +20,7 @@ The submodules file is structured and commented, and wil provide a nice guide as
 
    Loader, IDE, 'Windowing', Formatting, Syntax Colors
 
-The `.vimrc` is [organized into logical sections](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin), with the `.vimrc` retainin jump-points to each.
+The `.vimrc` is organized into logical sections, with jump-points to each area of configs and plugins.
 
 1. To see a [list of all mappings](https://github.com/NewAlexandria/vim.ana#leader-and-unite-mappings) in the .vimrc group - type: `<leader>L` *(which should be `\L`)*
 2. To see a list of all the mappings from plugings, vimrc, etc. - type: `:map`
@@ -27,15 +29,11 @@ The `.vimrc` is [organized into logical sections](https://github.com/NewAlexandr
 
 
 ## Install ##
-**Vim 7.3 is recommended.  Some version greater than 7.0.23 is required for buffergator, unite, and possibly others.**
+**NeoVim is recommended.  Vim 7.3 is probably a requirement.  Some version greater than 7.0.23 is absolutely required for buffergator, unite, and possibly others.**
 
 Download and unpack to `~/.vim.ana` (the installer will look for it here. You can move it later)
 
-` cd ~; git clone git@github.com:NewAlexandria/vim.ana.git .vim.ana `
-
-> If your corporate enterprise firewalls `ssh` to GitHub, then you can use this link
-> 
-> ` cd ~; git clone https://github.com/NewAlexandria/vim.ana.git .vim.ana `
+` cd ~; git clone https://github.com/NewAlexandria/vim.ana.git .vim.ana `
 
 then link files and [do some other business](https://github.com/NewAlexandria/vim.ana/blob/master/install.sh)
 
@@ -43,7 +41,10 @@ then link files and [do some other business](https://github.com/NewAlexandria/vi
 
 The installer responsibily makes backups of your original .vim files to ~/.vim.ana/backups/  You can safely uninstall the files if need be (unlike if I'd `cp -R` the lot into your existing `.vim`)
 
-The submodule bundles are automatically pulled down.
+NeoBundles are ***not*** automatically pulled down.
+
+After you install, review the `.vimrc` and type  `<leader>L`, which should be `\L`, to dive in.
+
 
 ### Ctags ###
 
@@ -57,19 +58,13 @@ You'll want to remember to install [the *ctags* library](http://ctags.sourceforg
 
 ### OSX Users ###
 
-The pre-insintalled `Vim` does not come compiled with `lua`.  See [Chris' awesome instructions](http://www.codeography.com/2013/06/11/install-macvim-with-lua-support.html) for compiling Vim and MacVim with homebrew.
+The pre-insintalled `Vim` does not come compiled with `lua`.  See [Chris' awesome instructions](http://www.codeography.com/2013/06/11/install-macvim-with-lua-support.html) for compiling Vim, [NeoVim](https://github.com/neovim/homebrew-neovim/blob/master/README.md) and MacVim with homebrew.
 
 That's it for now.
 
 ## Customization ##
 
-If you want to add your own plugins, note that this repo uses git submodules:
-
-Additions: `cd ~/.vim.ana; git submodule add git-repo-address .vim/bundles/name-of-repo`
-Removals:  `cd ~/.vim.ana; git submodule deinit .vim/bundles/name-of-repo` then edit the `.gitmodules` file to remove the entry.
-
-### Think Submodules are teh stank? ###
-They *used* to be, before `deinit`. [See the talk, here](http://stackoverflow.com/questions/1260748/how-do-i-remove-a-git-submodule)
+If you want to add your own plugins, note that this repo uses NeoBundle.  [Instructions for adding more plugins](https://github.com/Shougo/neobundle.vim#2-install-configured-bundles), to [the .vimrc list](https://github.com/NewAlexandria/vim.ana/blob/master/.vimrc).
 
 
 ## Mañana ##
