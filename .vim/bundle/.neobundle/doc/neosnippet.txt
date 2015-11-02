@@ -198,9 +198,12 @@ g:neosnippet#disable_runtime_snippets
 				*g:neosnippet#enable_snipmate_compatibility*
 g:neosnippet#enable_snipmate_compatibility
 		If this variable is not 0, neosnippet will enable the snipMate
-		compatibility feature (For example: Filename() function) and
-		load |g:snippets_dir| and snipMate snippets automatically from
+		compatibility features:
+
+		1. Define Filename() function.
+		2. Load |g:snippets_dir| and snipMate snippets files from
 		'runtimepath'.
+		3. Enable file snippets feature in snipMate.
 
 		The default value is 0.
 
@@ -237,6 +240,11 @@ g:neosnippet#data_directory			*g:neosnippet#data_directory*
 		
 		Default value is "$XDG_CACHE_HOME/neosnippet" or
 		expand("~/.cache/neosnippet"); the absolute path of it.
+
+				*b:neosnippet_disable_snippet_triggers*
+b:neosnippet_disable_snippet_triggers
+		Specifies the triggers which disables in the buffer.
+		It is useful to disable some snippet triggers.
 
 ------------------------------------------------------------------------------
 KEY MAPPINGS 					*neosnippet-key-mappings*
@@ -311,6 +319,19 @@ neosnippet#expandable_or_jumpable()
 		\ neosnippet#expandable_or_jumpable() ?
 		\ "\<Plug>(neosnippet_expand_or_jump)" : "\<C-n>"
 <
+					*neosnippet#anonymous()*
+neosnippet#anonymous({snippet}, [{options}])
+		It defines anonymous snippet.
+		{snippet} is snippet definition.
+		{options} is snippet option.
+		You can expand snippet definition without defining snippet
+		trigger.
+		Note: You cannot use it in |map-<expr>|.  It changes the
+		buffer text.
+>
+		inoremap <silent> ((
+		\ <C-r>=neosnippet#anonymous('\left(${1}\right)${0}')<CR>
+<
 ------------------------------------------------------------------------------
 FUNCTIONS					*neosnippet-functions*
 
@@ -333,7 +354,7 @@ EXAMPLES					*neosnippet-examples*
 	"imap <expr><TAB>
 	" \ pumvisible() ? "\<C-n>" :
 	" \ neosnippet#expandable_or_jumpable() ?
-	" \    "\<TAB>" : "\<Plug>(neosnippet_expand_or_jump)"
+	" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 	"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 	" \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 

@@ -1,6 +1,6 @@
 *neobundle.txt*	Next generation Vim package manager
 
-Version: 3.1
+Version: 3.2
 Author:  Shougo <Shougo.Matsu at gmail.com>
          Copyright (C) 2010 http://github.com/gmarik
 License: MIT license  {{{
@@ -145,8 +145,11 @@ neobundle#begin([{base-path}])			*neobundle#begin()*
 		Initializes neobundle.vim and start neobundle bundles
 		configuration block.
 		{base-path} is where your downloaded plugins will be placed.
-		If {base-path} is omitted, neobundle looks for a "bundle"
-		directory in the default 'runtimepath'.
+
+		If {base-path} is omitted, neobundle looks for "~/.vim/bundle"
+		or "~/.config/nvim/bundle" directory.
+		Note: But recommend you to specify the {base-path}.
+
 		Note: You must not call the function inside a
 		"has('vim_starting')" block.
 		Note: You can use |neobundle#begin()| / |neobundle#end()| block
@@ -474,6 +477,9 @@ COMMANDS 					*neobundle-commands*
 :NeoBundleLazy {repository} [[,{revision}] [,{options}]]
 :NeoBundleLazy {repository} ,{revision}, {default} [,{options}]]
 		Registers a bundle, but doesn't add it to 'runtimepath'.
+		Note: If you want to know slow loading plugins, you should use
+		the external tool or |--startuptime|.
+		https://github.com/hyiltiz/vim-plugins-profile
 >
 		NeoBundleLazy 'The-NERD-tree', {'augroup' : 'NERDTree'}
 		NeoBundleSource The-NERD-tree
@@ -879,14 +885,15 @@ OPTIONS 					*neobundle-options*
 		    \ ]}
 <
 						*neobundle-options-build*
-		build			(Dictionary)
+		build			(Dictionary or String)
 		Specify the build script.
 		You may use this option if the plugin has to be built before
 		use. If the build script requires external commands, see
 		|neobundle-options-build_commands|.
 		This command is executed by |system()| or |vimproc#system()|
 		in plugin runtimepath.
-		For example: |vimproc|
+		Note: Type String is syntax sugar for Dictionary of
+		{"others": "cmd"}.
 
 		This dictionary accepts the following keys:
 
@@ -913,16 +920,25 @@ OPTIONS 					*neobundle-options*
 
 		Example:
 >
-	      NeoBundle 'Shougo/vimproc.vim', {
-	      \ 'build' : {
-	      \     'windows' : 'tools\\update-dll-mingw',
-	      \     'cygwin' : 'make -f make_cygwin.mak',
-	      \     'mac' : 'make -f make_mac.mak',
-	      \     'linux' : 'make',
-	      \     'unix' : 'gmake',
-	      \    },
-	      \ }
+		NeoBundle 'Shougo/vimproc.vim', {
+		\ 'build' : {
+		\     'windows' : 'tools\\update-dll-mingw',
+		\     'cygwin' : 'make -f make_cygwin.mak',
+		\     'mac' : 'make -f make_mac.mak',
+		\     'linux' : 'make',
+		\     'unix' : 'gmake',
+		\    },
+		\ }
 <
+		Note: The command is executed in plugin top directory.
+		If you need cd command, you must use "sh -c". >
+		NeoBundle 'wincent/command-t', {
+		\  'build': {
+		\    'others' :
+		\      'sh -c "cd ruby/command-t && ruby extconf.rb && make"'
+		\   }
+		\ }
+
 						*neobundle-options-augroup*
 		augroup		(String)
 		Specify an augroup name that the plugin uses for |VimEnter| or
@@ -1016,11 +1032,6 @@ OPTIONS 					*neobundle-options*
 		If set to 1, neobundle doesn't overwrite the path to user
 		runtimepath.
 
-						*neobundle-options-resettable*
-		resettable		(Number)
-		If set to 0, neobundle doesn't reset the path in
-		|neobundle#begin()|.
-
 						*neobundle-options-gui*
 		gui			(Number)
 		If set 1, neobundle will only load the plugin in GUI Vim.
@@ -1090,6 +1101,13 @@ OPTIONS 					*neobundle-options*
 			filetypes	(List) or (String)
 			Filetype list.  If the filetype is "all", it means all
 			filetypes.
+			Note: Using this will usually cause Neobundle to
+			either reset the ftplugin state, or explicitly call
+			the FileType autocommand another time (after adding
+			the lazy-loaded bundle), which results in the
+			autocommand to be processed twice for all other
+			plugins.  Therefore, using "all" does not make sense
+			usually.
 
 			filename_patterns	(List) or (String)
 			Filename regex pattern list.
@@ -1153,15 +1171,22 @@ OPTIONS 					*neobundle-options*
 			If set to non-zero, neobundle will |:NeoBundleSource|
 			on |InsertEnter| autocmd.
 
-			explorer	(Number)
-			If set to non-zero, neobundle will |:NeoBundleSource|
-			on editing non-file.
+			explorer	(Number or String)
+			If set to 1, neobundle will |:NeoBundleSource|
+			on editing all files.
+			Otherwise, neobundle will |:NeoBundleSource| if the
+			buffer name is matched the string pattern.
 			Note: It is useful for explorer behavior plugins.
-			Ex: vimfiler, metarw...
+			Ex: vimfiler, metarw, ...
 			Note: To autoload vimfiler, you must disable netrw in
 			.vimrc. >
 			" Disable netrw.vim
 			let g:loaded_netrwPlugin = 1
+<
+			For example: >
+			NeoBundleLazy 'kana/vim-meta', {
+			\ 'autoload' : { 'explorer' : '\h\w*:' },
+			\ }
 <
 			on_source	(List) or (String)
 			Load the bundle when the list bundles are loaded.
@@ -1482,6 +1507,7 @@ neobundle/install
 					*neobundle-unite-source-neobundle-log*
 neobundle/log
 		Print previous neobundle install logs.
+		And you can jump the diff URI in github.
 
 				*neobundle-unite-source-neobundle-update*
 neobundle/update
@@ -1842,6 +1868,12 @@ A: 'runtimepath' is set on |neobundle#end()|.  So it is not set when the
 colorscheme executed.  You can use |neobundle-options-force| for it or write
 |:colorscheme| command after |neobundle#end()|.
 
+Q: fugitive does not work using neobundle.  Please help! >
+	NeoBundle 'tpope/vim-fugitive'
+
+A: You must specify |neobundle-options-augroup| like this. >
+	" fugitive uses augroup fugitive.
+	NeoBundle 'tpope/vim-fugitive', { 'augroup' : 'fugitive'}
 
 ==============================================================================
 vim:tw=78:ts=8:ft=help:norl:noet:fen:
