@@ -1,6 +1,10 @@
 ""===================     IDE     ======================""
 ""                                                      ""
 
+"let g:python_host_prog '/usr/bin/python2.7'
+
+
+
 " reopen buffer as sudo
 cmap w!! w !sudo tee % >/dev/null
 
@@ -18,9 +22,23 @@ set scrolloff=3           " Indicate jump out of the screen when 3 lines before 
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
+
+" TMUX adjustments
 if exists('$TMUX')  " Support resizing in tmux
   set ttymouse=xterm2
 endif
+"" TMUX navigator with NeoVim
+"infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
+"tic $TERM.ti
+
+""" https://github.com/christoomey/vim-tmux-navigator#vim-1
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
+"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
 
 
 " embeds the absolute line number amid a relative number line

@@ -9,7 +9,7 @@ set autoindent
 set expandtab
 set nostartofline
 let g:matchparen_insert_timeout=5
-set encoding=utf8
+"set encoding=utf8
 
 "" Modes
 nnoremap <C-i> :set invpaste paste?<CR>

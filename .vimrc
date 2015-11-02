@@ -1,13 +1,6 @@
 " vimrc split-up into sections
-" by hijacking the .vim/plugin directory
-" put the cursor on any file name and press `gf` to open
-
-" [ 1]   .vim/plugin/File_types.rc.vim
-" [ 2]   .vim/plugin/Ide.rc.vim
-" [ 3]   .vim/plugin/Movements.rc.vim
-" [ 3]   .vim/plugin/Syntax.rc.vim
-" [ 4]   .vim/plugin/Text_formatting.rc.vim
-" [ 5]   .vim/plugin/Windowing.rc.vim
+" see `runtime` list at the bottom
+set encoding=utf8
 
 " load the bundler
 " Note: Skip initialization for vim-tiny or vim-small.
@@ -92,6 +85,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'q335r49/microviche'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'mtth/scratch.vim'
+NeoBundle 'christoomey/vim-tmux-navigator'
 
 " VCS
 NeoBundle 'tpope/vim-fugitive'
@@ -131,4 +125,12 @@ NeoBundleCheck
 let mapleader = '\'
 
 let g:init_with_blended_relative_absolute_number_line = 1
+
+" put the cursor on any file name and press `gf` to open
+runtime plugin/File_types.rc.vim
+runtime plugin/Ide.rc.vim
+runtime plugin/Movements.rc.vim
+runtime plugin/Syntax.rc.vim
+runtime plugin/Text_formatting.rc.vim
+runtime plugin/Windowing.rc.vim
 
