@@ -5,10 +5,12 @@
 The focus of this repo is to be portable, environment-neutral, and safe for existing configs.  Vim.ana is a Vim & related environment that can be dropped into any unix-flavor box, and without disruption to existing production configs.
 
 ## Features ##
-* Pathogen for loading.
+* NeoBundle for loading.
 * Familiar windowing setup of File Browser + Open Files + Edit Window.
 * IDE features that align with RubyMine, Eclipse, and others.
-* Comprehensive file and symbol search system
+* Comprehensive file and symbol search system.
+* Version control integration.
+* NeoVim optimized.
 
 
 ## Components ##
@@ -18,7 +20,7 @@ The submodules file is structured and commented, and wil provide a nice guide as
 
    Loader, IDE, 'Windowing', Formatting, Syntax Colors
 
-The `.vimrc` is [organized into logical sections](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin), with the `.vimrc` retainin jump-points to each.
+The `.vimrc` is organized into logical sections, with jump-points to each area of configs and plugins.
 
 1. To see a [list of all mappings](https://github.com/NewAlexandria/vim.ana#leader-and-unite-mappings) in the .vimrc group - type: `<leader>L` *(which should be `\L`)*
 2. To see a list of all the mappings from plugings, vimrc, etc. - type: `:map`
@@ -45,6 +47,9 @@ The installer responsibily makes backups of your original .vim files to ~/.vim.a
 
 The submodule bundles are automatically pulled down.
 
+After you install, review the `.vimrc` and type  `<leader>L`, which should be `\L`, to dive in.
+
+
 ### Ctags ###
 
 You'll want to remember to install [the *ctags* library](http://ctags.sourceforge.net/).  Installation strategies differ per-platform, and I wanted the `install.sh` to be robust.  If you're on OS X, you can ``brew install ctags``
@@ -57,7 +62,7 @@ You'll want to remember to install [the *ctags* library](http://ctags.sourceforg
 
 ### OSX Users ###
 
-The pre-insintalled `Vim` does not come compiled with `lua`.  See [Chris' awesome instructions](http://www.codeography.com/2013/06/11/install-macvim-with-lua-support.html) for compiling Vim and MacVim with homebrew.
+The pre-insintalled `Vim` does not come compiled with `lua`.  See [Chris' awesome instructions](http://www.codeography.com/2013/06/11/install-macvim-with-lua-support.html) for compiling Vim, [NeoVim](https://github.com/neovim/homebrew-neovim/blob/master/README.md) and MacVim with homebrew.
 
 That's it for now.
 
