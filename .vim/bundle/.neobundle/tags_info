@@ -46,4 +46,5 @@ vim-session
 vim-signature
 vim-startify
 vim-surround
+vim-tmux-navigator
 vimproc.vim
