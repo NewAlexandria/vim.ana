@@ -15,12 +15,22 @@ The focus of this repo is to be portable, environment-neutral, and safe for exis
 
 ## Components ##
 
-See the commented sections of [`.gitmodules`](https://github.com/NewAlexandria/vim.ana/blob/master/.gitmodules)
-The submodules file is structured and commented, and wil provide a nice guide as to what's in the box.
+See the [opening sections of the .vimrc](https://github.com/NewAlexandria/vim.ana/blob/master/.vimrc#L25-L112) for a structured and commented guide to what's in the box.
 
-   Loader, IDE, 'Windowing', Formatting, Syntax Colors
+* Loaders
+* IDE
+* Text & Completions
+* Frameworks
+* File System
+* Layout
+* Windowing
+* Version control
+* Formatting
+* Syntax Colors
 
 The `.vimrc` is organized into logical sections, with jump-points to each area of configs and plugins.
+
+## Mappings ##
 
 1. To see a [list of all mappings](https://github.com/NewAlexandria/vim.ana#leader-and-unite-mappings) in the .vimrc group - type: `<leader>L` *(which should be `\L`)*
 2. To see a list of all the mappings from plugings, vimrc, etc. - type: `:map`
@@ -93,7 +103,7 @@ Thanks for experimenting with this repo.  Suggestions always welcome. I'm partic
 ## Sauce ##
 
 #### Windowing Layout
-![The awesomeness you'll get with this repo](http://i.imgur.com/p262L.png)
+![The awesomeness you'll get with this repo](http://imgur.com/At3ku1l.jpg)
 
 #### Leader and Unite Mappings
 ![the LeaderMap() function](http://i.imgur.com/4InDFSt.png)
