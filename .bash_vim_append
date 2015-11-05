@@ -32,17 +32,44 @@ function mvi() {
   fi
 }
 
-function mvis() {
-  mvim --servername $1 --remote-silent ${*:2}
+function vis() {
+  func_arr=( 'nvim' 'mvim' 'vim' )
+  for func in "${func_arr[@]}"
+  do
+    if [ -n "$(type -t $func)" ] && [ "$(type -t $func)" = file ]
+    then 
+      echo "Using $func"
+      mvim --servername $1 --remote-silent ${*:2}
+      break
+    fi
+  done
 }
 
 # takes the files returned by an ag search, and opens them in vim
 function agv() {
-  mvim $(ag $1 $2 -l --nocolor | xargs)
+  func_arr=( 'nvim' 'mvim' 'vim' )
+  for func in "${func_arr[@]}"
+  do
+    if [ -n "$(type -t $func)" ] && [ "$(type -t $func)" = file ]
+    then 
+      echo "Using $func"
+      $func $(ag $1 $2 -l --nocolor | xargs)
+      break
+    fi
+  done
 }
 
 # takes the files returned by an ack search, and opens them in vim
 function ackv() {
-  mvim $(ack $1 $2 -l --nocolor | xargs)
+  func_arr=( 'nvim' 'mvim' 'vim' )
+  for func in "${func_arr[@]}"
+  do
+    if [ -n "$(type -t $func)" ] && [ "$(type -t $func)" = file ]
+    then 
+      echo "Using $func"
+      mvim $(ack $1 $2 -l --nocolor | xargs)
+      break
+    fi
+  done
 }
 
