@@ -21,6 +21,7 @@ tabular
 unite-outline
 unite-tag
 unite.vim
+vCoolor.vim
 vim-airline
 vim-align
 vim-buffergator
@@ -33,6 +34,7 @@ vim-gtfo
 vim-haml
 vim-indent-guides
 vim-javascript
+vim-lengthmatters
 vim-markdown
 vim-misc
 vim-nerdtree-ignore

@@ -23,6 +23,18 @@ set scrolloff=3           " Indicate jump out of the screen when 3 lines before 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
 
+
+" Color Finders
+"" For web  color insertion
+nnoremap <space>cw :VCoolor<cr>     
+"" For rgb  color insertion
+nnoremap <space>cr :VCoolIns r<cr>  
+"" For hsl  color insertion
+nnoremap <space>ch :VCoolIns h<cr>  
+"" For rgba color insertion
+nnoremap <space>ca :VCoolIns ra<cr> 
+
+
 " TMUX adjustments
 if exists('$TMUX')  " Support resizing in tmux
   set ttymouse=xterm2

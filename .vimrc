@@ -28,11 +28,10 @@ NeoBundle 'xolox/vim-misc'
 
 " IDE
 " also note that some IDE affordance provided by ctags-gem-rbenv integration
-"" Unite
+"" Search / Indexing
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'h1mesuke/unite-outline'
-
+NeoBundle 'Shougo/unite-outline'
 "" Async
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
@@ -53,6 +52,7 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'whatyouhide/vim-lengthmatters'
 
 
 "" Frameworks
@@ -61,6 +61,7 @@ NeoBundle 'tpope/vim-bundler'
 NeoBundle 'tpope/vim-rake'
 NeoBundle 'tpope/vim-projectionist'
 NeoBundle 'tpope/vim-cucumber'
+NeoBundle 'KabbAmine/vCoolor.vim'
 
 "" File System
 NeoBundle 'mileszs/ack.vim'

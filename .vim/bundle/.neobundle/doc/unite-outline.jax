@@ -1,6 +1,7 @@
 *unite-outline.txt*	バッファの見出し一覧を表示し、ジャンプ機能を提供する。
 
 Author  : h1mesuke <himesuke@gmail.com>
+          Shougo <Shougo.Matsu at gmail.com>
 Updated : 2012-01-11
 Version : 0.5.1
 License : MIT license {{{
@@ -68,6 +69,12 @@ License : MIT license {{{
 
 	インストールに成功すると :Unite outline でバッファの見出し一覧を表示で
 	きます。（そのファイルタイプ用の outline info が存在する場合）
+
+
+	C, C++, Java, etc~
+
+		* Exuberant Ctags（必須）
+		  http://ctags.sourceforge.net/
 
 ==============================================================================
 使い方					*unite-outline-usage*
@@ -236,8 +243,8 @@ License : MIT license {{{
 		      \ 'id'      : 'Special',
 		      \ 'macro'   : 'Macro',
 		      \ 'method'  : 'Function',
-		      \ 'normal'  : g:unite_abbr_highlight,
-		      \ 'package' : g:unite_abbr_highlight,
+		      \ 'normal'  : 'Normal',
+		      \ 'package' : 'Normal',
 		      \ 'special' : 'Macro',
 		      \ 'type'    : 'Type',
 		      \ 'level_1' : 'Type',
@@ -245,8 +252,8 @@ License : MIT license {{{
 		      \ 'level_3' : 'Identifier',
 		      \ 'level_4' : 'Constant',
 		      \ 'level_5' : 'Special',
-		      \ 'level_6' : g:unite_abbr_highlight,
-		      \ 'parameter_list': g:unite_abbr_highlight,
+		      \ 'level_6' : 'Normal',
+		      \ 'parameter_list': 'Normal',
 		      \ }
 <
 		ハイライトを適用する部分を指定するためのパターンは、個々のファ
@@ -383,7 +390,7 @@ EXTRACTING HEADINGS BY CALLBACK ~
 		これらは、見出し抽出時のパターンマッチングの速度を最大限に上げ
 		るためにもうけられている制約です。見出しの抽出に後方参照が必要
 		な場合は、 heading-1, heading, heading+1 には後方参照のない緩
-		めのパターンを設定し、マッチ後の create_heading()関数にて再度、
+		めのパターンを設定し、マッチ後の create_heading() 関数にて再度、
 		後方参照を用いた厳密なマッチングを行うといった方法で対処して下
 		さい。
 					*unite-outline-info-heading+1*
@@ -416,7 +423,7 @@ EXTRACTING HEADINGS BY CALLBACK ~
 		この関数を定義することで、見出し一覧に設定する文字列の整形、お
 		よび見出しレベル（インデント）の設定が行えます。
 
-		create_heading()関数に渡される引数は以下の通りです。
+		create_heading() 関数に渡される引数は以下の通りです。
 
 		* {which}		文字列
 					マッチの種類
@@ -671,6 +678,7 @@ SYNTAX HIGHLIGHTING ~
 		      \     'pattern'  : '/\S\+\ze\s*(/' },
 		      \   { 'name'     : 'parameter_list',
 		      \     'pattern'  : '/(.*)/' },
+		      \ ],
 		      \}
 <
 		highlight属性は省略でき、その場合は
@@ -724,7 +732,7 @@ HOOKS ~
 	グラムが実行可能である（PATH が通っており、|system()|から呼び出せる）
 	必要があります。
 
-	C, C++, Java ~
+	C, C++, Java, etc~
 
 		* Exuberant Ctags（必須）
 		  http://ctags.sourceforge.net/
@@ -767,8 +775,7 @@ HOOKS ~
 
 		{name} に関連付けられたハイライトグループ名を返します。
 		関連付けがない場合は、引数を順次調べ関連付けを探します。関連付
-		けが最後まで見つからなかった場合は |g:unite_abbr_highlight| の
-		値を返します。
+		けが最後まで見つからなかった場合は "Normal" の値を返します。
 
 		ハイライトグループ名への関連付けについては
 		|g:unite_source_outline_highlight| を参照
