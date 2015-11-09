@@ -16,7 +16,7 @@ let g:solarized_termcolors = 256
 "let g:solarized_termtrans  = 1
 let g:solarized_contrast = 'high'
 
-set guifont=Source\ Code\ Pro\ for\ Powerline
+set guifont=Source\ Code\ Pro
 set laststatus=2
 let g:airline_powerline_fonts = 1
 
@@ -27,9 +27,10 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 3
 "let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
+let g:indent_guides_color_change_percent = 10
 if has('autocmd')
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#011C22 ctermbg=0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#022B34 ctermbg=8
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#081F26 " ctermbg=darkgrey  #202020 
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#00151B ctermbg=black     " #171717
 endif
 
 

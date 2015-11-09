@@ -81,13 +81,18 @@ If you want to add your own plugins, note that this repo uses NeoBundle.  [Instr
 
 The following directions are under review:
 
+- [configure for Tmux](http://tilvim.com/2014/07/30/tmux-and-vim.html)
+#### Searching
 - adding a Unite scope for `dbext` databases (or [SQLcomplete](https://github.com/vim-scripts/SQLComplete.vim))
 - VCSCommand
 - netrw
+#### Indexing
 - a proper tag parses for ruby *and rspec* namespaces, since 'ctags' fails at this, perhaps [starscope](https://github.com/eapache/starscope/blob/master/doc/USER_GUIDE.md),  [tagfinder](http://andrewradev.com/2011/10/15/vim-and-ctags-finding-tag-definitions/), or [rdoc-tags](https://github.com/rdoc/rdoc-tags)
 - A clear winner for ctag support, whether tpope's, [vim-tags](https://github.com/szw/vim-tags), or another.
+#### Collab
+- [floobits](https://github.com/Floobits/floobits-neovim) for SubEthnaEdit/Etherpad style collaboration.
 - Install via [Vimswitch](https://priomsrb.github.io/vimswitch/)?
-- [configure for Tmux](http://tilvim.com/2014/07/30/tmux-and-vim.html)
+
 
 
 # Спасибо #
