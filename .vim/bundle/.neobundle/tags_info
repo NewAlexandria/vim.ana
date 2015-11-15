@@ -33,6 +33,7 @@ vim-fugitive
 vim-gtfo
 vim-haml
 vim-indent-guides
+vim-indexed-search
 vim-javascript
 vim-lengthmatters
 vim-markdown
