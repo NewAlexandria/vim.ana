@@ -34,6 +34,9 @@ nnoremap <space>ch :VCoolIns h<cr>
 "" For rgba color insertion
 nnoremap <space>ca :VCoolIns ra<cr> 
 
+" Add the pry debug line with \bp (or <Space>bp, if you did: map <Space> <Leader> )
+map <Leader>dd obinding.pry if Rails.env.development? || Rails.env.test?<esc>:w<cr>
+map <Leader>df /binding<cr>:noh<cr>
 
 " TMUX adjustments
 if exists('$TMUX')  " Support resizing in tmux

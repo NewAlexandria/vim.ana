@@ -33,6 +33,9 @@ if has('autocmd')
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#00151B ctermbg=black     " #171717
 endif
 
+" Make those debugger statements painfully obvious
+au BufEnter *.rb syn match error contained "\<binding.pry\>"
+au BufEnter *.rb syn match error contained "\<debugger\>"
 
 " Rainbow Parentheses 
 let g:rbpt_colorpairs = [
