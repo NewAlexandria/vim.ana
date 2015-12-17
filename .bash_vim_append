@@ -5,7 +5,7 @@
 #                            ^^--replace this if you're working locally" 
 
 alias cdv='cd ~/.vim.ana'
-GIT_EDITOR="vim -u NONE"; export GIT_EDITOR
+export GIT_EDITOR="nvim"
 
 function mvi() {
   srvname=$1
