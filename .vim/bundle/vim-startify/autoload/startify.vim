@@ -10,10 +10,12 @@ endif
 let g:autoloaded_startify = 1
 
 " Init: values {{{1
+let s:nowait_string  = v:version >= 704 || (v:version == 703 && has('patch1261')) ? '<nowait>' : ''
+let s:nowait         = get(g:, 'startify_mapping_nowait') ? s:nowait_string : ''
 let s:numfiles       = get(g:, 'startify_files_number', 10)
 let s:show_special   = get(g:, 'startify_enable_special', 1)
 let s:delete_buffers = get(g:, 'startify_session_delete_buffers')
-let s:relative_path  = get(g:, 'startify_relative_path') ? ':.' : ':p:~'
+let s:relative_path  = get(g:, 'startify_relative_path') ? ':.:~' : ':p:~'
 let s:session_dir    = resolve(expand(get(g:, 'startify_session_dir',
       \ has('win32') ? '$HOME\vimfiles\session' : '~/.vim/session')))
 
@@ -75,13 +77,14 @@ function! startify#insane_in_the_membrane() abort
   if s:show_special
     call append('$', ['   [e]  <empty buffer>', ''])
   endif
-  call s:register(line('$')-1, 'e', 'special', 'enew', '')
+  call s:register(line('$')-1, 'e', 'special', 'enew', '', s:nowait_string)
 
   let s:entry_number = 0
   if filereadable('Session.vim')
     call append('$', ['   [0]  '. getcwd() . s:sep .'Session.vim', ''])
     call s:register(line('$')-1, '0', 'session',
-          \ 'call startify#session_delete_buffers() | source', 'Session.vim')
+          \ 'call startify#session_delete_buffers() | source', 'Session.vim',
+          \ s:nowait)
     let s:entry_number = 1
     let l:show_session = 1
   endif
@@ -117,10 +120,10 @@ function! startify#insane_in_the_membrane() abort
 
   if s:show_special
     call append('$', ['', '   [q]  <quit>'])
-    call s:register(line('$'), 'q', 'special', 'call s:close()', '')
+    call s:register(line('$'), 'q', 'special', 'call s:close()', '', s:nowait_string)
   else
     " Don't overwrite the last regular entry, thus +1
-    call s:register(line('$')+1, 'q', 'special', 'call s:close()', '')
+    call s:register(line('$')+1, 'q', 'special', 'call s:close()', '', s:nowait_string)
   endif
 
   " compute first line offset
@@ -159,20 +162,31 @@ function! startify#session_load(...) abort
     echomsg 'There are no sessions...'
     return
   endif
-  call inputsave()
-  let spath = s:session_dir . s:sep . (exists('a:1')
-        \ ? a:1
-        \ : input('Load this session: ', fnamemodify(v:this_session, ':t'), 'custom,startify#session_list_as_string'))
-        \ | redraw
-  call inputrestore()
+
+  let spath = s:session_dir . s:sep
+
+  if a:0
+    let spath .= a:1
+  else
+    if has('win32')
+      call inputsave()
+      let spath .= input(
+            \ 'Load this session: ',
+            \ fnamemodify(v:this_session, ':t'),
+            \ 'custom,startify#session_list_as_string') | redraw
+      call inputrestore()
+    else
+      let spath .= '__LAST__'
+    endif
+  endif
+
   if filereadable(spath)
-    if get(g:, 'startify_session_persistence')
-          \ && exists('v:this_session')
-          \ && filewritable(v:this_session)
+    if get(g:, 'startify_session_persistence') && filewritable(v:this_session)
       call startify#session_write(fnameescape(v:this_session))
     endif
     call startify#session_delete_buffers()
     execute 'source '. fnameescape(spath)
+    call s:create_last_session_link(spath)
   else
     echo 'No such file: '. spath
   endif
@@ -290,6 +304,8 @@ function! startify#session_write(spath)
     silent update
     silent hide
   endif
+
+  call s:create_last_session_link(a:spath)
 endfunction
 
 " Function: #session_delete {{{1
@@ -337,12 +353,12 @@ endfunction
 
 " Function: #session_list {{{1
 function! startify#session_list(lead, ...) abort
-  return map(split(globpath(s:session_dir, '*'.a:lead.'*'), '\n'), 'fnamemodify(v:val, ":t")')
+  return filter(map(split(globpath(s:session_dir, '*'.a:lead.'*'), '\n'), 'fnamemodify(v:val, ":t")'), 'v:val !=# "__LAST__"')
 endfunction
 
 " Function: #session_list_as_string {{{1
 function! startify#session_list_as_string(lead, ...) abort
-  return join(map(split(globpath(s:session_dir, '*'.a:lead.'*'), '\n'), 'fnamemodify(v:val, ":t")'), "\n")
+  return join(filter(map(split(globpath(s:session_dir, '*'.a:lead.'*'), '\n'), 'fnamemodify(v:val, ":t")'), 'v:val !=# "__LAST__"'), "\n")
 endfunction
 
 " Function: #debug {{{1
@@ -420,7 +436,7 @@ function! s:display_by_path(path_prefix, path_format) abort
       if has('win32')
         let absolute_path = substitute(absolute_path, '\[', '\[[]', 'g')
       endif
-      call s:register(line('$'), index, 'file', 'edit', absolute_path)
+      call s:register(line('$'), index, 'file', 'edit', absolute_path, s:nowait)
       let s:entry_number += 1
     endfor
 
@@ -500,7 +516,8 @@ endfunction
 
 " Function: s:show_sessions {{{1
 function! s:show_sessions() abort
-  let sfiles = filter(split(globpath(s:session_dir, '*'), '\n'), 'v:val !~# "x\.vim$"')
+  let sfiles = filter(split(globpath(s:session_dir, '*'), '\n'),
+        \ 'v:val !~# "x\.vim$" && v:val !~# "__LAST__$"')
   if empty(sfiles)
     if exists('s:last_message')
       unlet s:last_message
@@ -519,7 +536,7 @@ function! s:show_sessions() abort
     if has('win32')
       let fname = substitute(fname, '\[', '\[[]', 'g')
     endif
-    call s:register(line('$'), index, 'session', 'SLoad', fname)
+    call s:register(line('$'), index, 'session', 'SLoad', fname, s:nowait)
     let s:entry_number += 1
   endfor
 
@@ -547,7 +564,7 @@ function! s:show_bookmarks() abort
     if has('win32')
       let fname = substitute(fname, '\[', '\[[]', 'g')
     endif
-    call s:register(line('$'), index, 'file', 'edit', fname)
+    call s:register(line('$'), index, 'file', 'edit', fname, s:nowait)
     unlet bookmark  " avoid type mismatch for heterogeneous lists
   endfor
 
@@ -595,17 +612,17 @@ endfunction
 
 " Function: s:set_mappings {{{1
 function! s:set_mappings() abort
-  nnoremap <buffer><nowait><silent> i             :enew <bar> startinsert<cr>
-  nnoremap <buffer><nowait><silent> <insert>      :enew <bar> startinsert<cr>
-  nnoremap <buffer><nowait><silent> b             :call <sid>set_mark('B')<cr>
-  nnoremap <buffer><nowait><silent> s             :call <sid>set_mark('S')<cr>
-  nnoremap <buffer><nowait><silent> t             :call <sid>set_mark('T')<cr>
-  nnoremap <buffer><nowait><silent> v             :call <sid>set_mark('V')<cr>
-  nnoremap <buffer><nowait><silent> <cr>          :call startify#open_buffers()<cr>
-  nnoremap <buffer><nowait><silent> <2-LeftMouse> :call startify#open_buffers()<cr>
+  execute "nnoremap <buffer>". s:nowait_string ."<silent> i             :enew <bar> startinsert<cr>"
+  execute "nnoremap <buffer>". s:nowait_string ."<silent> <insert>      :enew <bar> startinsert<cr>"
+  execute "nnoremap <buffer>". s:nowait_string ."<silent> b             :call <sid>set_mark('B')<cr>"
+  execute "nnoremap <buffer>". s:nowait_string ."<silent> s             :call <sid>set_mark('S')<cr>"
+  execute "nnoremap <buffer>". s:nowait_string ."<silent> t             :call <sid>set_mark('T')<cr>"
+  execute "nnoremap <buffer>". s:nowait_string ."<silent> v             :call <sid>set_mark('V')<cr>"
+  execute "nnoremap <buffer>". s:nowait_string ."<silent> <cr>          :call startify#open_buffers()<cr>"
+  execute "nnoremap <buffer>". s:nowait_string ."<silent> <2-LeftMouse> :call startify#open_buffers()<cr>"
 
   for k in keys(s:entries)
-    execute 'nnoremap <buffer><nowait><silent>' s:entries[k].index
+    execute 'nnoremap <buffer><silent>'. s:entries[k].nowait s:entries[k].index
           \ ':call startify#open_buffers('. string(k) .')<cr>'
   endfor
 
@@ -728,12 +745,26 @@ function! s:print_section_header() abort
 endfunction
 
 " Function: s:register {{{1
-function! s:register(line, index, type, cmd, path)
+function! s:register(line, index, type, cmd, path, wait)
   let s:entries[a:line] = {
         \ 'index':  a:index,
         \ 'type':   a:type,
         \ 'cmd':    a:cmd,
         \ 'path':   a:path,
+        \ 'nowait': a:wait,
         \ 'marked': 0,
         \ }
+endfunction
+
+" Function: s:create_last_session_link {{{1
+function! s:create_last_session_link(spath)
+  if !has('win32') && a:spath !~# '__LAST__$'
+    let cmd = printf('ln -sf %s %s',
+          \ shellescape(a:spath),
+          \ shellescape(fnamemodify(a:spath, ':h') .'/__LAST__'))
+    silent! call system(cmd)
+    if v:shell_error
+      echomsg "startify: Can't create 'last used session' symlink."
+    endif
+  endif
 endfunction

@@ -87,18 +87,26 @@ OPTIONS                                                       *startify-options*
 Put these variables into your vimrc. The shown assignments are also the
 default values.
 
+    Most used options:~
     |g:startify_bookmarks|
     |g:startify_change_to_dir|
     |g:startify_change_to_vcs_root|
-    |g:startify_custom_footer|
     |g:startify_custom_header|
-    |g:startify_custom_indices|
-    |g:startify_disable_at_vimenter|
     |g:startify_enable_special|
-    |g:startify_enable_unsafe|
-    |g:startify_files_number|
     |g:startify_list_order|
     |g:startify_relative_path|
+    |g:startify_skiplist|
+
+    Misc options:~
+    |g:startify_custom_footer|
+    |g:startify_custom_indices|
+    |g:startify_disable_at_vimenter|
+    |g:startify_enable_unsafe|
+    |g:startify_files_number|
+    |g:startify_mapping_nowait|
+    |g:startify_skiplist_server|
+
+    Sessions:~
     |g:startify_session_autoload|
     |g:startify_session_delete_buffers|
     |g:startify_session_dir|
@@ -106,8 +114,6 @@ default values.
     |g:startify_session_remove_lines|
     |g:startify_session_savecmds|
     |g:startify_session_savevars|
-    |g:startify_skiplist_server|
-    |g:startify_skiplist|
 
 ------------------------------------------------------------------------------
                                                         *g:startify_session_dir*
@@ -128,22 +134,21 @@ At the moment startify supports these lists:~
 1) "files"
 
    This lists the most recently used files using viminfo. The number of files
-   is limited by g:startify_files_number.
+   is limited by |g:startify_files_number|.
 
 2) "dir"
 
    This lists the files from the current directory sorted by modification
-   time. The number of files is limited by g:startify_files_number.
+   time. The number of files is limited by |g:startify_files_number|.
 
 3) "bookmarks"
 
    This lists bookmarks, thus hardcoded files or directories that will always
-   be shown. Have a look at g:startify_bookmarks.
+   be shown. Have a look at |g:startify_bookmarks|.
 
 4) "sessions"
 
-   This lists all the sessions saved in the directory
-   g:startify_session_dir.
+   This lists all the sessions saved in the directory |g:startify_session_dir|.
 
 Section headers:~
 
@@ -464,6 +469,22 @@ Show filenames relative to the current working directory instead of as
 absolute paths. This only applies to the "files" list, since the "dir" list is
 relative by nature.
 
+-----------------------------------------------------------------------------
+                                                    *g:startify_mapping_nowait*
+>
+    let g:startify_mapping_nowait = 0
+<
+Force the usage of |<nowait>| in all mappings.
+
+This helps guarding against global mappings that start with the same
+characters as a Startify index, but might break local mappings, e.g. when you
+have indexes "1" and "11", the "11" won't be accessable anymore, since "1"
+will be opened right way.
+
+Only use this when you know what you're doing.
+
+NOTE: This option needs at least Vim 7.3.1261. It gets ignored otherwise.
+
 ==============================================================================
 AUTOCMD                                                       *startify-autocmd*
 
@@ -475,13 +496,16 @@ user autocmd is issued. You can hook into it like this:
 ==============================================================================
 COMMANDS                                                     *startify-commands*
 >
-    :SLoad
-    :SSave
-    :SDelete
+    :SSave [session]
+    :SDelete [session]
 <
-Commands to load, save or delete a session. These take either 0 or 1 argument.
-If you don't specify the session name as an argument, they will just ask for
-it.
+Save or delete a session. If you don't specify a session name, it will prompt
+you for one.
+>
+    :SLoad [session]
+<
+Load a session. If you don't specify a session name, it will either prompt you
+for one (Windows) or load the last used session (Unix).
 
 Providing only a part of the session name works too, if you complete the
 argument with either <c-d> or <tab> afterwards.
@@ -580,6 +604,8 @@ FAQ                                                               *startify-faq*
                      startup?
     |startify-faq-07|  The session autoload feature is not working!
     |startify-faq-08|  How do I center my header/footer?
+    |startify-faq-09|  tmux-resurrect?
+    |startify-faq-10|  Temporarily skip Startify at start?
 
 ------------------------------------------------------------------------------
                                                                *startify-faq-01*
@@ -680,6 +706,27 @@ Try something along these lines:
         return centered_lines
     endfunction
     let g:startify_custom_header = s:filter_header(['a', 'bb', 'ccc'])
+<
+------------------------------------------------------------------------------
+                                                               *startify-faq-09*
+tmux-resurrect?~
+
+If you use tmux-resurrect to restore your tmux environment, you can use :SLoad
+to load your last used session right away:
+>
+    set -g @resurrect-processes '"vim->vim +SLoad"'
+<
+------------------------------------------------------------------------------
+                                                               *startify-faq-10*
+Temporarily skip Startify at start?~
+
+In some cases you might need to skip Startify at start. E.g.
+>
+    vim +VimwikiMakeDiaryNote
+<
+Startify would interfere in this case. A simple way to avoid that would be:
+>
+    vim --cmd 'let g:startify_disable_at_vimenter = 1' +VimwikiMakeDiaryNote
 <
 ==============================================================================
 EXAMPLE                                                       *startify-example*
