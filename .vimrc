@@ -42,6 +42,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 \     'unix' : 'gmake',
 \    },
 \ }
+NeoBundle 'ludovicchabant/vim-gutentags'
 
 "" Text & Completions
 NeoBundle 'ervandew/supertab'
@@ -74,6 +75,7 @@ NeoBundle 'mohitleo9/vim-fidget',{
     \    'mac' : 'sudo npm install -g',
     \ },
 \}
+NeoBundle 'ludovicchabant/vim-gutentags'
 
 " Layout
 NeoBundle 'scrooloose/nerdtree'
@@ -88,6 +90,7 @@ NeoBundle 'q335r49/microviche'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'mtth/scratch.vim'
 NeoBundle 'christoomey/vim-tmux-navigator'
+NeoBundle 'wellle/visual-split.vim'
 
 " VCS
 NeoBundle 'tpope/vim-fugitive'
