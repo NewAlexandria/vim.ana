@@ -632,6 +632,12 @@ g:unite_source_menu_menus			*g:unite_source_menu_menus*
 		Menu candidates.  If candidates type is a dictionary, keys are
 		ignored, but you can refer to the map attribute described below.
 
+		file_candidates
+				(List)			(Optional)
+		Menu candidates for files.
+		The first item is used for word.  The second item is file
+		path.
+
 		command_candidates
 				(List or Dictionary)	(Optional)
 		Menu candidates for commands.
@@ -676,6 +682,15 @@ g:unite_source_menu_menus			*g:unite_source_menu_menus*
 		let g:unite_source_menu_menus.test3.command_candidates = [
 		      \   ['ruby', 'VimShellInteractive ruby'],
 		      \   ['python', 'VimShellInteractive python'],
+		      \ ]
+
+		let g:unite_source_menu_menus.zsh = {
+		      \     'description' : 'zsh files',
+		      \ }
+		let g:unite_source_menu_menus.zsh.file_candidates = [
+		      \       ['zshenv'    , '~/.zshenv'],
+		      \       ['zshrc'     , '~/.zshrc'],
+		      \       ['zplug'     , '~/.zplug'],
 		      \ ]
 
 		nnoremap <silent> sm  :<C-u>Unite menu:test<CR>
@@ -2948,6 +2963,7 @@ Opens a file into a new buffer.  This kind extends |unite-action-openable| and
 	dirdiff		|:DirDiff| with the other candidate.
 			(|DirDiff.vim| plugin is needed.)
 	backup		Simple backup files.
+	argadd		Add to the argument list.
 
 buffer						*unite-action-buffer*
 This kind extends |unite-action-file|.
@@ -2993,11 +3009,12 @@ command						*unite-action-command*
 	grep		Grep the command.
 
 window						*unite-action-window*
-This kind extends actions of |unite-action-cdable|.
-	open		Move to the window.
+This kind extends actions of |unite-action-cdable| and |unite-action-openable|.
+	jump		Move to the window.
 	delete		Close the window.
 	only		Close all windows except the window.
 	preview		Preview the window.
+	open		Open the window buffer.
 
 completion					*unite-action-completion*
 	insert		Insert the candidate.

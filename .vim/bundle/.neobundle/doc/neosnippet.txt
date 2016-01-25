@@ -1,7 +1,7 @@
 *neosnippet.txt*
 		The neo-snippet plugin contains snippet source
 
-Version: 4.2
+Version: 5.0
 Author: Shougo <Shougo.Matsu@gmail.com>
 License: MIT license  {{{
     Permission is hereby granted, free of charge, to any person obtaining
@@ -158,9 +158,12 @@ g:neosnippet#snippets_directory		*g:neosnippet#snippets_directory*
 		several files if available. For example if you edit a "Vim"
 		file it loads the snippets from:
 
-		- "vim.snip*"
-		- "vim_*.snip*"
+		- "vim.snip"
+		- "vim.snippets"
+		- "vim_*.snip"
+		- "vim_*.snippets"
 		- "vim/**/*.snip"
+		- "vim/**/*.snippets"
 
 		The default value is ''.
 
@@ -222,6 +225,21 @@ g:neosnippet#expand_word_boundary
 g:neosnippet#enable_conceal_markers
 		If this variable is not 0, neosnippet will use the |conceal|
 		markers.
+
+		The default value is 1.
+
+					*g:neosnippet#enable_completed_snippet*
+g:neosnippet#enable_completed_snippet
+		If this variable is not 0, neosnippet will expand the function
+		prototype when |CompleteDone| autocmd.
+
+		The default value is 0.
+
+					*g:neosnippet#enable_auto_clear_markers*
+g:neosnippet#enable_auto_clear_markers
+		If this variable is not 0, neosnippet will clear the markers
+		in the buffer when |BufWritePost|, |CursorMoved| and
+		|CursorMovedI| autocmd.
 
 		The default value is 1.
 
@@ -387,6 +405,8 @@ SNIPPET SYNTAX					*neosnippet-snippet-syntax*
 
 It is quite easy to create your own snippets. You can use the example below to
 get started.
+
+Note: The snippets file extension must be ".snip" or ".snippets".
 
 Example:
 
@@ -706,7 +726,12 @@ insert empty line in snippet end, you must insert placeholder.
 	  #!/usr/bin/env ruby
 
 
+You can load a Vim script file for snippets.
+
+>
+	source go.vim
 <
+
 ==============================================================================
 UNITE SOURCES					*neosnippet-unite-sources*
 
@@ -745,7 +770,7 @@ Q: What if I want to expand a snippet trigger after (, [, " etc...:
 
 A: You should use "options word" in the snippet definition. This changes the
 expansion behavior to a word boundary or set
-|g:neosnippet#enable_word_expand|.
+|g:neosnippet#expand_word_boundary|.
 >
 	snippet     date
 	options     word

@@ -31,6 +31,7 @@ vim-cucumber
 vim-fidget
 vim-fugitive
 vim-gtfo
+vim-gutentags
 vim-haml
 vim-indent-guides
 vim-indexed-search
@@ -51,3 +52,4 @@ vim-startify
 vim-surround
 vim-tmux-navigator
 vimproc.vim
+visual-split.vim
