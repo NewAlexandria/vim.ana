@@ -23,6 +23,10 @@ set scrolloff=3           " Indicate jump out of the screen when 3 lines before 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
 
+nnoremap <space>c :w !pbcopy
+vnoremap <space>c :w !pbcopy
+nnoremap <space>v :r !pbpaste
+vnoremap <space>v :r !pbpaste
 
 " Color Finders
 "" For web  color insertion
