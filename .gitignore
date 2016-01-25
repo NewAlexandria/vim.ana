@@ -6,3 +6,5 @@ tags
 .vim/.netrwhist
 # .vim/bundle/
 .vim/sessions
+.vim/bundle
+.vim/bundle/.neobundle/doc
