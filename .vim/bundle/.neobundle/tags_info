@@ -24,6 +24,7 @@ unite.vim
 vCoolor.vim
 vim-airline
 vim-align
+vim-autoswap
 vim-buffergator
 vim-bundler
 vim-colors-solarized

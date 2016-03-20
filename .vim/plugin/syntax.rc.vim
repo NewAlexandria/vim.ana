@@ -9,7 +9,7 @@ let colorcolumn="80,".join(range(120,999),",")
 syntax enable
 set background=dark
 colorscheme solarized
-let g:airline_theme = 'base16'
+"let g:airline_theme = 'base16'
 
 let g:solarized_italic     = 1
 let g:solarized_termcolors = 256
@@ -20,6 +20,8 @@ set guifont=Source\ Code\ Pro
 set laststatus=2
 let g:airline_powerline_fonts = 1
 
+set statusline+=%{gutentags#statusline()}
+let g:gutentags_trace = 1
 
 "" Indent Guides
 set ts=2 sw=2 et

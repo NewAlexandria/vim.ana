@@ -42,7 +42,6 @@ NeoBundle 'Shougo/vimproc.vim', {
 \     'unix' : 'gmake',
 \    },
 \ }
-NeoBundle 'ludovicchabant/vim-gutentags'
 
 "" Text & Completions
 NeoBundle 'ervandew/supertab'
@@ -76,6 +75,7 @@ NeoBundle 'mohitleo9/vim-fidget',{
     \ },
 \}
 NeoBundle 'ludovicchabant/vim-gutentags'
+NeoBundle 'gioele/vim-autoswap'
 
 " Layout
 NeoBundle 'scrooloose/nerdtree'
