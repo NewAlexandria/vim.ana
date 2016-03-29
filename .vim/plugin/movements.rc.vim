@@ -16,6 +16,7 @@ map <Leader>[ :bprevious<cr>
 map <Leader>} :blast<cr>
 map <Leader>{ :bfirst<cr>
 
+map nd /[<=>]\{7\}<cr>
 
 """ Ruby/JS Movements
 " put the curson on the name of the function that you are currently in
