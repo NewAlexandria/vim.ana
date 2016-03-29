@@ -83,6 +83,8 @@ function! g:BoxCharacters()
   :'<,'>s'<'┤'e    " │    │ │
 endfunction        " └────┴─┘
 
+vnoremap T-> :Tabularize/-><cr>
+vnoremap T,  :Tabularize/,\zs<cr>
 " json format/beautifier
 nnoremap =j :%!python -m json.tool<CR>
 
