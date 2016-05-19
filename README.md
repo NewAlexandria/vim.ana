@@ -82,16 +82,24 @@ If you want to add your own plugins, note that this repo uses NeoBundle.  [Instr
 The following directions are under review:
 
 - [configure for Tmux](http://tilvim.com/2014/07/30/tmux-and-vim.html)
+
+#### Text
+- [Lion](https://github.com/tommcdo/vim-lion)
+- [pulse](https://github.com/airblade/dotvim/blob/dd5d7737e39aad5e24c1a4a8c0d115ff2ae7b488/vimrc#L294-L310) for [focus](https://github.com/airblade/vim-gitgutter/blob/e884a0e26dcce8d86c95c13fb3305fe065815eaf/plugin/gitgutter.vim#L179). (thanks [Andy](https://github.com/airblade))
+
 #### Searching
 - adding a Unite scope for `dbext` databases (or [SQLcomplete](https://github.com/vim-scripts/SQLComplete.vim))
 - VCSCommand
 - netrw
+
 #### Indexing
 - a proper tag parses for ruby *and rspec* namespaces, since 'ctags' fails at this, perhaps [starscope](https://github.com/eapache/starscope/blob/master/doc/USER_GUIDE.md),  [tagfinder](http://andrewradev.com/2011/10/15/vim-and-ctags-finding-tag-definitions/), or [rdoc-tags](https://github.com/rdoc/rdoc-tags)
 - A clear winner for ctag support, whether tpope's, [vim-tags](https://github.com/szw/vim-tags), or another.
+
 #### Collab
 - [floobits](https://github.com/Floobits/floobits-neovim) for SubEthnaEdit/Etherpad style collaboration.
 - Install via [Vimswitch](https://priomsrb.github.io/vimswitch/)?
+- [Croquet](http://www.drbunsen.org/vim-croquet/) and [VimPrint](http://vimcasts.org/blog/2013/05/vimprint---a-vim-keystroke-parser/)
 
 
 
@@ -114,3 +122,5 @@ Thanks for experimenting with this repo.  Suggestions always welcome. I'm partic
 ![the LeaderMap() function](http://i.imgur.com/4InDFSt.png)
 [See the function](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/ide.rc.vim#L51)
 
+## Colophon
+1. [Andy Stewart interview](http://howivim.com/2016/andy-stewart/)
