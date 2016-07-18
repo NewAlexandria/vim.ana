@@ -72,6 +72,9 @@ values):
 <
 * enable crypt detection >
   let g:airline_detect_crypt=1
+
+* enable spell detection >
+  let g:airline_detect_spell=1
 <
 * enable iminsert detection >
   let g:airline_detect_iminsert=0
@@ -137,6 +140,10 @@ values):
 * disable the Airline customization for selective windows (this is a
   window-local variable so you can disable it for only some windows) >
   let w:airline_disabled = 1
+
+* Do not draw separators for empty sections (only for the active window)
+ >
+  let g:airline_skip_empty_sections = 1
 <
 
 ==============================================================================
@@ -187,10 +194,13 @@ its contents. >
   let g:airline_symbols.linenr = '␊'
   let g:airline_symbols.linenr = '␤'
   let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.maxlinenr = '☰'
+  let g:airline_symbols.maxlinenr = ''
   let g:airline_symbols.branch = '⎇'
   let g:airline_symbols.paste = 'ρ'
   let g:airline_symbols.paste = 'Þ'
   let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.spell = 'Ꞩ'
   let g:airline_symbols.notexists = '∄'
   let g:airline_symbols.whitespace = 'Ξ'
 
@@ -223,7 +233,7 @@ section.
 >
   variable names                default contents
   ----------------------------------------------------------------------------
-  let g:airline_section_a       (mode, crypt, paste, iminsert)
+  let g:airline_section_a       (mode, crypt, paste, spell, iminsert)
   let g:airline_section_b       (hunks, branch)
   let g:airline_section_c       (bufferline or filename)
   let g:airline_section_gutter  (readonly, csv)
@@ -487,6 +497,19 @@ eclim <https://eclim.org>
 
 * configure custom trailing whitespace regexp rule >
   let g:airline#extensions#whitespace#trailing_regexp = '\s$'
+
+* configure, which filetypes have special treatment of /* */ comments,
+  matters for mix-indent-file algorithm: >
+  let airline#extensions#c_like_langs = ['c', 'cpp', 'cuda', 'javascript', 'ld', 'php']
+<
+* disable whitespace checking for an individual buffer >
+  " Checking is enabled by default because b:airline_whitespace_disabled
+  " is by default not defined:
+  unlet b:airline_whitespace_disabled
+
+  " If b:airline_whitespace_disabled is defined and is non-zero for a buffer,
+  " then whitespace checking will be disabled for that buffer; for example:
+  " let b:airline_whitespace_disabled = 1
 <
 -------------------------------------                      *airline-tabline*
 Note: If you're using the ctrlspace tabline only the option marked with (c)
@@ -504,6 +527,11 @@ are supported!
 * enable/disable displaying buffers with a single tab. (c)
   let g:airline#extensions#tabline#show_buffers = 1
 <
+
+Note: If you are using neovim (has('tablineat') = 1), then you can click
+on the tabline with the left mouse button to switch to that buffer, and
+with the middle mouse button to delete that buffer.
+
 * enable/disable displaying tabs, regardless of number. (c)
   let g:airline#extensions#tabline#show_tabs = 1
 <
@@ -690,6 +718,15 @@ vim-windowswap <https://github.com/wesQ3/vim-windowswap>
 * set marked window indicator string >
   let g:airline#extensions#windowswap#indicator_text = 'WS'
 <
+-------------------------------------                    *airline-obsession*
+vim-obsession <https://github.com/tpope/vim-obsession>
+
+* enable/disable vim-obsession integration >
+  let g:airline#extensions#obsession#enabled = 1
+
+* set marked window indicator string >
+  let g:airline#extensions#obsession#indicator_text = '$'
+<
 -------------------------------------                        *airline-taboo*
 taboo.vim <https://github.com/gcmt/taboo.vim>
 
@@ -771,6 +808,7 @@ Before is a list of parts that are predefined by vim-airline.
 * `iminsert`       displays the current insert method
 * `paste`          displays the paste indicator
 * `crypt`          displays the crypted indicator
+* `spell`          displays the spell indicator
 * `filetype`       displays the file type
 * `readonly`       displays the read only indicator
 * `file`           displays the filename and modified indicator
