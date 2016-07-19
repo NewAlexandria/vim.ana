@@ -16,6 +16,14 @@ then
 fi
 ln -s ~/.vim.ana/.vimrc ~/.vimrc
 
+## gvimrc linkage
+if [ -f ~/.gvimrc ]
+then
+  echo "made a backup of ~/.gvimrc" 
+  mv ~/.gvimrc ~/.vim.ana/backups/.gvimrc
+fi
+ln -s ~/.vim.ana/.gvimrc ~/.gvimrc
+
 ## Link Neovim files
 if [ -d ~/.config/nvim/.vim ] 
 then
