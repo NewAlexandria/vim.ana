@@ -1,6 +1,6 @@
 " vimrc split-up into sections
 " see `runtime` list at the bottom
-set encoding=utf8
+"set encoding=utf8
 
 " load the bundler
 " Note: Skip initialization for vim-tiny or vim-small.
@@ -74,7 +74,7 @@ NeoBundle 'mohitleo9/vim-fidget',{
     \    'mac' : 'sudo npm install -g',
     \ },
 \}
-NeoBundle 'ludovicchabant/vim-gutentags'
+"NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'gioele/vim-autoswap'
 
 " Layout
@@ -132,10 +132,10 @@ let mapleader = '\'
 let g:init_with_blended_relative_absolute_number_line = 1
 
 " put the cursor on any file name and press `gf` to open
-runtime plugin/File_types.rc.vim
-runtime plugin/Ide.rc.vim
-runtime plugin/Movements.rc.vim
-runtime plugin/Syntax.rc.vim
-runtime plugin/Text_formatting.rc.vim
-runtime plugin/Windowing.rc.vim
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/plugin/File_types.rc.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/plugin/Ide.rc.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/plugin/Movements.rc.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/plugin/Syntax.rc.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/plugin/Text_formatting.rc.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/plugin/Windowing.rc.vim'
 

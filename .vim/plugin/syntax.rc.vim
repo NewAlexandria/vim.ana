@@ -8,7 +8,6 @@
 let colorcolumn="80,".join(range(120,999),",")
 syntax enable
 set background=dark
-colorscheme solarized
 "let g:airline_theme = 'base16'
 
 let g:solarized_italic     = 1
@@ -72,3 +71,4 @@ endif
 
 let g:used_javascript_libs = 'underscore,angularjs,jasmine,jquery'
 
+colorscheme solarized

@@ -1,7 +1,6 @@
 *unite-outline.txt*	outline source for unite.vim
 
 Author  : h1mesuke <himesuke@gmail.com>
-          Shougo <Shougo.Matsu at gmail.com>
 Updated : 2012-01-11
 Version : 0.5.1
 License : MIT license {{{
@@ -41,7 +40,7 @@ CONTENTS				*unite-outline-contents*
 	  Utility Functions	  |unite-outline-utility-functions|
 	ToDo			|unite-outline-todo|
 	Known Issues		|unite-outline-known-issues|
-	ChangeLog		|unite-outline-changelog|
+	ChanheLog		|unite-outline-changelog|
 
 ==============================================================================
 INTRODUCTION				*unite-outline-introduction*
@@ -65,12 +64,6 @@ INSTALL					*unite-outline-install*
 	You can show the heading list of the current buffer with ":Unite
 	outline" command if you succeeded the installation (and unite-outline
 	supports the filetype of the buffer).
-
-
-	C, C++, Java, etc~
-
-		* Exuberant Ctags (Required)
-		  http://ctags.sourceforge.net/
 
 ==============================================================================
 USAGE					*unite-outline-usage*
@@ -244,8 +237,8 @@ VARIABLES				*unite-outline-variables*
 		      \ 'id'      : 'Special',
 		      \ 'macro'   : 'Macro',
 		      \ 'method'  : 'Function',
-		      \ 'normal'  : 'Normal',
-		      \ 'package' : 'Normal',
+		      \ 'normal'  : g:unite_abbr_highlight,
+		      \ 'package' : g:unite_abbr_highlight,
 		      \ 'special' : 'Macro',
 		      \ 'type'    : 'Type',
 		      \ 'level_1' : 'Type',
@@ -253,26 +246,14 @@ VARIABLES				*unite-outline-variables*
 		      \ 'level_3' : 'Identifier',
 		      \ 'level_4' : 'Constant',
 		      \ 'level_5' : 'Special',
-		      \ 'level_6' : 'Normal',
-		      \ 'parameter_list': 'Normal',
+		      \ 'level_6' : g:unite_abbr_highlight,
+		      \ 'parameter_list': g:unite_abbr_highlight,
 		      \ }
 <
 		The patterns to specify the regions to be highlighted are
 		defined in each filetypes' outline infos.
 
 		See |unite-outline-info-highlight_rules|.
-
-					*g:unite_source_outline_ctags_program*
-	g:unite_source_outline_ctags_program
-
-		String pointing to the absolute path of the ctags executable.
-
-		Default value is ''
-
-		Example: >
-		let g:unite_source_outline_ctags_program =
-		      \ '/usr/local/bin/ctags'
-<
 
 ------------------------------------------------------------------------------
 SETTINGS EXAMPLE			*unite-outline-settings-example*
@@ -727,7 +708,6 @@ SYNTAX HIGHLIGHTING ~
 		      \     'pattern'  : '/\S\+\ze\s*(/' },
 		      \   { 'name'     : 'parameter_list',
 		      \     'pattern'  : '/(.*)/' },
-		      \ ],
 		      \}
 <
 		If "highlight" attribute is omitted, the highlight specified
@@ -779,7 +759,7 @@ EXTERNAL PROGRAMS			*unite-outline-info-external-programs*
 	must be able to be executed by |system()| with the proper setting of
 	PATH environment variable.
 
-	C, C++, Java, etc~
+	C, C++, Java ~
 
 		* Exuberant Ctags (Required)
 		  http://ctags.sourceforge.net/
@@ -821,8 +801,8 @@ FUNCTIONS				*unite-outline-functions*
 
 		Returns a highlight group name associated with {name}.
 		If {name} has no association, tries following arguments until
-		the association is found. If not found finally, returns
-		"Normal".
+		the association is found. If not found finally, returns the
+		value of |g:unite_abbr_highlight|.
 
 		See |g:unite_source_outline_highlight|.
 
@@ -939,7 +919,7 @@ INCORRECT STRUCTURED TREE ~
 	ones.
 
 ==============================================================================
-CHANGELOG				*unite-outline-changelog*
+CHANHELOG				*unite-outline-changelog*
 
 0.5.1	2011-11-01
 

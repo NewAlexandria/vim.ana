@@ -16,6 +16,22 @@ then
 fi
 ln -s ~/.vim.ana/.vimrc ~/.vimrc
 
+## Link Neovim files
+if [ -d ~/.config/nvim/.vim ] 
+then
+  echo "made a backup of ~/.confin/nvim/.vim" 
+  mv ~/.config/nvim/.vim ~/.vim.ana/backups/.nvim
+fi
+ln -s ~/.vim ~/.config/nvim/.vim
+
+if [ -f ~/.config/nvim/init.vim ]
+then
+  echo "made a backup of ~/.config/nvim/init.vim" 
+  mv ~/.config/nvim/init.vim ~/.vim.ana/backups/init.vim
+fi
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+
+
 if [ -f ~/.viminfo ]
 then
   echo "made a backup of ~/.viminfo" 
