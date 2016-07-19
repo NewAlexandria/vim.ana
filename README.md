@@ -81,6 +81,8 @@ If you want to add your own plugins, note that this repo uses NeoBundle.  [Instr
 
 The following directions are under review:
 
+#### Terminals
+- add Solarized sources and auto-setup for mac terminal, iTerm, Hyperterm, gvim, etc
 - [configure for Tmux](http://tilvim.com/2014/07/30/tmux-and-vim.html)
 
 #### Text
