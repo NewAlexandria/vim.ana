@@ -87,6 +87,9 @@ echo "Remember to install CTAGS from http://ctags.sourceforge.net/"
 echo "or `brew install ctags` on OS X"
 
 if [ -d "$HOME/.homebrew" ]; then
+  # We're on a Mac
+  defaults write com.barebones.bbedit "EnableFontLigatures_Fira Code" -bool YES
+
   read -p "Do you want to install with brew?" yn
   case $yn in
     [Yy]* )
