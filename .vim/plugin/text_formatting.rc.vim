@@ -44,7 +44,19 @@ nnoremap RR :%s/\s\+$//e<CR>
 
 " uses Vim >= 7.4.338
 set breakindent
-set showbreak=➣➣\
+set showbreak=➣➣
+let g:toggle_showbreak = 0
+function! g:ToggleShowBreak()
+    if(g:toggle_showbreak == 1)
+        set showbreak=➣➣
+        let g:toggle_showbreak = 0
+    else
+        set showbreak=""
+        let g:toggle_showbreak = 1
+    endif
+endfunc
+nmap <silent> nt :call g:ToggleShowBreak()<cr>
+
 if has('autocmd')
   augroup wrapping_types
     autocmd BufNewFile,BufRead *.feature set nowrap
