@@ -7,7 +7,7 @@
 
 " reopen buffer as sudo
 cmap w!! w !sudo tee % >/dev/null
-
+nmap z u
 
 set cmdheight=2
 set history=50
@@ -23,10 +23,10 @@ set scrolloff=3           " Indicate jump out of the screen when 3 lines before 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
 
-nnoremap <space>c :w !pbcopy
-vnoremap <space>c :w !pbcopy
-nnoremap <space>v :r !pbpaste
-vnoremap <space>v :r !pbpaste
+nnoremap <space>c :w !pbcopy<cr>
+vnoremap <space>c :w !pbcopy<cr>
+nnoremap <space>v :r !pbpaste<cr>
+vnoremap <space>v :r !pbpaste<cr>
 
 " Color Finders
 "" For web  color insertion
