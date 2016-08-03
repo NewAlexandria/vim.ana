@@ -4,7 +4,7 @@
 " Color formatting guide:
 " http://misc.flogisoft.com/bash/tip_colors_and_formatting
 " highlight ColorColumn ctermbg=234 guibg=#2c2d27
-"highlight ColorColumn ctermbg=234 guibg=#1c1d17
+highlight ColorColumn ctermbg=234 guibg=#1c1d17
 let colorcolumn="80,".join(range(120,999),",")
 syntax enable
 set background=dark
@@ -15,7 +15,7 @@ let g:solarized_termcolors = 256
 "let g:solarized_termtrans  = 1
 let g:solarized_contrast = 'high'
 
-set guifont=Source\ Code\ Pro
+set guifont=Fira\ Code
 set laststatus=2
 let g:airline_powerline_fonts = 1
 
