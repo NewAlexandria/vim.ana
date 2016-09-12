@@ -76,6 +76,7 @@ That's it for now.
 
 If you want to add your own plugins, note that this repo uses NeoBundle.  [Instructions for adding more plugins](https://github.com/Shougo/neobundle.vim#2-install-configured-bundles), to [the .vimrc list](https://github.com/NewAlexandria/vim.ana/blob/master/.vimrc).
 
+If you don't like Solarized, [remember that you can roll your own](http://mswift42.github.io/themecreator/).
 
 ## Mañana ##
 
@@ -84,6 +85,7 @@ The following directions are under review:
 #### Terminals
 - add Solarized sources and auto-setup for mac terminal, iTerm, Hyperterm, gvim, etc
 - [configure for Tmux](http://tilvim.com/2014/07/30/tmux-and-vim.html)
+- a [REST client](https://github.com/diepm/vim-rest-console)
 
 #### Text
 - [Lion](https://github.com/tommcdo/vim-lion)
@@ -92,7 +94,6 @@ The following directions are under review:
 #### Searching
 - adding a Unite scope for `dbext` databases (or [SQLcomplete](https://github.com/vim-scripts/SQLComplete.vim))
 - VCSCommand
-- netrw
 
 #### Indexing
 - a proper tag parses for ruby *and rspec* namespaces, since 'ctags' fails at this, perhaps [starscope](https://github.com/eapache/starscope/blob/master/doc/USER_GUIDE.md),  [tagfinder](http://andrewradev.com/2011/10/15/vim-and-ctags-finding-tag-definitions/), or [rdoc-tags](https://github.com/rdoc/rdoc-tags)
