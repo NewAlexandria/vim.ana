@@ -97,6 +97,10 @@ endfunc
 nnoremap <leader>L :call g:LeaderMap()<cr>
 nnoremap <leader>l :q!<cr>:tabclose!<cr>
 
+" Find mappings by-keystroke
+fu! g:FindMappings(cmd)
+  :verbose map cmd
+endfunc
 
 ""======   Version Control   ========
 

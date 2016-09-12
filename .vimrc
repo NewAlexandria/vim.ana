@@ -48,7 +48,6 @@ NeoBundle 'ervandew/supertab'
 NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'bkad/CamelCaseMotion'
 NeoBundle 'osyo-manga/vim-over'
-NeoBundle 'henrik/vim-indexed-search'
 
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
