@@ -55,7 +55,7 @@ function! g:ToggleShowBreak()
         let g:toggle_showbreak = 1
     endif
 endfunc
-nmap <silent> nt :call g:ToggleShowBreak()<cr>
+"nmap <silent> nt :call g:ToggleShowBreak()<cr>
 
 if has('autocmd')
   augroup wrapping_types
