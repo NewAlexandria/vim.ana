@@ -54,7 +54,7 @@ function agv() {
     if [ -n "$(type -t $func)" ] && [ "$(type -t $func)" = file ]
     then 
       echo "Using $func"
-      $func $(ag $1 $2 -l --nocolor | xargs)
+      $func $(ag "$1" $2 -l --nocolor | xargs)
       break
     fi
   done
