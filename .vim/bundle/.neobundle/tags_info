@@ -17,6 +17,7 @@ scratch.vim
 scss-syntax.vim
 supertab
 svnblame.vim
+swapcol.vim
 tabular
 unite-outline
 unite-tag
@@ -50,5 +51,6 @@ vim-signature
 vim-startify
 vim-surround
 vim-tmux-navigator
+vim-transpose
 vimproc.vim
 visual-split.vim
