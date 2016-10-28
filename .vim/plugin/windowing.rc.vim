@@ -41,6 +41,7 @@ if has('autocmd')
   autocmd VimEnter * exe "resize 15"
   autocmd VimEnter * let g:buffergator_autoupdate=1
   autocmd VimEnter * wincmd w
+  autocmd VimEnter * nested :call tagbar#autoopen(0)
 endif
 
 

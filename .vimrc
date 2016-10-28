@@ -31,7 +31,8 @@ NeoBundle 'xolox/vim-misc'
 "" Search / Indexing
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'Shougo/unite-outline'
+NeoBundle 'majutsushi/tagbar'
+"NeoBundle 'Shougo/unite-outline'
 "" Async
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
@@ -95,7 +96,7 @@ NeoBundle 'wellle/visual-split.vim'
 
 " VCS
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'chrisbra/changesPlugin'
+"NeoBundle 'chrisbra/changesPlugin'
 NeoBundle 'NewAlexandria/svnblame.vim'
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
@@ -133,10 +134,10 @@ let mapleader = '\'
 let g:init_with_blended_relative_absolute_number_line = 1
 
 " put the cursor on any file name and press `gf` to open
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/plugin/File_types.rc.vim'
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/plugin/Ide.rc.vim'
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/plugin/Movements.rc.vim'
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/plugin/Syntax.rc.vim'
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/plugin/Text_formatting.rc.vim'
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/.vim/plugin/Windowing.rc.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/File_types.rc.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Ide.rc.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Movements.rc.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Syntax.rc.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Text_formatting.rc.vim'
+execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Windowing.rc.vim'
 

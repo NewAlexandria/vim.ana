@@ -58,12 +58,13 @@ nnoremap <space>? :execute 'Unite grep:.::' . expand("<cword>") . ' -auto-previe
 nnoremap <space>' :execute 'Unite grep:.::' . expand("<cword>") . ' -default-action=above -auto-preview'<CR>
 let g:unite_source_history_yank_enable = 1
 nnoremap <space>t :Unite -start-insert tag<cr>
-nnoremap <space>o :Unite -start-insert -vertical -winwidth=50 -direction=belowright outline<cr>
 nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
 nnoremap <space>u :<C-u>Unite -no-split -buffer-name=buffers  buffer<cr>
 nnoremap <space>b :Unite grep:$buffers<cr>
 nnoremap <space>B :execute 'Unite grep:$buffers::' . expand("<cword>") . '  -start-insert'<cr>
+"nnoremap <space>o :Unite -start-insert -vertical -winwidth=50 -direction=belowright outline<cr>
+map <silent> <space>o :TagbarOpen fj<cr>
 
 let g:unite_source_file_rec_max_cache_files = 50000
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
