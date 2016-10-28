@@ -1,7 +1,6 @@
 CamelCaseMotion
 Recover.vim
 ack.vim
-changesPlugin
 javascript-libraries-syntax.vim
 microviche
 neobundle.vim
@@ -19,7 +18,7 @@ supertab
 svnblame.vim
 swapcol.vim
 tabular
-unite-outline
+tagbar
 unite-tag
 unite.vim
 vCoolor.vim
