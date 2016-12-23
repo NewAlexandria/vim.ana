@@ -3,9 +3,9 @@
 
 " Color formatting guide:
 " http://misc.flogisoft.com/bash/tip_colors_and_formatting
-" highlight ColorColumn ctermbg=234 guibg=#2c2d27
-highlight ColorColumn ctermbg=234 guibg=#1c1d17
-let colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn="81,120"
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+
 syntax enable
 set background=dark
 "let g:airline_theme = 'base16'

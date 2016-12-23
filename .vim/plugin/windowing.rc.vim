@@ -54,6 +54,7 @@ fu! LSidebarToggle()
   execute "NERDTreeToggle | BuffergatorToggle" 
 
   if(g:l_sidebar_toggle == 0)
+    "execute "call Tagbar#autoopen"
     execute "call g:ToggleRNuMode()"
     execute "set nonumber!"
     execute ( bufwinnr(b) . "wincmd w" )
