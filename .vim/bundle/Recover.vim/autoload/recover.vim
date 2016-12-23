@@ -100,7 +100,7 @@ fu! recover#ConfirmSwapDiff() "{{{1
     let msg = ""
     let bufname = s:isWin() ? fnamemodify(expand('%'), ':p:8') : shellescape(expand('%'))
     let tfile = tempname()
-    if executable('vim') && !s:isWin() && !s:isMacTerm() && !get(g:, 'RecoverPlugin_No_Check_Swapfile', 0)
+    if executable(v:progpath) && !s:isWin() && !s:isMacTerm() && !get(g:, 'RecoverPlugin_No_Check_Swapfile', 0)
 	" Doesn't work on windows (system() won't be able to fetch the output)
 	" and Mac Terminal (issue #24)  
 	" Capture E325 Warning message
@@ -110,14 +110,19 @@ fu! recover#ConfirmSwapDiff() "{{{1
 	"   let wincmd = printf('-c "redir > %s|1d|:q!" ', tfile)
 	"   let wincmd = printf('-c "call feedkeys(\"o\n\e:q!\n\")"')
 	" endif
-	let cmd = printf("%s %s -i NONE -u NONE -es -V %s %s",
-	    \ (s:isWin() ? '' : 'TERM=vt100 LC_ALL=C'),
+	let t = tempname()
+	let cmd = printf("%s %s -i NONE -u NONE -es -V0%s %s %s",
+	    \ (s:isWin() ? '' : 'LC_ALL=C'),
 	    \ s:progpath,
+	    \ t,
 	    \ (s:isWin() ? wincmd : ''),
 	    \ bufname)
-	let msg = system(cmd)
-	let msg = substitute(msg, '.*\(E325.*process ID:.\{-}\)\%x0d.*', '\1', '')
-	let msg = substitute(msg, "\e\\[\\d\\+C", "", "g")
+	call system(cmd)
+	let msg = readfile(t)
+	call delete(t)
+	let end_of_first_par = match(msg, "^$", 2) " output starts with empty line: find 2nd one
+	let msg = msg[1:end_of_first_par] " get relevant part of output
+	let msg = join(msg, "\n")
 	if do_modification_check
 	    let not_modified = (match(msg, "modified: no") > -1)
 	endif
@@ -141,7 +146,7 @@ fu! recover#ConfirmSwapDiff() "{{{1
 	endif
     endif
     " Show modification message and present user question about what to do:
-    if executable('vim') && executable('diff') "&& s:isWin()
+    if executable(v:progpath) && executable('diff') "&& s:isWin()
 	" Check, whether the files differ issue #7
 	" doesn't work on Windows? (cmd is ok, should be executable)
 	if s:isWin()

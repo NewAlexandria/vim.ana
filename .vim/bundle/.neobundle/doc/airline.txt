@@ -145,7 +145,6 @@ values):
  >
   let g:airline_skip_empty_sections = 1
 <
-
 ==============================================================================
 COMMANDS                                                  *airline-commands*
 
@@ -301,6 +300,12 @@ configuration values that you can use.
   Try setting this to zero, if you notice bleeding color artifacts >
   let airline#extensions#default#section_use_groupitems = 1
 <
+* configure the fileformat output
+  By default, it will display something like 'utf-8[unix]', however, you can
+  skip displaying it, if the output matches a configured string. To do so,
+  set >
+  let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+<
 -------------------------------------                     *airline-quickfix*
 The quickfix extension is a simple built-in extension which determines
 whether the buffer is a quickfix or location list buffer, and adjusts the
@@ -323,9 +328,16 @@ vim-bufferline <https://github.com/bling/vim-bufferline>
   let g:airline#extensions#bufferline#overwrite_variables = 1
 <
 -------------------------------------                       *airline-branch*
+
+vim-airline will display the branch-indicator together with the branch name in
+the statusline, if one of the following plugins is installed:
+
 fugitive.vim <https://github.com/tpope/vim-fugitive>
 lawrencium   <https://bitbucket.org/ludovicchabant/vim-lawrencium>
 vcscommand   <http://www.vim.org/scripts/script.php?script_id=90>
+
+If a file is edited, that is not yet in the repository, the
+notexists symbol will be displayed after the branch name.
 
 * enable/disable fugitive/lawrencium integration >
   let g:airline#extensions#branch#enabled = 1
@@ -444,7 +456,7 @@ eclim <https://eclim.org>
   " the default value matches filetypes typically used for documentation
   " such as markdown and help files.
   let g:airline#extensions#wordcount#filetypes = ...
-  (default: markdown,rst,org,help,text)
+  (default: markdown,rst,org,help,text,tex,mail)
 
 * defines the name of a formatter for word count will be displayed: >
   " The default will try to guess LC_NUMERIC and format number accordingly
@@ -460,6 +472,9 @@ eclim <https://eclim.org>
         \ wordcount()['words'] > 100 ? 'okay' : 'not enough')
   endfunction
   let g:airline#extensions#wordline#formatter = 'foo'
+
+* defines how to display the wordcount statistics: >
+  let g:airline#extensions#wordcount#format = '%d words'
 <
 -------------------------------------                   *airline-whitespace*
 * enable/disable detection of whitespace errors. >
@@ -559,8 +574,8 @@ with the middle mouse button to delete that buffer.
 
 * enable/disable displaying tab type (far right) >
   let g:airline#extensions#tabline#show_tab_type = 1
-  
-  Note: The tab-type will only be displayed in tab-mode, 
+
+  Note: The tab-type will only be displayed in tab-mode,
   if there are no splits shown. (See: g:airline#extensions#tabline#show_splits)
 
 * rename label for buffers (default: 'buffers') (c)
@@ -594,6 +609,21 @@ with the middle mouse button to delete that buffer.
   current tab, but switch to the buffer visible in that tab.
   Use |gt| for switching tabs.
   In tabmode, those mappings will switch to the specified tab.
+
+* change the display format of the buffer index >
+  let g:airline#extensions#tabline#buffer_idx_format = {
+        \ '0': '0 ',
+        \ '1': '1 ',
+        \ '2': '2 ',
+        \ '3': '3 ',
+        \ '4': '4 ',
+        \ '5': '5 ',
+        \ '6': '6 ',
+        \ '7': '7 ',
+        \ '8': '8 ',
+        \ '9': '9 '
+        \}
+<
 
 * defines the name of a formatter for how buffer names are displayed. (c)
   let g:airline#extensions#tabline#formatter = 'default'
@@ -671,6 +701,10 @@ Note: Enabling this extension will modify 'showtabline' and 'guioptions'.
    won't update airline on |:badd| commands) >
   let airline#extensions#tabline#disable_refresh = 0
 
+* preserve windows when closing a buffer from the bufferline (default: 0) >
+
+  let airline#extensions#tabline#middle_click_preserves_windows = 1
+<
 -------------------------------------                     *airline-tmuxline*
 tmuxline <https://github.com/edkolev/tmuxline.vim>
 

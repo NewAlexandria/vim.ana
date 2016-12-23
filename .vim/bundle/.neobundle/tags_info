@@ -35,7 +35,6 @@ vim-gtfo
 vim-haml
 vim-indent-guides
 vim-javascript
-vim-lengthmatters
 vim-markdown
 vim-misc
 vim-nerdtree-ignore
@@ -50,6 +49,5 @@ vim-signature
 vim-startify
 vim-surround
 vim-tmux-navigator
-vim-transpose
 vimproc.vim
 visual-split.vim
