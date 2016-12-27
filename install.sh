@@ -1,120 +1,137 @@
-# Backup any existing files
-mkdir ~/.vim.ana/backups
+#!/bin/sh
+# Standalone installer for Unixs
+# Original version is created by shoma2da
+# https://github.com/shoma2da/neobundle_installer
 
-## Link vim files
-if [ -d ~/.vim ] 
-then
-  echo "made a backup of ~/.vim" 
-  mv ~/.vim ~/.vim.ana/backups/.vim
+# Installation directory
+BUNDLE_DIR=~/.vim/bundle
+INSTALL_DIR="$BUNDLE_DIR/neobundle.vim"
+echo "$INSTALL_DIR"
+if [ -e "$INSTALL_DIR" ]; then
+  echo "$INSTALL_DIR already exists!"
 fi
-ln -s ~/.vim.ana/.vim ~/.vim
 
-if [ -f ~/.vimrc ]
-then
-  echo "made a backup of ~/.vimrc" 
-  mv ~/.vimrc ~/.vim.ana/backups/.vimrc
+NVIM_DIR=~/.config/nvim
+NVIM_BUNDLE_DIR="$NVIM_DIR/bundle"
+NVIM_INSTALL_DIR="$NVIM_BUNDLE_DIR/neobundle.vim"
+echo "$NVIM_INSTALL_DIR"
+if [ -e "$NVIM_INSTALL_DIR" ]; then
+  echo "$NVIM_INSTALL_DIR already exists!"
 fi
-ln -s ~/.vim.ana/.vimrc ~/.vimrc
 
-## gvimrc linkage
-if [ -f ~/.gvimrc ]
-then
-  echo "made a backup of ~/.gvimrc" 
-  mv ~/.gvimrc ~/.vim.ana/backups/.gvimrc
+if [ -e "$INSTALL_DIR" ] && [ -e "$NVIM_INSTALL_DIR" ]; then
+  exit 1
 fi
-ln -s ~/.vim.ana/.gvimrc ~/.gvimrc
 
-## Link Neovim files
-if [ -d ~/.config/nvim/.vim ] 
-then
-  echo "made a backup of ~/.confin/nvim/.vim" 
-  mv ~/.config/nvim/.vim ~/.vim.ana/backups/.nvim
-fi
-ln -s ~/.vim ~/.config/nvim/.vim
-
-if [ -f ~/.config/nvim/init.vim ]
-then
-  echo "made a backup of ~/.config/nvim/init.vim" 
-  mv ~/.config/nvim/init.vim ~/.vim.ana/backups/init.vim
-fi
-ln -s ~/.vimrc ~/.config/nvim/init.vim
-
-
-if [ -f ~/.viminfo ]
-then
-  echo "made a backup of ~/.viminfo" 
-  mv ~/.viminfo ~/.vim.ana/backups/.viminfo
-fi
-ln -s ~/.vim.ana/.viminfo ~/.viminfo
-
-## link the git funcs for the prompt
-if [ -f ~/.git-completion.bash ]
-then
-  mv  ~/.git-completion.bash ~/.vim.ana/backups/.git-completion.bash
-fi
-echo "linking github's supported libs"
-ln -s ~/.vim.ana/.git-completion.bash  ~/.git-completion.bash
-
-## Improve the prompt
-SOURCE_LINE="source ~/.bash_vim_append"
-PROFILE="$HOME/.bash_profile"
-
-if [[ -f "$PROFILE" ]] && grep -q "$SOURCE_LINE" "$PROFILE"; then
-  echo "Already added to bash profile."
+# check git command
+if type git; then
+  : # You have git command. No Problem.
 else
-  echo "Adding .vim.ana to your ~/.bash_profile..."
-  ln -s ~/.vim.ana/.bash_vim_append ~/.bash_vim_append
-
-  echo "# .vim.ana configurations #" >> "$PROFILE"
-  echo "$SOURCE_LINE" >> "$PROFILE"
+  echo 'Please install git or update your path to include the git executable!'
+  exit 1
 fi
 
-## prevent non-ntaive submodules from introducing wonk line endings
-git config --global core.autocrlf input
-
-## Setup Submodules
-cd ~/.vim.ana
-git submodule init
-git submodule update
-
-## Compile Submodule Components
-### vimproc
-echo 'Compiling vimproc binary into ~/.vim.ana/.vim/bundle/vimproc.vim/'
-cd ~/.vim.ana/.vim/bundle/vimproc.vim/
-make
-### Ctags
-echo "Remember to install CTAGS from http://ctags.sourceforge.net/"
-echo "or `brew install ctags` on OS X"
-
-if [ -d "$HOME/.homebrew" ]; then
-  # We're on a Mac
-  defaults write com.barebones.bbedit "EnableFontLigatures_Fira Code" -bool YES
-
-  read -p "Do you want to install with brew?" yn
-  case $yn in
-    [Yy]* )
-      brew install ctags
-      gem install gem-ctags
-      gem ctags
-      ;;
-    * )
-      break;;
-  esac
+# make bundle dir and fetch neobundle
+echo "Begin fetching NeoBundle..."
+if ! [ -e "$INSTALL_DIR" ]; then
+  mkdir -p "$BUNDLE_DIR"
+  git clone https://github.com/Shougo/neobundle.vim "$INSTALL_DIR"
 fi
 
-if [ -d "~/.rbenv" ]; then
-  read -p "You seem to be running rbenv, would you like to compile tags for your active ruby?" yn
-  case $yn in
-    [Yy]* )
-      mkdir -p ~/.rbenv/plugins
-      git clone https://github.com/tpope/rbenv-ctags.git  ~/.rbenv/plugins/rbenv-ctags
-      rbenv ctags
-      ;;
-    * )
-      break;;
-  esac
-  echo "You can run 'rbenv ctags' whenever you switch toa new ruby, to rebuild tags for its gems"
+if type nvim > /dev/null 2>&1 && ! [ -e "$NVIM_INSTALL_DIR" ]; then
+  mkdir -p "$NVIM_BUNDLE_DIR"
+  git clone https://github.com/Shougo/neobundle.vim "$NVIM_INSTALL_DIR"
 fi
 
-echo 
-echo "Done!"
+echo "Done."
+
+# write initial setting for .vimrc
+echo "Please add the following settings for NeoBundle to the top of your .vimrc file:"
+{
+    echo ""
+    echo ""
+    echo "\"NeoBundle Scripts-----------------------------"
+    echo "if &compatible"
+    echo "  set nocompatible               \" Be iMproved"
+    echo "endif"
+    echo ""
+    echo "\" Required:"
+    echo "set runtimepath+=$BUNDLE_DIR/neobundle.vim/"
+    echo ""
+    echo "\" Required:"
+    echo "call neobundle#begin(expand('$BUNDLE_DIR'))"
+    echo ""
+    echo "\" Let NeoBundle manage NeoBundle"
+    echo "\" Required:"
+    echo "NeoBundleFetch 'Shougo/neobundle.vim'"
+    echo ""
+    echo "\" Add or remove your Bundles here:"
+    echo "NeoBundle 'Shougo/neosnippet.vim'"
+    echo "NeoBundle 'Shougo/neosnippet-snippets'"
+    echo "NeoBundle 'tpope/vim-fugitive'"
+    echo "NeoBundle 'ctrlpvim/ctrlp.vim'"
+    echo "NeoBundle 'flazz/vim-colorschemes'"
+    echo ""
+    echo "\" You can specify revision/branch/tag."
+    echo "NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }"
+    echo ""
+    echo "\" Required:"
+    echo "call neobundle#end()"
+    echo ""
+    echo "\" Required:"
+    echo "filetype plugin indent on"
+    echo ""
+    echo "\" If there are uninstalled bundles found on startup,"
+    echo "\" this will conveniently prompt you to install them."
+    echo "NeoBundleCheck"
+    echo "\"End NeoBundle Scripts-------------------------"
+    echo ""
+    echo ""
+}
+
+# write initial setting for ~/.config/nvim/init.vim
+if type nvim > /dev/null 2>&1; then
+  echo "Please add the following settings for NeoBundle to the top of your init.vim file:"
+  {
+    echo ""
+    echo ""
+    echo "\"NeoBundle Scripts-----------------------------"
+    echo "if has('vim_starting')"
+    echo "  \" Required:"
+    echo "  set runtimepath+=$NVIM_BUNDLE_DIR/neobundle.vim/"
+    echo "endif"
+    echo ""
+    echo "\" Required:"
+    echo "call neobundle#begin(expand('$NVIM_BUNDLE_DIR'))"
+    echo ""
+    echo "\" Let NeoBundle manage NeoBundle"
+    echo "\" Required:"
+    echo "NeoBundleFetch 'Shougo/neobundle.vim'"
+    echo ""
+    echo "\" Add or remove your Bundles here:"
+    echo "NeoBundle 'Shougo/neosnippet.vim'"
+    echo "NeoBundle 'Shougo/neosnippet-snippets'"
+    echo "NeoBundle 'tpope/vim-fugitive'"
+    echo "NeoBundle 'ctrlpvim/ctrlp.vim'"
+    echo "NeoBundle 'flazz/vim-colorschemes'"
+    echo ""
+    echo "\" You can specify revision/branch/tag."
+    echo "NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }"
+    echo ""
+    echo "\" Required:"
+    echo "call neobundle#end()"
+    echo ""
+    echo "\" Required:"
+    echo "filetype plugin indent on"
+    echo ""
+    echo "\" If there are uninstalled bundles found on startup,"
+    echo "\" this will conveniently prompt you to install them."
+    echo "NeoBundleCheck"
+    echo "\"End NeoBundle Scripts-------------------------"
+    echo ""
+    echo ""
+  }
+fi
+echo "Done."
+
+echo "Complete setup NeoBundle!"
