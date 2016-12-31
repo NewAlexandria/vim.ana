@@ -5,11 +5,11 @@
 The focus of this repo is to be portable, environment-neutral, and safe for existing configs.  Vim.ana is a Vim & related environment that can be dropped into any unix-flavor box, and without disruption to existing production configs.
 
 ## Features ##
-* NeoBundle for loading.
-* Familiar windowing setup of File Browser + Open Files + Edit Window.
+* [NeoBundle for loading](https://github.com/NewAlexandria/vim.ana/blob/master/.vimrc#L21-L24).
+* [Familiar windowing setup](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/windowing.rc.vim#L51-L70) of File Browser + Open Files + Edit Window.
 * IDE features that align with RubyMine, Eclipse, and others.
-* Comprehensive file and symbol search system.
-* Version control integration.
+* Comprehensive file and symbol [search system](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/movements.rc.vim#L37).
+* [Version control integration](https://github.com/NewAlexandria/vim.ana/blob/master/.vimrc#L96-L101).
 * NeoVim optimized.
 
 
@@ -18,28 +18,33 @@ The focus of this repo is to be portable, environment-neutral, and safe for exis
 See the [opening sections of the .vimrc](https://github.com/NewAlexandria/vim.ana/blob/master/.vimrc#L25-L112) for a structured and commented guide to what's in the box.
 
 * Loaders
-* IDE
-* Text & Completions
-* Frameworks
+* [IDE](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/ide.rc.vim)
+* [Text & Completions](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/text_formatting.rc.vim)
+* [Frameworks](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/movements.rc.vim)
 * File System
 * Layout
-* Windowing
+* [Windowing](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/windowing.rc.vim)
 * Version control
-* Formatting
-* Syntax Colors
+* [Formatting](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/file_types.rc.vim)
+* [Syntax Colors](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/syntax.rc.vim)
 
 The `.vimrc` is organized into logical sections, with jump-points to each area of configs and plugins.
 
 ## Mappings ##
 
-1. To see a [list of all mappings](https://github.com/NewAlexandria/vim.ana#leader-and-unite-mappings) in the .vimrc group - type: `<leader>L` *(which should be `\L`)*
+1. To see a [list of all mappings](https://github.com/NewAlexandria/vim.ana#leader-and-unite-mappings) in the .vimrc group - type: `<leader>L` *([which should be `\L`](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/ide.rc.vim#L89-L103))*
 2. To see a list of all the mappings from plugings, vimrc, etc. - type: `:map`
 
 **dbext**, the DB browser, [has a great tutorial, here](http://mutelight.org/dbext-the-last-sql-client-youll-ever-need)
 
 
 ## Install ##
-**NeoVim is recommended.  Vim 7.3 is probably a requirement.  Some version greater than 7.0.23 is absolutely required for buffergator, unite, and possibly others.**
+#### Requirements &c.
+* NeoVim is recommended.  
+* Vim 7.3 is probably a requirement.  
+* Some version greater than 7.0.23 is absolutely required for buffergator, unite, and possibly others.
+* `ctags`
+* `ag`/`the_silver_searcher` will help much
 
 Download and unpack to `~/.vim.ana` (the installer will look for it here. You can move it later)
 
@@ -78,6 +83,7 @@ If you want to add your own plugins, note that this repo uses NeoBundle.  [Instr
 
 If you don't like Solarized, [remember that you can roll your own](http://mswift42.github.io/themecreator/).
 
+
 ## Mañana ##
 
 The following directions are under review:
@@ -86,6 +92,7 @@ The following directions are under review:
 - add Solarized sources and auto-setup for mac terminal, iTerm, Hyperterm, gvim, etc
 - [configure for Tmux](http://tilvim.com/2014/07/30/tmux-and-vim.html)
 - a [REST client](https://github.com/diepm/vim-rest-console)
+- Fidget for JS testing.
 
 #### Text
 - [Lion](https://github.com/tommcdo/vim-lion)
@@ -127,3 +134,4 @@ Thanks for experimenting with this repo.  Suggestions always welcome. I'm partic
 
 ## Colophon
 1. [Andy Stewart interview](http://howivim.com/2016/andy-stewart/)
+1. [Google's Vim Style Guide](https://google.github.io/styleguide/vimscriptguide.xml)

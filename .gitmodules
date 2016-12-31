@@ -62,3 +62,6 @@
 [submodule "submodules-to-NeoBundle"]
 	path = submodules-to-NeoBundle
 	url = https://gist.github.com/e817b6e175e6641fe4d1.git
+[submodule "vim-profiler"]
+	path = vim-profiler
+	url = https://github.com/bchretien/vim-profiler.git
