@@ -3,11 +3,8 @@
 
 "let g:python_host_prog '/usr/bin/python2.7'
 
-
-
 " reopen buffer as sudo
 cmap w!! w !sudo tee % >/dev/null
-nmap z u
 
 set cmdheight=2
 set history=50

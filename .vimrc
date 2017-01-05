@@ -6,139 +6,174 @@
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+function! s:source_rc(path, ...) abort "{{{
+  let use_global = get(a:000, 0, !has('vim_starting'))
+  let abspath = resolve(expand('~/' . a:path))
+  if !use_global
+    execute 'source' fnameescape(abspath)
+    return
+  endif
 
-" Let NeoBundle manage NeoBundle
+  " substitute all 'set' to 'setglobal'
+  let content = map(readfile(abspath),
+        \ 'substitute(v:val, "^\\W*\\zsset\\ze\\W", "setglobal", "")')
+  " create tempfile and source the tempfile
+  let tempfile = tempname()
+  try
+    call writefile(content, tempfile)
+    execute 'source' fnameescape(tempfile)
+  finally
+    if filereadable(tempfile)
+      call delete(tempfile)
+    endif
+  endtry
+endfunction"}}}
+
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+set runtimepath+=~/.vim/bundle/dein.vim/repos/github.com/Shougo/dein.vim
+
+let g:dein#install_progress_type = 'title'
+" Required:
+call dein#begin('/Users/Zachary/.vim.ana/.vim/bundle')
+
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+
+"call dein#disable('tagbar')
 
 " Loaders
-NeoBundle 'xolox/vim-session'
-NeoBundle 'xolox/vim-misc'
+call dein#add('xolox/vim-session')
+call dein#add('xolox/vim-misc')
 
 " IDE
 " also note that some IDE affordance provided by ctags-gem-rbenv integration
 "" Search / Indexing
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'majutsushi/tagbar'
-"NeoBundle 'Shougo/unite-outline'
+call dein#add('Shougo/unite.vim')
+call dein#add('tsukkee/unite-tag')
+call dein#add('majutsushi/tagbar')
+" call dein#add('Shougo/unite-outline')
+
 "" Async
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
+"call dein#add('Shougo/vimproc.vim',                {'build': 'make'})
 
 "" Text & Completions
-NeoBundle 'ervandew/supertab'
-NeoBundle 'kshenoy/vim-signature'
-NeoBundle 'bkad/CamelCaseMotion'
-NeoBundle 'osyo-manga/vim-over'
+call dein#add('ervandew/supertab', {'if': 0})
+call dein#add('kshenoy/vim-signature')
+call dein#add('bkad/CamelCaseMotion')
+call dein#add('osyo-manga/vim-over',              { 'on_cmd' : 'OverCommandLine' })
 
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
+call dein#add('Shougo/deoplete.nvim')
+"call dein#add('Shougo/neocomplcache')
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
 
-"NeoBundle 'salsifis/vim-transpose'
-NeoBundle 'vim-scripts/swapcol.vim'
+" call dein#add('salsifis/vim-transpose')
+call dein#add('vim-scripts/swapcol.vim')
 
 "" Frameworks
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-bundler'
-NeoBundle 'tpope/vim-rake'
-NeoBundle 'tpope/vim-projectionist'
-NeoBundle 'tpope/vim-cucumber'
-NeoBundle 'KabbAmine/vCoolor.vim'
+call dein#add('tpope/vim-rails',                  {'if': 0})
+call dein#add('tpope/vim-bundler',                {'if': 0})
+call dein#add('tpope/vim-rake',                   {'if': 0})
+call dein#add('tpope/vim-projectionist',          {'if': 0})
+call dein#add('tpope/vim-cucumber',               {'if': 0})
+call dein#add('KabbAmine/vCoolor.vim',            {'if': 0})
 
 "" File System
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'justinmk/vim-gtfo'
-NeoBundle 'chrisbra/Recover.vim'
-"NeoBundle 'mohitleo9/vim-fidget',{
-    "\ 'build' : {
-    "\    'unix' : 'sudo npm install -g',
-    "\    'mac' : 'sudo npm install -g',
-    "\ },
-"\}
-"NeoBundle 'ludovicchabant/vim-gutentags'
-NeoBundle 'gioele/vim-autoswap'
+call dein#add('mileszs/ack.vim',                  {'if': 0})
+call dein#add('justinmk/vim-gtfo',                {'if': 0})
+call dein#add('chrisbra/Recover.vim',             {'if': 0})
+call dein#add('mohitleo9/vim-fidget',             {
+  \ 'if': 0,
+  \ 'build' : {
+  \    'unix' : 'sudo npm install -g',
+  \    'mac' : 'sudo npm install -g',
+  \ }, })
+call dein#add('ludovicchabant/vim-gutentags',     {'if': 0})
+call dein#add('gioele/vim-autoswap')
 
 " Layout
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'dsimidzija/vim-nerdtree-ignore'
-NeoBundle 'jeetsukumaran/vim-buffergator'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'nathanaelkane/vim-indent-guides'
+call dein#add('scrooloose/nerdtree',              {'if': 0})
+call dein#add('jistr/vim-nerdtree-tabs',          {'if': 0})
+call dein#add('dsimidzija/vim-nerdtree-ignore',   {'if': 0})
+call dein#add('jeetsukumaran/vim-buffergator')
+call dein#add('bling/vim-airline')
+call dein#add('nathanaelkane/vim-indent-guides')
 
 "" Windowing Systems
-NeoBundle 'q335r49/microviche'
-NeoBundle 'mhinz/vim-startify'
-NeoBundle 'mtth/scratch.vim'
-NeoBundle 'christoomey/vim-tmux-navigator'
-NeoBundle 'wellle/visual-split.vim'
+call dein#add('q335r49/microviche',               {'if': 0})
+call dein#add('mhinz/vim-startify')
+call dein#add('mtth/scratch.vim',                 {'if': 0})
+call dein#add('christoomey/vim-tmux-navigator',   {'if': 0})
+call dein#add('wellle/visual-split.vim')
 
 " VCS
-NeoBundle 'tpope/vim-fugitive'
-"NeoBundle 'chrisbra/changesPlugin'
-NeoBundle 'NewAlexandria/svnblame.vim'
-NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+call dein#add('tpope/vim-fugitive')
+" call dein#add('chrisbra/changesPlugin')
+call dein#add('NewAlexandria/svnblame.vim')
+call dein#add('Xuyuanp/nerdtree-git-plugin',      {'if': 0})
 
 " Formatting
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'p0deje/vim-ruby-interpolation'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'jezcope/vim-align'
+call dein#add('scrooloose/nerdcommenter')
+call dein#add('tpope/vim-surround',               {
+  \ 'on_map': {'n' : ['cs', 'ds', 'ys'], 'x' : 'S'},
+  \ 'depends' : 'vim-repeat' })
+call dein#add('p0deje/vim-ruby-interpolation',    {'if': 0})
+call dein#add('godlygeek/tabular',                {
+  \ 'on_cmd' : [ 'Tab', 'Tabularize' ],
+  \ 'augroup' : 'tabular' })
+call dein#add('jezcope/vim-align',                {'if': 0})
 
 
 " Syntax Colors
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'kien/rainbow_parentheses.vim'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'evanmiller/nginx-vim-syntax'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-NeoBundle 'cakebaker/scss-syntax.vim'
+call dein#add('altercation/vim-colors-solarized')
+call dein#add('kien/rainbow_parentheses.vim')
+call dein#add('tpope/vim-haml',                          {'if': 0})
+call dein#add('tpope/vim-markdown',                      {'if': 0})
+call dein#add('evanmiller/nginx-vim-syntax',             {'if': 0})
+call dein#add('pangloss/vim-javascript',                 {'if': 0})
+call dein#add('othree/javascript-libraries-syntax.vim',  {'if': 0})
+call dein#add('cakebaker/scss-syntax.vim')
 
-
-call neobundle#end()
+" Required:
+call dein#end()
 
 " Required:
 filetype plugin indent on
+syntax enable
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
 
 
 let mapleader = '\'
 
+let g:deoplete#enable_at_startup = 1
 let g:init_with_blended_relative_absolute_number_line = 1
 
 " if exists('g:loaded_neobundle')
-if neobundle#tap('neobundle.vim')
+"if neobundle#tap('neobundle.vim')
   " put the cursor on any file name and press `gf` to open
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/File_types.rc.vim'
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Ide.rc.vim'
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Movements.rc.vim'
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Syntax.rc.vim'
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Text_formatting.rc.vim'
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Windowing.rc.vim'
-endif
+  "execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/File_types.rc.vim'
+  "execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Ide.rc.vim'
+  "execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Movements.rc.vim'
+  "execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Syntax.rc.vim'
+  "execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Text_formatting.rc.vim'
+  "execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Windowing.rc.vim'
+
+  call s:source_rc('.vim/plugin/File_types.rc.vim')
+  call s:source_rc('.vim/plugin/Ide.rc.vim')
+  call s:source_rc('.vim/plugin/Movements.rc.vim')
+  call s:source_rc('.vim/plugin/Syntax.rc.vim')
+  call s:source_rc('.vim/plugin/Text_formatting.rc.vim')
+  call s:source_rc('.vim/plugin/Windowing.rc.vim')
+"endif
