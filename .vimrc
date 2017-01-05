@@ -34,114 +34,122 @@ function! s:source_rc(path, ...) abort "{{{
   endtry
 endfunction"}}}
 
+let g:load_rails_plugins='1'
+let g:load_js_plugins='1'
+let g:load_filesystems_plugins='1'
+let g:load_experimental_plugins='1'
+
 " Required:
 set runtimepath+=~/.vim/bundle/dein.vim/repos/github.com/Shougo/dein.vim
 
 let g:dein#install_progress_type = 'title'
 " Required:
-call dein#begin('/Users/Zachary/.vim.ana/.vim/bundle')
+if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
+  call dein#begin('/Users/Zachary/.vim.ana/.vim/bundle')
 
-" Let dein manage dein
-" Required:
-call dein#add('Shougo/dein.vim')
+	" Let dein manage dein
+	" Required:
+	call dein#add('Shougo/dein.vim')
 
-"call dein#disable('tagbar')
+	"call dein#disable('tagbar')
 
-" Loaders
-call dein#add('xolox/vim-session')
-call dein#add('xolox/vim-misc')
+	" Loaders
+	call dein#add('xolox/vim-session')
+	call dein#add('xolox/vim-misc')
 
-" IDE
-" also note that some IDE affordance provided by ctags-gem-rbenv integration
-"" Search / Indexing
-call dein#add('Shougo/unite.vim')
-call dein#add('tsukkee/unite-tag')
-call dein#add('majutsushi/tagbar')
-" call dein#add('Shougo/unite-outline')
+	" IDE
+	" also note that some IDE affordance provided by ctags-gem-rbenv integration
+	"" Search / Indexing
+	call dein#add('Shougo/unite.vim')
+	call dein#add('tsukkee/unite-tag')
+	call dein#add('majutsushi/tagbar')
+	" call dein#add('Shougo/unite-outline')
 
-"" Async
-"call dein#add('Shougo/vimproc.vim',                {'build': 'make'})
+	"" Async
+	call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
-"" Text & Completions
-call dein#add('ervandew/supertab', {'if': 0})
-call dein#add('kshenoy/vim-signature')
-call dein#add('bkad/CamelCaseMotion')
-call dein#add('osyo-manga/vim-over',              { 'on_cmd' : 'OverCommandLine' })
+	"" Text & Completions
+	call dein#add('ervandew/supertab', {'if': 0})
+	call dein#add('kshenoy/vim-signature')
+	call dein#add('bkad/CamelCaseMotion', {'if': "!empty('g:load_rails_plugins')"})
+	call dein#add('osyo-manga/vim-over',              { 'on_cmd' : 'OverCommandLine' })
 
-call dein#add('Shougo/deoplete.nvim')
-"call dein#add('Shougo/neocomplcache')
-call dein#add('Shougo/neosnippet')
-call dein#add('Shougo/neosnippet-snippets')
+	call dein#add('Shougo/deoplete.nvim')
+	"call dein#add('Shougo/neocomplcache')
+	call dein#add('Shougo/neosnippet')
+	call dein#add('Shougo/neosnippet-snippets')
 
-" call dein#add('salsifis/vim-transpose')
-call dein#add('vim-scripts/swapcol.vim')
+	" call dein#add('salsifis/vim-transpose')
+	call dein#add('vim-scripts/swapcol.vim')
 
-"" Frameworks
-call dein#add('tpope/vim-rails',                  {'if': 0})
-call dein#add('tpope/vim-bundler',                {'if': 0})
-call dein#add('tpope/vim-rake',                   {'if': 0})
-call dein#add('tpope/vim-projectionist',          {'if': 0})
-call dein#add('tpope/vim-cucumber',               {'if': 0})
-call dein#add('KabbAmine/vCoolor.vim',            {'if': 0})
+	"" Frameworks
+	call dein#add('tpope/vim-rails',                  {'if': "!empty('g:load_rails_plugins')"})
+	call dein#add('tpope/vim-bundler',                {'if': "!empty('g:load_rails_plugins')"})
+	call dein#add('tpope/vim-rake',                   {'if': "!empty('g:load_rails_plugins')"})
+	call dein#add('tpope/vim-projectionist',          {'if': "!empty('g:load_experimental_plugins')"})
+	call dein#add('tpope/vim-cucumber',               {'if': "!empty('g:load_rails_plugins')"})
+	call dein#add('KabbAmine/vCoolor.vim',            {'if': "!empty('g:load_js_plugins')"})
 
-"" File System
-call dein#add('mileszs/ack.vim',                  {'if': 0})
-call dein#add('justinmk/vim-gtfo',                {'if': 0})
-call dein#add('chrisbra/Recover.vim',             {'if': 0})
-call dein#add('mohitleo9/vim-fidget',             {
-  \ 'if': 0,
-  \ 'build' : {
-  \    'unix' : 'sudo npm install -g',
-  \    'mac' : 'sudo npm install -g',
-  \ }, })
-call dein#add('ludovicchabant/vim-gutentags',     {'if': 0})
-call dein#add('gioele/vim-autoswap')
+	"" File System
+	call dein#add('mileszs/ack.vim',                  )
+	call dein#add('justinmk/vim-gtfo',                {'if': "!empty('g:load_filesystems_plugins')"})
+	call dein#add('chrisbra/Recover.vim',             )
+	call dein#add('mohitleo9/vim-fidget',             {
+		\ 'if': "!empty('g:load_js_plugins')",
+		\ 'build' : {
+		\    'unix' : 'sudo npm install -g',
+		\    'mac' : 'sudo npm install -g',
+		\ }, })
+	call dein#add('ludovicchabant/vim-gutentags',     {'if': "!empty('g:load_experimental_plugins')"})
+	call dein#add('gioele/vim-autoswap')
 
-" Layout
-call dein#add('scrooloose/nerdtree',              {'if': 0})
-call dein#add('jistr/vim-nerdtree-tabs',          {'if': 0})
-call dein#add('dsimidzija/vim-nerdtree-ignore',   {'if': 0})
-call dein#add('jeetsukumaran/vim-buffergator')
-call dein#add('bling/vim-airline')
-call dein#add('nathanaelkane/vim-indent-guides')
+	" Layout
+	call dein#add('scrooloose/nerdtree',              {'if': "!empty('g:load_filesystems_plugins')"})
+	call dein#add('jistr/vim-nerdtree-tabs',          {'if': "!empty('g:load_filesystems_plugins')"})
+	call dein#add('dsimidzija/vim-nerdtree-ignore',   {'if': "!empty('g:load_filesystems_plugins')"})
+	call dein#add('jeetsukumaran/vim-buffergator')
+	call dein#add('bling/vim-airline')
+	call dein#add('nathanaelkane/vim-indent-guides')
 
-"" Windowing Systems
-call dein#add('q335r49/microviche',               {'if': 0})
-call dein#add('mhinz/vim-startify')
-call dein#add('mtth/scratch.vim',                 {'if': 0})
-call dein#add('christoomey/vim-tmux-navigator',   {'if': 0})
-call dein#add('wellle/visual-split.vim')
+	"" Windowing Systems
+	call dein#add('q335r49/microviche',               {'if': "!empty('g:load_experimental_plugins')"})
+	call dein#add('mhinz/vim-startify')
+	call dein#add('mtth/scratch.vim',                 {'if': "!empty('g:load_experimental_plugins')"})
+	call dein#add('christoomey/vim-tmux-navigator',   {'if': "!empty('g:load_experimental_plugins')"})
+	call dein#add('wellle/visual-split.vim')
 
-" VCS
-call dein#add('tpope/vim-fugitive')
-" call dein#add('chrisbra/changesPlugin')
-call dein#add('NewAlexandria/svnblame.vim')
-call dein#add('Xuyuanp/nerdtree-git-plugin',      {'if': 0})
+	" VCS
+	call dein#add('tpope/vim-fugitive')
+	" call dein#add('chrisbra/changesPlugin')
+	call dein#add('NewAlexandria/svnblame.vim')
+	call dein#add('Xuyuanp/nerdtree-git-plugin',      {'if': "!empty('g:load_filesystems_plugins')"})
 
-" Formatting
-call dein#add('scrooloose/nerdcommenter')
-call dein#add('tpope/vim-surround',               {
-  \ 'on_map': {'n' : ['cs', 'ds', 'ys'], 'x' : 'S'},
-  \ 'depends' : 'vim-repeat' })
-call dein#add('p0deje/vim-ruby-interpolation',    {'if': 0})
-call dein#add('godlygeek/tabular',                {
-  \ 'on_cmd' : [ 'Tab', 'Tabularize' ],
-  \ 'augroup' : 'tabular' })
-call dein#add('jezcope/vim-align',                {'if': 0})
+	" Formatting
+	call dein#add('scrooloose/nerdcommenter')
+	call dein#add('tpope/vim-surround',               {
+		\ 'on_map': {'n' : ['cs', 'ds', 'ys'], 'x' : 'S'},
+		\ 'depends' : 'vim-repeat' })
+	call dein#add('p0deje/vim-ruby-interpolation',    {'if': "!empty('g:load_rails_plugins')"})
+	call dein#add('godlygeek/tabular',                {
+		\ 'on_cmd' : [ 'Tab', 'Tabularize' ],
+		\ 'augroup' : 'tabular' })
+	call dein#add('jezcope/vim-align',                {'if': "!empty('g:load_experimental_plugins')"})
 
 
-" Syntax Colors
-call dein#add('altercation/vim-colors-solarized')
-call dein#add('kien/rainbow_parentheses.vim')
-call dein#add('tpope/vim-haml',                          {'if': 0})
-call dein#add('tpope/vim-markdown',                      {'if': 0})
-call dein#add('evanmiller/nginx-vim-syntax',             {'if': 0})
-call dein#add('pangloss/vim-javascript',                 {'if': 0})
-call dein#add('othree/javascript-libraries-syntax.vim',  {'if': 0})
-call dein#add('cakebaker/scss-syntax.vim')
+	" Syntax Colors
+	call dein#add('altercation/vim-colors-solarized')
+	call dein#add('kien/rainbow_parentheses.vim')
+	call dein#add('tpope/vim-haml',                          {'if': 1})
+	call dein#add('tpope/vim-markdown',                      {'if': 1})
+	call dein#add('evanmiller/nginx-vim-syntax',             {'if': 1})
+	call dein#add('pangloss/vim-javascript',                 {'if': "!empty('g:load_js_plugins')"})
+	call dein#add('othree/javascript-libraries-syntax.vim',  {'if': "!empty('g:load_js_plugins')"})
+	call dein#add('cakebaker/scss-syntax.vim')
 
-" Required:
-call dein#end()
+	" Required:
+	call dein#end()
+	call dein#save_state()
+endif
 
 " Required:
 filetype plugin indent on

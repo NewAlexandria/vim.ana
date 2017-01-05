@@ -35,10 +35,12 @@ let g:nerdtree_tabs_autoclose = 1
 " we set buffergator_autoupdate serially after toggling buffergator to avoid
 " creating a buffer listing 'NERD_tree_1' due to focus issues
 if has('autocmd')
-  "autocmd VimEnter * NERDTreeFocus
-  autocmd VimEnter * exe "vertical resize 40"
+  if g:load_filesystems_plugins == 1
+    autocmd VimEnter * NERDTreeFocus
+  endif
+  autocmd VimEnter * exe "vertical resize 32"
   autocmd VimEnter * BuffergatorOpen
-  autocmd VimEnter * exe "resize 15"
+  autocmd VimEnter * exe "resize 8"
   autocmd VimEnter * let g:buffergator_autoupdate=1
   autocmd VimEnter * wincmd w
   "autocmd VimEnter * nested :call tagbar#autoopen(0)
@@ -51,9 +53,11 @@ endif
 let g:l_sidebar_toggle = 0
 fu! LSidebarToggle()
   let b = bufnr("%")
-  "execute "NERDTreeToggle | BuffergatorToggle" 
+  if( g:load_filesystems_plugins == 1 )
+    execute "NERDTreeToggle | BuffergatorToggle" 
+  endif
 
-  if(g:l_sidebar_toggle == 0)
+  if( g:l_sidebar_toggle == 0)
     "execute "call Tagbar#autoopen"
     execute "call g:ToggleRNuMode()"
     execute "set nonumber!"
