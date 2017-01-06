@@ -34,6 +34,11 @@ function! s:source_rc(path, ...) abort "{{{
   endtry
 endfunction"}}}
 
+let g:active_plugins = {
+  \ 'rails': 1,
+  \ 'js': 1,
+  \ 'expimental': 1
+  \ }
 let g:load_rails_plugins='1'
 let g:load_js_plugins='1'
 let g:load_filesystems_plugins='1'
@@ -86,13 +91,13 @@ if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
 	call dein#add('tpope/vim-rails',                  {'if': "!empty('g:load_rails_plugins')"})
 	call dein#add('tpope/vim-bundler',                {'if': "!empty('g:load_rails_plugins')"})
 	call dein#add('tpope/vim-rake',                   {'if': "!empty('g:load_rails_plugins')"})
-	call dein#add('tpope/vim-projectionist',          {'if': "!empty('g:load_experimental_plugins')"})
+	call dein#add('tpope/vim-projectionist',          {'if': "!empty('g:load_rails_plugins')"})
 	call dein#add('tpope/vim-cucumber',               {'if': "!empty('g:load_rails_plugins')"})
 	call dein#add('KabbAmine/vCoolor.vim',            {'if': "!empty('g:load_js_plugins')"})
 
 	"" File System
 	call dein#add('mileszs/ack.vim',                  )
-	call dein#add('justinmk/vim-gtfo',                {'if': "!empty('g:load_filesystems_plugins')"})
+	call dein#add('justinmk/vim-gtfo',                {'if': "has_key(g:active_plugins, 'filesystem')"})
 	call dein#add('chrisbra/Recover.vim',             )
 	call dein#add('mohitleo9/vim-fidget',             {
 		\ 'if': "!empty('g:load_js_plugins')",
@@ -104,9 +109,9 @@ if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
 	call dein#add('gioele/vim-autoswap')
 
 	" Layout
-	call dein#add('scrooloose/nerdtree',              {'if': "!empty('g:load_filesystems_plugins')"})
-	call dein#add('jistr/vim-nerdtree-tabs',          {'if': "!empty('g:load_filesystems_plugins')"})
-	call dein#add('dsimidzija/vim-nerdtree-ignore',   {'if': "!empty('g:load_filesystems_plugins')"})
+	call dein#add('scrooloose/nerdtree',              {'if': "has_key(g:active_plugins, 'filesystem')"})
+	call dein#add('jistr/vim-nerdtree-tabs',          {'if': "has_key(g:active_plugins, 'filesystem')"})
+	call dein#add('dsimidzija/vim-nerdtree-ignore',   {'if': "has_key(g:active_plugins, 'filesystem')"})
 	call dein#add('jeetsukumaran/vim-buffergator')
 	call dein#add('bling/vim-airline')
 	call dein#add('nathanaelkane/vim-indent-guides')
@@ -122,7 +127,7 @@ if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
 	call dein#add('tpope/vim-fugitive')
 	" call dein#add('chrisbra/changesPlugin')
 	call dein#add('NewAlexandria/svnblame.vim')
-	call dein#add('Xuyuanp/nerdtree-git-plugin',      {'if': "!empty('g:load_filesystems_plugins')"})
+	call dein#add('Xuyuanp/nerdtree-git-plugin',      {'if': "has_key(g:active_plugins, 'filesystem')"})
 
 	" Formatting
 	call dein#add('scrooloose/nerdcommenter')

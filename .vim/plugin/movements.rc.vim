@@ -64,7 +64,8 @@ nnoremap <space>u :<C-u>Unite -no-split -buffer-name=buffers  buffer<cr>
 nnoremap <space>b :Unite grep:$buffers<cr>
 nnoremap <space>B :execute 'Unite grep:$buffers::' . expand("<cword>") . '  -start-insert'<cr>
 "nnoremap <space>o :Unite -start-insert -vertical -winwidth=50 -direction=belowright outline<cr>
-map <silent> <space>o :TagbarOpen fj<cr>
+map <silent> <space>j :TagbarOpen fj<cr>
+map <silent> <space>o :TagbarToggle<cr>
 
 let g:unite_source_file_rec_max_cache_files = 50000
 "call unite#filters#matcher_default#use(['matcher_fuzzy'])
