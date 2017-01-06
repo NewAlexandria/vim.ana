@@ -34,15 +34,13 @@ function! s:source_rc(path, ...) abort "{{{
   endtry
 endfunction"}}}
 
+" Groups: rails, js, filesystem, experimental
 let g:active_plugins = {
-  \ 'rails': 1,
-  \ 'js': 1,
-  \ 'expimental': 1
+  \ 'filesystem': 1,
+  \ 'experimental': 1
   \ }
-let g:load_rails_plugins='1'
-let g:load_js_plugins='1'
-let g:load_filesystems_plugins='1'
-let g:load_experimental_plugins='1'
+  "\ 'js': 1,
+  "\ 'rails': 1,
 
 " Required:
 set runtimepath+=~/.vim/bundle/dein.vim/repos/github.com/Shougo/dein.vim
@@ -88,24 +86,24 @@ if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
 	call dein#add('vim-scripts/swapcol.vim')
 
 	"" Frameworks
-	call dein#add('tpope/vim-rails',                  {'if': "!empty('g:load_rails_plugins')"})
-	call dein#add('tpope/vim-bundler',                {'if': "!empty('g:load_rails_plugins')"})
-	call dein#add('tpope/vim-rake',                   {'if': "!empty('g:load_rails_plugins')"})
-	call dein#add('tpope/vim-projectionist',          {'if': "!empty('g:load_rails_plugins')"})
-	call dein#add('tpope/vim-cucumber',               {'if': "!empty('g:load_rails_plugins')"})
-	call dein#add('KabbAmine/vCoolor.vim',            {'if': "!empty('g:load_js_plugins')"})
+	call dein#add('tpope/vim-rails',                  {'if': "has_key(g:active_plugins, 'rails')"})
+	call dein#add('tpope/vim-bundler',                {'if': "has_key(g:active_plugins, 'rails')"})
+	call dein#add('tpope/vim-rake',                   {'if': "has_key(g:active_plugins, 'rails')"})
+	call dein#add('tpope/vim-projectionist',          {'if': "has_key(g:active_plugins, 'rails')"})
+	call dein#add('tpope/vim-cucumber',               {'if': "has_key(g:active_plugins, 'rails')"})
+	call dein#add('KabbAmine/vCoolor.vim',            {'if': "has_key(g:active_plugins, 'js')"})
 
 	"" File System
 	call dein#add('mileszs/ack.vim',                  )
 	call dein#add('justinmk/vim-gtfo',                {'if': "has_key(g:active_plugins, 'filesystem')"})
 	call dein#add('chrisbra/Recover.vim',             )
 	call dein#add('mohitleo9/vim-fidget',             {
-		\ 'if': "!empty('g:load_js_plugins')",
+		\ 'if': "has_key(g:active_plugins, 'js')",
 		\ 'build' : {
 		\    'unix' : 'sudo npm install -g',
 		\    'mac' : 'sudo npm install -g',
 		\ }, })
-	call dein#add('ludovicchabant/vim-gutentags',     {'if': "!empty('g:load_experimental_plugins')"})
+	call dein#add('ludovicchabant/vim-gutentags',     {'if': "has_key(g:active_plugins, 'experimental')"})
 	call dein#add('gioele/vim-autoswap')
 
 	" Layout
@@ -117,10 +115,10 @@ if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
 	call dein#add('nathanaelkane/vim-indent-guides')
 
 	"" Windowing Systems
-	call dein#add('q335r49/microviche',               {'if': "!empty('g:load_experimental_plugins')"})
+	call dein#add('q335r49/microviche',               {'if': "has_key(g:active_plugins, 'experimental')"})
 	call dein#add('mhinz/vim-startify')
-	call dein#add('mtth/scratch.vim',                 {'if': "!empty('g:load_experimental_plugins')"})
-	call dein#add('christoomey/vim-tmux-navigator',   {'if': "!empty('g:load_experimental_plugins')"})
+	call dein#add('mtth/scratch.vim',                 {'if': "has_key(g:active_plugins, 'experimental')"})
+	call dein#add('christoomey/vim-tmux-navigator',   {'if': "has_key(g:active_plugins, 'experimental')"})
 	call dein#add('wellle/visual-split.vim')
 
 	" VCS
@@ -134,11 +132,11 @@ if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
 	call dein#add('tpope/vim-surround',               {
 		\ 'on_map': {'n' : ['cs', 'ds', 'ys'], 'x' : 'S'},
 		\ 'depends' : 'vim-repeat' })
-	call dein#add('p0deje/vim-ruby-interpolation',    {'if': "!empty('g:load_rails_plugins')"})
+	call dein#add('p0deje/vim-ruby-interpolation',    {'if': "has_key(g:active_plugins, 'rails')"})
 	call dein#add('godlygeek/tabular',                {
 		\ 'on_cmd' : [ 'Tab', 'Tabularize' ],
 		\ 'augroup' : 'tabular' })
-	call dein#add('jezcope/vim-align',                {'if': "!empty('g:load_experimental_plugins')"})
+	call dein#add('jezcope/vim-align',                {'if': "has_key(g:active_plugins, 'experimental')"})
 
 
 	" Syntax Colors
@@ -147,8 +145,8 @@ if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
 	call dein#add('tpope/vim-haml',                          {'if': 1})
 	call dein#add('tpope/vim-markdown',                      {'if': 1})
 	call dein#add('evanmiller/nginx-vim-syntax',             {'if': 1})
-	call dein#add('pangloss/vim-javascript',                 {'if': "!empty('g:load_js_plugins')"})
-	call dein#add('othree/javascript-libraries-syntax.vim',  {'if': "!empty('g:load_js_plugins')"})
+	call dein#add('pangloss/vim-javascript',                 {'if': "has_key(g:active_plugins, 'js')"})
+	call dein#add('othree/javascript-libraries-syntax.vim',  {'if': "has_key(g:active_plugins, 'js')"})
 	call dein#add('cakebaker/scss-syntax.vim')
 
 	" Required:
@@ -176,13 +174,6 @@ let g:init_with_blended_relative_absolute_number_line = 1
 " if exists('g:loaded_neobundle')
 "if neobundle#tap('neobundle.vim')
   " put the cursor on any file name and press `gf` to open
-  "execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/File_types.rc.vim'
-  "execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Ide.rc.vim'
-  "execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Movements.rc.vim'
-  "execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Syntax.rc.vim'
-  "execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Text_formatting.rc.vim'
-  "execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Windowing.rc.vim'
-
   call s:source_rc('.vim/plugin/File_types.rc.vim')
   call s:source_rc('.vim/plugin/Ide.rc.vim')
   call s:source_rc('.vim/plugin/Movements.rc.vim')
