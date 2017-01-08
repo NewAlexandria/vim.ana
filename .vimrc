@@ -63,13 +63,24 @@ if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
 	" IDE
 	" also note that some IDE affordance provided by ctags-gem-rbenv integration
 	"" Search / Indexing
-	call dein#add('Shougo/unite.vim')
+	call dein#add('Shougo/unite.vim', {
+    \ 'depends': ['neomru.vim'],
+    \ 'on_source': ['denite.nvim']
+    \ })
+	call dein#add('Shougo/denite.nvim', {
+    \ 'on_cmd': 'Denite'
+    \ })
+
+	call dein#add('Shougo/neomru.vim')
 	call dein#add('tsukkee/unite-tag')
 	call dein#add('majutsushi/tagbar')
 	" call dein#add('Shougo/unite-outline')
 
 	"" Async
-	call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+  call dein#add('Shougo/vimproc.vim', {
+    \ 'build' : 'make',
+    \ 'on_source' : ['unite.vim']
+    \ })
 
 	"" Text & Completions
 	call dein#add('ervandew/supertab', {'if': 0})
@@ -77,8 +88,7 @@ if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
 	call dein#add('bkad/CamelCaseMotion', {'if': "!empty('g:load_rails_plugins')"})
 	call dein#add('osyo-manga/vim-over',              { 'on_cmd' : 'OverCommandLine' })
 
-	call dein#add('Shougo/deoplete.nvim')
-	"call dein#add('Shougo/neocomplcache')
+	call dein#add('Shougo/neocomplete.vim')
 	call dein#add('Shougo/neosnippet')
 	call dein#add('Shougo/neosnippet-snippets')
 

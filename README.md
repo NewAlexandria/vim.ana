@@ -5,7 +5,7 @@
 The focus of this repo is to be portable, environment-neutral, and safe for existing configs.  Vim.ana is a Vim & related environment that can be dropped into any unix-flavor box, and without disruption to existing production configs.
 
 ## Features ##
-* [NeoBundle for loading](https://github.com/NewAlexandria/vim.ana/blob/master/.vimrc#L21-L24).
+* [dein for loading](https://github.com/NewAlexandria/vim.ana/blob/master/.vimrc#L21-L24).
 * [Familiar windowing setup](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/windowing.rc.vim#L51-L70) of File Browser + Open Files + Edit Window.
 * IDE features that align with RubyMine, Eclipse, and others.
 * Comprehensive file and symbol [search system](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/movements.rc.vim#L37).
@@ -34,6 +34,7 @@ The `.vimrc` is organized into logical sections, with jump-points to each area o
 
 1. To see a [list of all mappings](https://github.com/NewAlexandria/vim.ana#leader-and-unite-mappings) in the .vimrc group - type: `<leader>L` *([which should be `\L`](https://github.com/NewAlexandria/vim.ana/blob/master/.vim/plugin/ide.rc.vim#L89-L103))*
 2. To see a list of all the mappings from plugings, vimrc, etc. - type: `:map`
+3. If you have troubles with *dein*, you can install [dein command aliases](https://github.com/haya14busa/dein-command.vim).
 
 **dbext**, the DB browser, [has a great tutorial, here](http://mutelight.org/dbext-the-last-sql-client-youll-ever-need)
 
