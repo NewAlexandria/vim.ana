@@ -107,5 +107,5 @@ let g:changes_respect_other_signs = 1
 nnoremap <leader>d :CL<cr>
 
 " Blame gutter
-map <leader>s :call SvnBlame()<CR>
+" map <leader>s :call SvnBlame()<CR>
 

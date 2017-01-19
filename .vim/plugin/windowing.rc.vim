@@ -16,6 +16,12 @@ nnoremap <silent> <Leader><Down>  :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <Leader><Right> :exe "vertical resize +6"<CR>
 nnoremap <silent> <Leader><Left>  :exe "vertical resize -6"<CR>
 
+" See other interesting splits: .vim/bundle/visual-split.vim/README.md
+vnoremap <Leader>ss <C-s>w<CR>
+vnoremap <Leader>sa :VSSplitAbove<CR>
+vnoremap <Leader>sb :VSSplitBelow<CR>
+vnoremap <Leader>sr :VSResize<CR>
+vnoremap <Leader>sv :VSSplit<CR>
 
 " Split VIEWPORT horizontally, with new split on the top
 let g:buffergator_viewport_split_policy = "b"
