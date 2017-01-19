@@ -37,10 +37,10 @@ endfunction"}}}
 " Groups: rails, js, filesystem, experimental
 let g:active_plugins = {
   \ 'filesystem': 1,
+  \ 'rails': 1,
   \ 'experimental': 1
   \ }
   "\ 'js': 1,
-  "\ 'rails': 1,
 
 " Required:
 set runtimepath+=~/.vim/bundle/dein.vim/repos/github.com/Shougo/dein.vim
@@ -76,6 +76,9 @@ if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
 	call dein#add('majutsushi/tagbar')
 	" call dein#add('Shougo/unite-outline')
 
+	" projectionist allows templatized project folders
+	call dein#add('tpope/vim-projectionist',          {'if': "has_key(g:active_plugins, 'filesystem')"})
+
 	"" Async
   call dein#add('Shougo/vimproc.vim', {
     \ 'build' : 'make',
@@ -97,10 +100,9 @@ if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
 
 	"" Frameworks
 	call dein#add('tpope/vim-rails',                  {'if': "has_key(g:active_plugins, 'rails')"})
-	call dein#add('tpope/vim-bundler',                {'if': "has_key(g:active_plugins, 'rails')"})
-	call dein#add('tpope/vim-rake',                   {'if': "has_key(g:active_plugins, 'rails')"})
-	call dein#add('tpope/vim-projectionist',          {'if': "has_key(g:active_plugins, 'rails')"})
-	call dein#add('tpope/vim-cucumber',               {'if': "has_key(g:active_plugins, 'rails')"})
+	call dein#add('tpope/vim-bundler',                {'if': "has_key(g:active_plugins, 'rails2')"})
+	call dein#add('tpope/vim-rake',                   {'if': "has_key(g:active_plugins, 'rails2')"})
+	call dein#add('tpope/vim-cucumber',               {'if': "has_key(g:active_plugins, 'rails2')"})
 	call dein#add('KabbAmine/vCoolor.vim',            {'if': "has_key(g:active_plugins, 'js')"})
 
 	"" File System
@@ -133,8 +135,6 @@ if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
 
 	" VCS
 	call dein#add('tpope/vim-fugitive')
-	" call dein#add('chrisbra/changesPlugin')
-	call dein#add('NewAlexandria/svnblame.vim')
 	call dein#add('Xuyuanp/nerdtree-git-plugin',      {'if': "has_key(g:active_plugins, 'filesystem')"})
 
 	" Formatting
@@ -178,7 +178,7 @@ syntax enable
 
 let mapleader = '\'
 
-let g:deoplete#enable_at_startup = 1
+let g:neocomplete#enable_at_startup = 1
 let g:init_with_blended_relative_absolute_number_line = 1
 
 " if exists('g:loaded_neobundle')
