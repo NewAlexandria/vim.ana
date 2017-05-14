@@ -50,118 +50,121 @@ let g:dein#install_progress_type = 'title'
 if dein#load_state('/Users/Zachary/.vim.ana/.vim/bundle')
   call dein#begin('/Users/Zachary/.vim.ana/.vim/bundle')
 
-	" Let dein manage dein
-	" Required:
-	call dein#add('Shougo/dein.vim')
+    " Let dein manage dein
+    " Required:
+    call dein#add('Shougo/dein.vim')
 
-	"call dein#disable('tagbar')
+    "call dein#disable('tagbar')
 
-	" Loaders
-	call dein#add('xolox/vim-session')
-	call dein#add('xolox/vim-misc')
+    " Loaders
+    call dein#add('xolox/vim-session')
+    call dein#add('xolox/vim-misc')
 
-	" IDE
-	" also note that some IDE affordance provided by ctags-gem-rbenv integration
-	"" Search / Indexing
-	call dein#add('Shougo/unite.vim', {
+    " IDE
+    " also note that some IDE affordance provided by ctags-gem-rbenv integration
+    "" Search / Indexing
+    call dein#add('Shougo/unite.vim', {
     \ 'depends': ['neomru.vim'],
     \ 'on_source': ['denite.nvim']
     \ })
-	call dein#add('Shougo/denite.nvim', {
+    call dein#add('Shougo/denite.nvim', {
     \ 'on_cmd': 'Denite'
     \ })
 
-	call dein#add('Shougo/neomru.vim')
-	call dein#add('tsukkee/unite-tag')
-	call dein#add('majutsushi/tagbar')
-	" call dein#add('Shougo/unite-outline')
+    call dein#add('Shougo/neomru.vim')
+    call dein#add('tsukkee/unite-tag')
+    call dein#add('majutsushi/tagbar')
+    " call dein#add('Shougo/unite-outline')
 
-	" projectionist allows templatized project folders
-	call dein#add('tpope/vim-projectionist',          {'if': "has_key(g:active_plugins, 'filesystem')"})
+    " projectionist allows templatized project folders
+    call dein#add('tpope/vim-projectionist',          {'if': "has_key(g:active_plugins, 'filesystem')"})
 
-	"" Async
+    "" Async
   call dein#add('Shougo/vimproc.vim', {
     \ 'build' : 'make',
     \ 'on_source' : ['unite.vim']
     \ })
 
-	"" Text & Completions
-	call dein#add('ervandew/supertab', {'if': 0})
-	call dein#add('kshenoy/vim-signature')
-	call dein#add('bkad/CamelCaseMotion', {'if': "!empty('g:load_rails_plugins')"})
-	call dein#add('osyo-manga/vim-over',              { 'on_cmd' : 'OverCommandLine' })
+    "" Text & Completions
+    call dein#add('ervandew/supertab', {'if': 0})
+    call dein#add('kshenoy/vim-signature')
+    call dein#add('bkad/CamelCaseMotion', {'if': "!empty('g:load_rails_plugins')"})
+    call dein#add('osyo-manga/vim-over',              { 'on_cmd' : 'OverCommandLine' })
 
-	call dein#add('Shougo/neocomplete.vim')
-	call dein#add('Shougo/neosnippet')
-	call dein#add('Shougo/neosnippet-snippets')
+    call dein#add('Shougo/neocomplete.vim')
+    call dein#add('Shougo/neosnippet')
+    call dein#add('Shougo/neosnippet-snippets')
 
-	" call dein#add('salsifis/vim-transpose')
-	call dein#add('vim-scripts/swapcol.vim')
+    " call dein#add('salsifis/vim-transpose')
+    call dein#add('vim-scripts/swapcol.vim')
 
-	"" Frameworks
-	call dein#add('tpope/vim-rails',                  {'if': "has_key(g:active_plugins, 'rails')"})
-	call dein#add('tpope/vim-bundler',                {'if': "has_key(g:active_plugins, 'rails2')"})
-	call dein#add('tpope/vim-rake',                   {'if': "has_key(g:active_plugins, 'rails2')"})
-	call dein#add('tpope/vim-cucumber',               {'if': "has_key(g:active_plugins, 'rails2')"})
-	call dein#add('KabbAmine/vCoolor.vim',            {'if': "has_key(g:active_plugins, 'js')"})
+    "" Frameworks
+    call dein#add('tpope/vim-rails',                  {'if': "has_key(g:active_plugins, 'rails')"})
+    call dein#add('tpope/vim-bundler',                {'if': "has_key(g:active_plugins, 'rails')"})
+    call dein#add('tpope/vim-rake',                   {'if': "has_key(g:active_plugins, 'rails2')"})
+    call dein#add('tpope/vim-cucumber',               {'if': "has_key(g:active_plugins, 'rails2')"})
+    call dein#add('KabbAmine/vCoolor.vim',            {'if': "has_key(g:active_plugins, 'js')"})
 
-	"" File System
-	call dein#add('mileszs/ack.vim',                  )
-	call dein#add('justinmk/vim-gtfo',                {'if': "has_key(g:active_plugins, 'filesystem')"})
-	call dein#add('chrisbra/Recover.vim',             )
-	call dein#add('mohitleo9/vim-fidget',             {
-		\ 'if': "has_key(g:active_plugins, 'js')",
-		\ 'build' : {
-		\    'unix' : 'sudo npm install -g',
-		\    'mac' : 'sudo npm install -g',
-		\ }, })
-	call dein#add('ludovicchabant/vim-gutentags',     {'if': "has_key(g:active_plugins, 'experimental')"})
-	call dein#add('gioele/vim-autoswap')
+    "" File System
+    call dein#add('mileszs/ack.vim',                  )
+    call dein#add('justinmk/vim-gtfo',                {'if': "has_key(g:active_plugins, 'filesystem')"})
+    call dein#add('chrisbra/Recover.vim',             )
+    call dein#add('mohitleo9/vim-fidget',             {
+        \ 'if': "has_key(g:active_plugins, 'js')",
+        \ 'build' : {
+        \    'unix' : 'sudo npm install -g',
+        \    'mac' : 'sudo npm install -g',
+        \ }, })
+    call dein#add('ludovicchabant/vim-gutentags',     {'if': "has_key(g:active_plugins, 'experimental')"})
+    call dein#add('gioele/vim-autoswap')
 
-	" Layout
-	call dein#add('scrooloose/nerdtree',              {'if': "has_key(g:active_plugins, 'filesystem')"})
-	call dein#add('jistr/vim-nerdtree-tabs',          {'if': "has_key(g:active_plugins, 'filesystem')"})
-	call dein#add('dsimidzija/vim-nerdtree-ignore',   {'if': "has_key(g:active_plugins, 'filesystem')"})
-	call dein#add('jeetsukumaran/vim-buffergator')
-	call dein#add('bling/vim-airline')
-	call dein#add('nathanaelkane/vim-indent-guides')
+    " Layout
+    call dein#add('scrooloose/nerdtree',              {'if': "has_key(g:active_plugins, 'filesystem')"})
+    call dein#add('jistr/vim-nerdtree-tabs',          {'if': "has_key(g:active_plugins, 'filesystem')"})
+    call dein#add('dsimidzija/vim-nerdtree-ignore',   {'if': "has_key(g:active_plugins, 'filesystem')"})
+    call dein#add('jeetsukumaran/vim-buffergator')
+    call dein#add('bling/vim-airline')
+    call dein#add('nathanaelkane/vim-indent-guides')
+    call dein#add('ryanoasis/vim-devicons')
 
-	"" Windowing Systems
-	call dein#add('q335r49/microviche',               {'if': "has_key(g:active_plugins, 'experimental')"})
-	call dein#add('mhinz/vim-startify')
-	call dein#add('mtth/scratch.vim',                 {'if': "has_key(g:active_plugins, 'experimental')"})
-	call dein#add('christoomey/vim-tmux-navigator',   {'if': "has_key(g:active_plugins, 'experimental')"})
-	call dein#add('wellle/visual-split.vim')
+    "" Windowing Systems
+    call dein#add('q335r49/microviche',               {'if': "has_key(g:active_plugins, 'experimental')"})
+    call dein#add('mhinz/vim-startify')
+    call dein#add('mtth/scratch.vim',                 {'if': "has_key(g:active_plugins, 'experimental')"})
+    call dein#add('christoomey/vim-tmux-navigator',   {'if': "has_key(g:active_plugins, 'experimental')"})
+    call dein#add('wellle/visual-split.vim')
 
-	" VCS
-	call dein#add('tpope/vim-fugitive')
-	call dein#add('Xuyuanp/nerdtree-git-plugin',      {'if': "has_key(g:active_plugins, 'filesystem')"})
+    " VCS
+    call dein#add('tpope/vim-fugitive')
+    call dein#add('Xuyuanp/nerdtree-git-plugin',      {'if': "has_key(g:active_plugins, 'filesystem')"})
 
-	" Formatting
-	call dein#add('scrooloose/nerdcommenter')
-	call dein#add('tpope/vim-surround',               {
-		\ 'on_map': {'n' : ['cs', 'ds', 'ys'], 'x' : 'S'},
-		\ 'depends' : 'vim-repeat' })
-	call dein#add('p0deje/vim-ruby-interpolation',    {'if': "has_key(g:active_plugins, 'rails')"})
-	call dein#add('godlygeek/tabular',                {
-		\ 'on_cmd' : [ 'Tab', 'Tabularize' ],
-		\ 'augroup' : 'tabular' })
-	call dein#add('jezcope/vim-align',                {'if': "has_key(g:active_plugins, 'experimental')"})
+    " Formatting
+    call dein#add('scrooloose/nerdcommenter')
+    call dein#add('tpope/vim-surround',               {
+        \ 'on_map': {'n' : ['cs', 'ds', 'ys'], 'x' : 'S'},
+        \ 'depends' : 'vim-repeat' })
+    call dein#add('p0deje/vim-ruby-interpolation',    {'if': "has_key(g:active_plugins, 'rails')"})
+    call dein#add('godlygeek/tabular',                {
+        \ 'on_cmd' : [ 'Tab', 'Tabularize' ],
+        \ 'augroup' : 'tabular' })
+    call dein#add('jezcope/vim-align',                {'if': "has_key(g:active_plugins, 'experimental')"})
 
 
-	" Syntax Colors
-	call dein#add('altercation/vim-colors-solarized')
-	call dein#add('kien/rainbow_parentheses.vim')
-	call dein#add('tpope/vim-haml',                          {'if': 1})
-	call dein#add('tpope/vim-markdown',                      {'if': 1})
-	call dein#add('evanmiller/nginx-vim-syntax',             {'if': 1})
-	call dein#add('pangloss/vim-javascript',                 {'if': "has_key(g:active_plugins, 'js')"})
-	call dein#add('othree/javascript-libraries-syntax.vim',  {'if': "has_key(g:active_plugins, 'js')"})
-	call dein#add('cakebaker/scss-syntax.vim')
+    " Syntax Colors
+    call dein#add('altercation/vim-colors-solarized')
+    call dein#add('morhetz/gruvbox')
+    call dein#add('danilo-augusto/vim-afterglow')
+    call dein#add('kien/rainbow_parentheses.vim')
+    call dein#add('tpope/vim-haml',                          {'if': 1})
+    call dein#add('tpope/vim-markdown',                      {'if': 1})
+    call dein#add('evanmiller/nginx-vim-syntax',             {'if': 1})
+    call dein#add('pangloss/vim-javascript',                 {'if': "has_key(g:active_plugins, 'js')"})
+    call dein#add('othree/javascript-libraries-syntax.vim',  {'if': "has_key(g:active_plugins, 'js')"})
+    call dein#add('cakebaker/scss-syntax.vim')
 
-	" Required:
-	call dein#end()
-	call dein#save_state()
+    " Required:
+    call dein#end()
+    call dein#save_state()
 endif
 
 " Required:
