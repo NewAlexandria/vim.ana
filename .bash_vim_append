@@ -48,7 +48,7 @@ function vis() {
 
 # takes the files returned by an ag search, and opens them in vim
 function agv() {
-  func_arr=( 'nvim' 'mvim' 'vim' )
+  func_arr=( "$EDITOR" 'nvim' 'mvim' 'vim' )
   for func in "${func_arr[@]}"
   do
     if [ -n "$(type -t $func)" ] && [ "$(type -t $func)" = file ]
