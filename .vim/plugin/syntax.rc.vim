@@ -15,7 +15,7 @@ let g:solarized_termcolors = 256
 "let g:solarized_termtrans  = 1
 let g:solarized_contrast = 'high'
 
-set guifont=Fira\ Code
+set guifont=Fura\ Code\ Retina\ Nerd\ Font\ Complete
 set laststatus=2
 let g:airline_powerline_fonts = 1
 
