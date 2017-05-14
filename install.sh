@@ -31,6 +31,11 @@ else
   exit 1
 fi
 
+# setup TMUX things
+mkdir -p ~/.tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+
 # make bundle dir and fetch neobundle
 echo "Begin fetching NeoBundle..."
 if ! [ -e "$INSTALL_DIR" ]; then
