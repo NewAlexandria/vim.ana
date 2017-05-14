@@ -14,7 +14,7 @@ let g:matchparen_insert_timeout=5
 "" Modes
 nnoremap <C-i> :set invpaste paste?<CR>
 set pastetoggle=<F2>
-call togglebg#map("<F5>")
+"call togglebg#map("<F5>")
 set showmode
 "make < > shifts keep selection
 vnoremap < <gv

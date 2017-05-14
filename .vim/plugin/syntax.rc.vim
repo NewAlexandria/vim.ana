@@ -71,4 +71,6 @@ endif
 
 let g:used_javascript_libs = 'underscore,angularjs,jasmine,jquery'
 
-colorscheme solarized
+"colorscheme solarized
+colorscheme gruvbox
+"colorscheme afterglow
