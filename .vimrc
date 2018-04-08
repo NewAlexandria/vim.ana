@@ -135,10 +135,10 @@ let g:init_with_blended_relative_absolute_number_line = 1
 " if exists('g:loaded_neobundle')
 if neobundle#tap('neobundle.vim')
   " put the cursor on any file name and press `gf` to open
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/File_types.rc.vim'
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Ide.rc.vim'
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Movements.rc.vim'
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Syntax.rc.vim'
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Text_formatting.rc.vim'
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/Windowing.rc.vim'
+  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/file_types.rc.vim'
+  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/ide.rc.vim'
+  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/movements.rc.vim'
+  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/syntax.rc.vim'
+  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/text_formatting.rc.vim'
+  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/'.'.vim/plugin/windowing.rc.vim'
 endif
