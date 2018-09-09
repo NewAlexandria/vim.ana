@@ -75,7 +75,6 @@ NeoBundle 'chrisbra/Recover.vim'
     "\    'mac' : 'sudo npm install -g',
     "\ },
 "\}
-"NeoBundle 'ludovicchabant/vim-gutentags'
 NeoBundle 'gioele/vim-autoswap'
 
 " Layout
@@ -112,7 +111,6 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'tpope/vim-markdown'
-NeoBundle 'evanmiller/nginx-vim-syntax'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
 NeoBundle 'cakebaker/scss-syntax.vim'

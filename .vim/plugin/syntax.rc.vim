@@ -19,8 +19,6 @@ set guifont=Fira\ Code
 set laststatus=2
 let g:airline_powerline_fonts = 1
 
-set statusline+=%{gutentags#statusline()}
-let g:gutentags_trace = 1
 
 "" Indent Guides
 set ts=2 sw=2 et
