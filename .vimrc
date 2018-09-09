@@ -1,6 +1,6 @@
 " vimrc split-up into sections
 " see `runtime` list at the bottom
-"set encoding=utf8
+set encoding=utf8
 
 " load the bundler
 " Note: Skip initialization for vim-tiny or vim-small.
