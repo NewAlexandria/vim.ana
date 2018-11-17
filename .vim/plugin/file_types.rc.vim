@@ -14,6 +14,7 @@ endif
 if has('autocmd')
   au BufRead,BufNewFile *.thor set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.template set filetype=javascript
 endif
 
 
