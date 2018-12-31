@@ -19,6 +19,8 @@ set showmode
 "make < > shifts keep selection
 vnoremap < <gv
 vnoremap > >gv
+nnoremap <i :left<CR>
+vnoremap <i :left<CR>
 
 " Intuitive backspacing in insert mode
 set backspace=indent,eol,start
