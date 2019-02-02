@@ -1,14 +1,12 @@
 func! myspacevim#before() abort
   let g:neomake_enabled_c_makers = ['clang']
-
   set t_8f=^[[38;2;%lu;%lu;%lum
   set t_8b=^[[48;2;%lu;%lu;%lum
 
-# ide
-  nnoremap <space>c :w !pbcopy<cr>
-  vnoremap <space>c :w !pbcopy<cr>
-  nnoremap <space>v :r !pbpaste<cr>
-  vnoremap <space>v :r !pbpaste<cr>
+  " call SpaceVim#custom#SPC('nnoremap', ['f', 't'], 'echom "hello world"', 'test custom SPC', 1)
+
+  call SpaceVim#custom#SPCGroupName(['G'], '+TestGroup')
+  call SpaceVim#custom#SPC('nore', ['G', 't'], 'echom 1', 'echomessage 1', 1)
 
 
 # movement

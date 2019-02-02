@@ -27,7 +27,7 @@
     colorscheme = "NeoSolarized"
     colorscheme_bg = "dark"
 
-    windows_leader = "\|"
+#   windows_leader = "\|"
 
 [[custom_plugins]]
   name = "bkad/CamelCaseMotion"
@@ -40,11 +40,10 @@
   name = 'mhinz/vim-startify'
 
 [[custom_plugins]]
-  name = 'scrooloose/nerdcommenter'
-  merged = 1
+  name = 'tpope/vim-markdown'
 
 [[custom_plugins]]
-  name = 'tpope/vim-markdown'
+  name = 'glippi/lognroll-vim'
 
 # Enable autocomplete layer
 [[layers]]

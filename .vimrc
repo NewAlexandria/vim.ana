@@ -53,6 +53,7 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'glippi/lognroll-vim'
 
 "NeoBundle 'salsifis/vim-transpose'
 NeoBundle 'vim-scripts/swapcol.vim'
