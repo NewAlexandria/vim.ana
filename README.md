@@ -111,7 +111,10 @@ The following directions are under review:
 - Install via [Vimswitch](https://priomsrb.github.io/vimswitch/)?
 - [Croquet](http://www.drbunsen.org/vim-croquet/) and [VimPrint](http://vimcasts.org/blog/2013/05/vimprint---a-vim-keystroke-parser/)
 
+#### Reference Projects
 
+* [Veonim](https://github.com/veonim/veonim)
+* [SpaceVim](https://spacevim.org/quick-start-guide/)
 
 # Спасибо #
 
