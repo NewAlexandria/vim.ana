@@ -3,6 +3,17 @@
 # Original version is created by shoma2da
 # https://github.com/shoma2da/neobundle_installer
 
+if [ -e "~/.vim" ]; then
+  mv ~/.vim ~/.vim-bak
+  echo "moved existing ~/.vim dir to a backup"
+fi
+ln -s ~/.vim.ana/.vim   ~/.vim
+if [ -e "~/.vimrc" ]; then
+  mv ~/.vimrc ~/.vimrc.bak
+  echo "moved existing ~/.vimrc dir to a backup"
+fi
+ln -s ~/.vim.ana/.vimrc ~/.vimrc
+
 # Installation directory
 BUNDLE_DIR=~/.vim/bundle
 INSTALL_DIR="$BUNDLE_DIR/neobundle.vim"
