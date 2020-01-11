@@ -92,7 +92,7 @@ The following directions are under review:
 - add Solarized sources and auto-setup for mac terminal, iTerm, Hyperterm, gvim, etc
 - [configure for Tmux](http://tilvim.com/2014/07/30/tmux-and-vim.html)
 - a [REST client](https://github.com/diepm/vim-rest-console)
-- Fidget for JS testing.
+- [Vimspector](https://puremourning.github.io/vimspector-web/) for Debug Adapter Protocol support
 
 #### Text
 - [Lion](https://github.com/tommcdo/vim-lion)
