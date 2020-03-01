@@ -45,7 +45,7 @@ nnoremap RR :%s/\s\+$//e<CR>
 
 
 " uses Vim >= 7.4.338
-set breakindent
+"set breakindent
 set showbreak=➣➣
 let g:toggle_showbreak = 0
 function! g:ToggleShowBreak()
