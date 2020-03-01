@@ -13,6 +13,8 @@ endif
 " file types
 if has('autocmd')
   au BufRead,BufNewFile *.thor set filetype=ruby
+  au BufRead,BufNewFile *.erb set filetype=html
+  autocmd BufRead,BufNewFile *.vue set filetype=html
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile *.template set filetype=javascript
 endif
