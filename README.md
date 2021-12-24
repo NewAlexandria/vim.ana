@@ -101,6 +101,7 @@ The following directions are under review:
 #### Searching
 - adding a Unite scope for `dbext` databases (or [SQLcomplete](https://github.com/vim-scripts/SQLComplete.vim))
 - VCSCommand
+- [Whee](https://github.com/chimay/wheel#more-screenshots) based on denite.
 
 #### Indexing
 - a proper tag parses for ruby *and rspec* namespaces, since 'ctags' fails at this, perhaps [starscope](https://github.com/eapache/starscope/blob/master/doc/USER_GUIDE.md),  [tagfinder](http://andrewradev.com/2011/10/15/vim-and-ctags-finding-tag-definitions/), or [rdoc-tags](https://github.com/rdoc/rdoc-tags)

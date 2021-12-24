@@ -36,12 +36,12 @@ let g:nerdtree_tabs_autoclose = 1
 " creating a buffer listing 'NERD_tree_1' due to focus issues
 if has('autocmd')
   autocmd VimEnter * NERDTreeFocus
-  autocmd VimEnter * exe "vertical resize 40"
+  autocmd VimEnter * exe "vertical resize 25"
   autocmd VimEnter * BuffergatorOpen
-  autocmd VimEnter * exe "resize 15"
+  autocmd VimEnter * exe "resize 11"
   autocmd VimEnter * let g:buffergator_autoupdate=1
   autocmd VimEnter * wincmd w
-  autocmd VimEnter * nested :call tagbar#autoopen(0)
+  "autocmd VimEnter * nested :call tagbar#autoopen(0)
 endif
 
 
