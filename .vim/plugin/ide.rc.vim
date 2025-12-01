@@ -23,8 +23,49 @@ set scrolloff=3           " Indicate jump out of the screen when 3 lines before 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
 
-nnoremap <space>c :w !pbcopy<cr>
-vnoremap <space>c :w !pbcopy<cr>
+function! CopySelectionToClipboard()
+    " Get the visual selection
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+
+    if len(lines) == 0
+        return
+    endif
+
+    " Handle character-wise selection
+    if len(lines) == 1
+        let lines[0] = lines[0][column_start - 1 : column_end - 1]
+    else
+        let lines[0] = lines[0][column_start - 1:]
+        let lines[-1] = lines[-1][: column_end - 1]
+    endif
+
+    let l:text = join(lines, "\n")
+
+    " Platform detection and clipboard command
+    if has('mac') || has('macunix')
+        call system('pbcopy', l:text)
+    elseif has('unix') && executable('xclip')
+        call system('xclip -selection clipboard', l:text)
+    elseif has('unix') && executable('xsel')
+        call system('xsel --clipboard --input', l:text)
+    elseif has('unix') && executable('wl-copy')
+        call system('wl-copy', l:text)
+    elseif has('win32') || has('wsl')
+        call system('clip.exe', l:text)
+    else
+        echo "No clipboard utility found"
+    endif
+    echo "Copied to clipboard"
+endfunction
+
+vnoremap <leader>y :<C-u>call CopySelectionToClipboard()<CR>
+vnoremap <space>c :<C-u>call CopySelectionToClipboard()<CR>
+
+" MacOS simple backup:
+"vnoremap <leader>y "*y
+
 nnoremap <space>v :r !pbpaste<cr>
 vnoremap <space>v :r !pbpaste<cr>
 
