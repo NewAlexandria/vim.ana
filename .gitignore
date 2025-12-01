@@ -8,3 +8,4 @@ tags
 .vim/sessions
 .vim/bundle
 .vim/bundle/.neobundle/doc
+.DS_Store
